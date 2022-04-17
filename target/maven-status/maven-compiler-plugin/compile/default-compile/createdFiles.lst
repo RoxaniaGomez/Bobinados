@@ -1,0 +1,8 @@
+bobinator\bobinados\Controller\LoginController.class
+bobinator\bobinados\Entity\Usuario.class
+bobinator\bobinados\Enum\Rol.class
+bobinator\bobinados\Security.class
+bobinator\bobinados\Controller\UsuarioController.class
+bobinator\bobinados\Service\UsuarioService.class
+bobinator\bobinados\BobinadosApplication.class
+bobinator\bobinados\Repository\UsuarioRepository.class

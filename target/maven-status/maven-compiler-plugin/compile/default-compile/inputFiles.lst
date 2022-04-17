@@ -1,5 +1,8 @@
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\bobinados\bobinados\src\main\java\bobinator\bobinados\BobinadosApplication.java
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\bobinados\bobinados\src\main\java\bobinator\bobinados\Controller\LoginController.java
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\bobinados\bobinados\src\main\java\bobinator\bobinados\Security.java
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\bobinados\bobinados\src\main\java\bobinator\bobinados\Controller\UsuarioController.java
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\bobinados\bobinados\src\main\java\bobinator\bobinados\Entity\Usuario.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Repository\UsuarioRepository.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Controller\LoginController.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Security.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\BobinadosApplication.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Controller\UsuarioController.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Enum\Rol.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Service\UsuarioService.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Entity\Usuario.java
