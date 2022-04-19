@@ -1,16 +1,7 @@
 package bobinator.bobinados.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import lombok.Data;
-
-@Entity
-@Data
-
 public class MotorTrifasico {
 
-    @Id
-    private String id;
     private Integer numeroPolo;
 
     private Integer numeroRanura;
@@ -29,17 +20,9 @@ public class MotorTrifasico {
 
     private Integer apilamientoDeChapa;
 
+    private String id;
+
     private Boolean esConcentrico;
 
     private Alambre alambre;
-
-    private Polo polo;
-
-    private Integer grupoDeBobina;
-
-    private Integer ranuraPorFases;
-
-    private Integer amplitudDelGrupo;
-
-    private Integer bobinasPorGrupo;
 }
