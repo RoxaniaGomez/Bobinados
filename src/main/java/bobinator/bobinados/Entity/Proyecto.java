@@ -1,10 +1,10 @@
 package bobinator.bobinados.Entity;
 
-public class Proyecto {
+public class Proyecto extends Empleado {
 
     private Cliente cliente;
 
     private Empleado empleado;
 
-    private MotorTrifasico motor;
+    private MotorTrifasico motorTrifasico;
 }
