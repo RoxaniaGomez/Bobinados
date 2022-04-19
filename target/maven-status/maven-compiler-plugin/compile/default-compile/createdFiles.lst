@@ -1,8 +1,15 @@
+bobinator\bobinados\Controller\InicioController.class
 bobinator\bobinados\Controller\LoginController.class
 bobinator\bobinados\Entity\Usuario.class
+bobinator\bobinados\Entity\MotorTrifasico.class
 bobinator\bobinados\Enum\Rol.class
+bobinator\bobinados\Entity\Cliente.class
+bobinator\bobinados\Entity\Empleado.class
+bobinator\bobinados\Entity\Proyecto.class
 bobinator\bobinados\Security.class
 bobinator\bobinados\Controller\UsuarioController.class
 bobinator\bobinados\Service\UsuarioService.class
 bobinator\bobinados\BobinadosApplication.class
+bobinator\bobinados\Entity\Alambre.class
+bobinator\bobinados\Entity\Polo.class
 bobinator\bobinados\Repository\UsuarioRepository.class
