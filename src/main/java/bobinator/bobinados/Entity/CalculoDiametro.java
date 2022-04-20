@@ -14,7 +14,7 @@ public class CalculoDiametro {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
-    
+
     private Double diametro;
 
     private Double seccion;
