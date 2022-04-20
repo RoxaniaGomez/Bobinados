@@ -1,19 +1,20 @@
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\Bobinados\src\main\java\bobinator\bobinados\Entity\Empleado.java
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\Bobinados\src\main\java\bobinator\bobinados\Controller\InicioController.java
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\Bobinados\src\main\java\bobinator\bobinados\Entity\Polo.java
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\Bobinados\src\main\java\bobinator\bobinados\Entity\CalculoDiametro.java
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\Bobinados\src\main\java\bobinator\bobinados\Enum\Rol.java
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\Bobinados\src\main\java\bobinator\bobinados\Security.java
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\Bobinados\src\main\java\bobinator\bobinados\Service\UsuarioService.java
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\Bobinados\src\main\java\bobinator\bobinados\Entity\MotorTrifasico.java
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\Bobinados\src\main\java\bobinator\bobinados\Repository\AlambreRepositorio.java
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\Bobinados\src\main\java\bobinator\bobinados\Controller\LoginController.java
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\Bobinados\src\main\java\bobinator\bobinados\Entity\Cliente.java
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\Bobinados\src\main\java\bobinator\bobinados\Entity\Proyecto.java
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\Bobinados\src\main\java\bobinator\bobinados\Controller\UsuarioController.java
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\Bobinados\src\main\java\bobinator\bobinados\Entity\Alambre.java
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\Bobinados\src\main\java\bobinator\bobinados\Repository\UsuarioRepository.java
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\Bobinados\src\main\java\bobinator\bobinados\Entity\PoloConsecuente.java
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\Bobinados\src\main\java\bobinator\bobinados\Entity\Concentrico.java
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\Bobinados\src\main\java\bobinator\bobinados\Entity\Usuario.java
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\Bobinados\src\main\java\bobinator\bobinados\BobinadosApplication.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Entity\Cliente.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Controller\LoginController.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Entity\Alambre.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Controller\EmpleadoController.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\BobinadosApplication.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Enum\Rol.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Service\UsuarioService.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Repository\EmpleadoRepository.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Entity\Proyecto.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Controller\InicioController.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Entity\Empleado.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Entity\Usuario.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Repository\UsuarioRepository.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Security.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Controller\UsuarioController.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Service\EmpleadoService.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Entity\MotorTrifasico.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Entity\CalculoDiametro.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Repository\AlambreRepository.java
+C:\Users\54381\Desktop\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Entity\Polo.java

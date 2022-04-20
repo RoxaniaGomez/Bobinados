@@ -3,10 +3,13 @@ bobinator\bobinados\Entity\Cliente.class
 bobinator\bobinados\Entity\Empleado.class
 bobinator\bobinados\Controller\UsuarioController.class
 bobinator\bobinados\Service\UsuarioService.class
+bobinator\bobinados\Service\EmpleadoService.class
 bobinator\bobinados\Entity\Polo.class
-bobinator\bobinados\Entity\Concentrico.class
+bobinator\bobinados\Repository\EmpleadoRepository.class
+bobinator\bobinados\Repository\AlambreRepository.class
 bobinator\bobinados\Controller\InicioController.class
 bobinator\bobinados\Controller\LoginController.class
+bobinator\bobinados\Controller\EmpleadoController.class
 bobinator\bobinados\Entity\Usuario.class
 bobinator\bobinados\Entity\CalculoDiametro.class
 bobinator\bobinados\Enum\Rol.class
