@@ -1,10 +1,22 @@
 package bobinator.bobinados.Entity;
 
-public class Empleado {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
-    private MotorTrifasico motor;
+@Entity
+@Data
+public class Empleado {
+    @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String id;
 
     private String taller;
-
-    private String id;
+    
+    @OneToOne
+    private Usuario usuario;
 }
