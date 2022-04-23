@@ -51,7 +51,7 @@ public class EmpleadoController {
 	    datos.setId(id);
 	    datos.setAlta(true);
 	    empleadoService.guardarDatos(datos);
-	    modelo.addAttribute("autor", datos);
+	    modelo.addAttribute("datos", datos);
 	    if (modificar != null) {
 		return "redirect:/empleadoBobinado/list";
 	    }
@@ -94,7 +94,7 @@ public class EmpleadoController {
     }
 
     @GetMapping("/eliminar")
-    public String eliminarAutor(@RequestParam("id") String id) {
+    public String eliminarDatos(@RequestParam("id") String id) {
 	try {
 	    empleadoService.eliminarDatos(id);
 	    return "redirect:/empleadoBobinado/list";
