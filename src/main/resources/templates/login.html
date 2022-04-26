@@ -41,7 +41,7 @@ and open the template in the editor.
         <p th:if="${error !=null}" class="error" th:text="${error}">
         </p>
         <div class="user">
-          <input type="text" name="username" class="controls" placeholder="Usuario" th:value="${username}" />
+          <input type="text" name="username" class="controls" placeholder="Email" th:value="${username}" />
         </div>
 
         <div class="user">
@@ -56,7 +56,7 @@ and open the template in the editor.
 
        ¿Aún no tiene cuenta?
         <div class="user">
-          <button type="submit" class="btn btn-primary" value="Registrarse">
+          <button type="button" class="btn btn-primary" value="Registrarse">
           <a href="/usuario">Registrarse</a> 
           </button>
         </div>
