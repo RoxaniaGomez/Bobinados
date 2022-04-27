@@ -18,7 +18,7 @@ public class Cliente extends Usuario{
 //    @GenericGenerator(name = "uuid", strategy = "uuid2")
 //    private String id;
 
-    private Integer telefono;
+    private String telefono;
 
  
 }
