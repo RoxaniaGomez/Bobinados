@@ -9,9 +9,6 @@ import bobinator.bobinados.Entity.Cliente;
 import bobinator.bobinados.Enum.Rol;
 import bobinator.bobinados.Repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +21,7 @@ public class ClienteService{
  @Autowired
     private ClienteRepository clienteRepositorio;
 
-    public Cliente registrarUsuario(String name,String username,Integer telefono, String password, String password2) throws Exception {
+    public Cliente registrarUsuario(String name,String username,String telefono, String password, String password2) throws Exception {
 	Cliente cliente = clienteRepositorio.findByUsername(username);
 
 	if (username.isEmpty()) {

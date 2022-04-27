@@ -2,13 +2,9 @@ package bobinator.bobinados.Controller;
 
 import bobinator.bobinados.Entity.Cliente;
 import bobinator.bobinados.Entity.Empleado;
-import bobinator.bobinados.Entity.Usuario;
 import bobinator.bobinados.Service.ClienteService;
 import bobinator.bobinados.Service.EmpleadoService;
-import bobinator.bobinados.Service.UsuarioService;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,7 +37,7 @@ public class UsuarioController {
     public String registroUsuario(
             @RequestParam("name") String name,
             @RequestParam("username") String username,
-            @RequestParam("telefono") Integer telefono,
+            @RequestParam("telefono") String telefono,
 	    @RequestParam("password") String password,
 	    @RequestParam("password2") String password2,
 	    Model modelo) {
