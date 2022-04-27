@@ -10,7 +10,6 @@ bobinator\bobinados\Entity\Polo.class
 bobinator\bobinados\Repository\EmpleadoRepository.class
 bobinator\bobinados\Repository\AlambreRepository.class
 bobinator\bobinados\Controller\MainController.class
-.netbeans_automatic_build
 bobinator\bobinados\Controller\LoginController.class
 bobinator\bobinados\Controller\EmpleadoController.class
 bobinator\bobinados\Entity\Usuario.class
