@@ -18,7 +18,7 @@ public class CalculoDiametro {
     private Double diametro;
 
     private Double seccion;
-
+    
     private Double A2;
 
     private Double A5;
