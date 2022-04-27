@@ -1,3 +1,5 @@
+bobinator\bobinados\Controller\TallerController.class
+bobinator\bobinados\Service\ClienteService.class
 bobinator\bobinados\Entity\MotorTrifasico.class
 bobinator\bobinados\Entity\Cliente.class
 bobinator\bobinados\Entity\Empleado.class
@@ -7,14 +9,17 @@ bobinator\bobinados\Service\EmpleadoService.class
 bobinator\bobinados\Entity\Polo.class
 bobinator\bobinados\Repository\EmpleadoRepository.class
 bobinator\bobinados\Repository\AlambreRepository.class
-bobinator\bobinados\Controller\InicioController.class
+bobinator\bobinados\Controller\MainController.class
+.netbeans_automatic_build
 bobinator\bobinados\Controller\LoginController.class
 bobinator\bobinados\Controller\EmpleadoController.class
 bobinator\bobinados\Entity\Usuario.class
 bobinator\bobinados\Entity\CalculoDiametro.class
 bobinator\bobinados\Enum\Rol.class
+bobinator\bobinados\Controller\ClienteController.class
 bobinator\bobinados\Entity\Proyecto.class
 bobinator\bobinados\Security.class
 bobinator\bobinados\BobinadosApplication.class
 bobinator\bobinados\Entity\Alambre.class
+bobinator\bobinados\Repository\ClienteRepository.class
 bobinator\bobinados\Repository\UsuarioRepository.class

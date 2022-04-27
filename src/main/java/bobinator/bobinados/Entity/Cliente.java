@@ -1,29 +1,24 @@
 package bobinator.bobinados.Entity;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
 
+//import javax.persistence.OneToOne;
+import lombok.Data;
+
+
+//@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorValue(value="cliente")
 @Entity
 @Data
-public class Cliente {
+public class Cliente extends Usuario{
+//
+//    @Id
+//    @GeneratedValue(generator = "uuid")
+//    @GenericGenerator(name = "uuid", strategy = "uuid2")
+//    private String id;
 
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String id;
+    private Integer telefono;
 
-    private String nombre;
-
-    private String apellido;
-
-    private String direccion;
-
-    private Integer numeroTelefono;
-
-    @OneToOne
-    private Usuario usuario;
+ 
 }

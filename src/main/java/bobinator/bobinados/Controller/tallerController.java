@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/taller")
-public class tallerController {
+public class TallerController {
 
     @GetMapping("")
     public String postLogueo() {
