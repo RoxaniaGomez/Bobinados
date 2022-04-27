@@ -1,16 +1,11 @@
 package bobinator.bobinados.Service;
 
-import bobinator.bobinados.Entity.Cliente;
 import bobinator.bobinados.Entity.Empleado;
-import bobinator.bobinados.Entity.MotorTrifasico;
 import bobinator.bobinados.Enum.Rol;
 import bobinator.bobinados.Repository.EmpleadoRepository;
-import java.util.List;
-import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
