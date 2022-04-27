@@ -19,6 +19,7 @@ public class EmpleadoService{
 
     @Autowired
     private EmpleadoRepository empleadoRepository;
+
     
 public Empleado registrarUsuario(String name,String username,String usuario, String password, String password2) throws Exception {
 	Empleado empleado = empleadoRepository.findByUsername(username);
