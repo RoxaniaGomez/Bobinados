@@ -37,21 +37,21 @@ public class EmpleadoController {
     }
 
     @PostMapping("/save")
-    public String formularioData(@RequestParam("nombre") Integer nombre,@RequestParam("id") String id,
-	    Model modelo, @RequestParam(name = "archivo", required = false) MultipartFile archivo, @RequestParam(name = "modificar", required = false) String modificar) {
+    public String formularioData(@RequestParam("taller") Integer taller ,@RequestParam("id") String id,
+	    Model modelo, @RequestParam(name = "modificar", required = false) String modificar) {
 	MotorTrifasico datos = new MotorTrifasico();
 	try {
-	    datos.setNumeroPolo(nombre);
-	    try {
-		byte[] bytes = archivo.getBytes();
-		Files.write(Paths.get("C:\\Users\\54381\\Desktop\\Diseño Web\\Libreriaaa\\upload\\" + archivo.getOriginalFilename()), bytes, StandardOpenOption.CREATE);
-	    } catch (Exception e) {
-		e.printStackTrace();
-	    }
+	    datos.setNumeroPolo(taller);
+//	    try {
+//		byte[] bytes = archivo.getBytes();
+//		Files.write(Paths.get("C:\\Users\\54381\\Desktop\\Diseño Web\\Libreriaaa\\upload\\" + archivo.getOriginalFilename()), bytes, StandardOpenOption.CREATE);
+//	    } catch (Exception e) {
+//		e.printStackTrace();
+//	    }
 	    datos.setId(id);
 	    datos.setAlta(true);
 	    empleadoService.guardarDatos(datos);
-	    modelo.addAttribute("autor", datos);
+	    modelo.addAttribute("datos", datos);
 	    if (modificar != null) {
 		return "redirect:/empleadoBobinado/list";
 	    }

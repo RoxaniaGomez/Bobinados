@@ -13,11 +13,11 @@ public class EmpleadoService {
     @Autowired
     private EmpleadoRepository empleadoRepository;
 
-    public MotorTrifasico guardarDatos(MotorTrifasico motor) throws Exception {
-	if (motor.getNumeroPolo()==null) {
+    public Empleado guardarDatos(Empleado empleado) throws Exception {
+	if (empleado.getUsuario()==null) {
 	    throw new Exception("El campo no puede estar vacio");
 	}
-	return empleadoRepository.save(motor);
+	return empleadoRepository.save();
     }
     
        public MotorTrifasico guardarDatos1(MotorTrifasico motor) throws Exception {
