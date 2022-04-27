@@ -1,27 +1,22 @@
 package bobinator.bobinados.Controller;
 
-import bobinator.bobinados.Entity.Empleado;
-import bobinator.bobinados.Entity.MotorTrifasico;
-import bobinator.bobinados.Service.EmpleadoService;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 
 @Controller
 @RequestMapping("/empleado")
 public class EmpleadoController {
-    
+
     @PreAuthorize("hasAnyRole('ROLE_TALLER')")
     @GetMapping("")
+
+    public String formulario(Model modelo) {
+        return "empleadoBobinado"; //Html
+    }
+
     public String index() {
         return "taller";
     }
