@@ -24,4 +24,6 @@ public class CalculoDiametro {
     private Double A5;
 
     private Double A7;
+
+    private Boolean alta;
 }
