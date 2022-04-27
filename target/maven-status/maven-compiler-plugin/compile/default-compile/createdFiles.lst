@@ -21,5 +21,4 @@ bobinator\bobinados\Security.class
 bobinator\bobinados\BobinadosApplication.class
 bobinator\bobinados\Entity\Alambre.class
 bobinator\bobinados\Repository\ClienteRepository.class
-bobinator\bobinados\Controller\postLogueoController.class
 bobinator\bobinados\Repository\UsuarioRepository.class
