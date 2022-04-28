@@ -89,3 +89,26 @@ html{
     90% {opacity: 0.9}
     100% {opacity: 1}
 }
+
+.text {
+  color: #000;
+}
+
+.caja-check {
+  text-align: center;
+}
+
+.txt {
+  color: #000;
+  margin-left: 40px;
+}
+
+.txto {
+  color: #000;
+  margin-left: 70px;
+}
+
+.txta {
+  color: #000;
+  margin-left: 100px;
+}
