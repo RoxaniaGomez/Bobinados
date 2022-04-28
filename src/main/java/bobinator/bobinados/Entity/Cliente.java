@@ -19,4 +19,5 @@ public class Cliente extends Usuario{
 //    private String id;
 
     private String telefono;
+
 }
