@@ -77,10 +77,16 @@
               <input type="text" placeholder="Corriente en Amper" name="corriente" required>
               <input type="password" placeholder="Tension" name="tension" required>
               <input type="password" placeholder="Frecuencia en HZ" name="frecuencia" required>
+
               <div class="caja-check">
-              <label for="indoor"  class="text" ><input id="indoor"type="radio" name="indoor-outdoor"> Conexion: Estrella</label><br>
-              <label for="outdoor" class="text"><input id="outdoor"  type="radio" name="indoor-outdoor">Conexion: Triangulo</label>
-            </div>
+
+                <label for="indoor" class="text"><input id="indoor" type="radio" name="indoor-outdoor">Conexion:
+                  Estrella</label><br>
+                <label for="outdoor" class="text"><input id="outdoor" type="radio" name="indoor-outdoor">Conexion:
+                  Triangulo</label>
+                  
+              </div>
+
               <div>
                 <button type="submit">Enviar</button>
               </div>
@@ -91,22 +97,23 @@
 
               <h2>Cargar datos Trifasico</h2>
               <p th:if="${error != null}" style="color:red;" th:text="${error}"></p>
-              <input type="text" placeholder="Numero de polos" name="name" required>
-              <input type="text" placeholder="Numero de Ranuras" name="username" required>
-              <input type="text" placeholder="Diametro interno estator" name="telefono" required>
-              <input type="password" placeholder="Diametro externo estator" name="password" required>
-              <input type="password" placeholder="Apilamiento de chapa" name="password2" required>
-              <input type="text" placeholder="Potencia en HP" name="username" required>
-              <input type="text" placeholder="Corriente en Amper" name="telefono" required>
-              <input type="password" placeholder="Tension" name="password" required>
-              <input type="password" placeholder="Frecuencia en HZ" name="password2" required>
-              <input type="password" placeholder="Capacitor" name="password" required>
+              <input type="text" placeholder="Numero de polos" name="numero-polos" required>
+              <input type="text" placeholder="Numero de Ranuras" name="numero-ranuras" required>
+              <input type="text" placeholder="Diametro interno estator" name="d-interno" required>
+              <input type="password" placeholder="Diametro externo estator" name="d-Externo" required>
+              <input type="password" placeholder="Apilamiento de chapa" name="apilamiento-chapa" required>
+              <input type="text" placeholder="Potencia en HP" name="potencia" required>
+              <input type="text" placeholder="Corriente en Amper" name="corriente" required>
+              <input type="password" placeholder="Tension" name="tension" required>
+              <input type="password" placeholder="Frecuencia en HZ" name="frecuencia" required>
+              <input type="password" placeholder="Capacitor" name="capacitor" required>
               <div>
-                <label for="indoor" class="txt" ><input id="indoor" type="radio" name="indoor-outdoor">Permamente</label>
-                <label for="outdoor" class="txt"><input id="outdoor"  type="radio" name="indoor-outdoor">No permamente</label>
-<br>
-                <label for="indoor" class="txto" ><input id="indoor" type="radio" name="indoor-outdoor">Polo</label>
-                <label for="outdoor" class="txta"><input id="outdoor"  type="radio" name="indoor-outdoor">No polo</label>
+                <label for="indoor" class="txt"><input id="indoor" type="radio" name="indoor-outdoor">Permamente</label>
+                <label for="outdoor" class="txt"><input id="outdoor" type="radio" name="indoor-outdoor">No
+                  permamente</label>
+                <br>
+                <label for="indoor" class="txto"><input id="indoor" type="radio" name="indoor-outdoor">Polo</label>
+                <label for="outdoor" class="txta"><input id="outdoor" type="radio" name="indoor-outdoor">No polo</label>
               </div>
               <button type="submit">Enviar</button>
             </form>
