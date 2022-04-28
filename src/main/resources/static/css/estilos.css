@@ -131,8 +131,6 @@ main{
 }
 
 
-
-
 .formulario__login{
     opacity: 1;
     display: block;
@@ -140,8 +138,6 @@ main{
 .formulario__register{
     display: none;
 }
-
-
 
 @media screen and (max-width: 850px){
 
