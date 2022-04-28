@@ -97,7 +97,8 @@ main{
     padding: 80px 20px;
     background: rgb(106, 100, 100);
     position: absolute;
-    border-radius: 20px;
+    height: 500px;
+    overflow-y: auto;
 }
 
 .contenedor__login-register form h2{
@@ -128,6 +129,7 @@ main{
     color: white;
     outline: none;
 }
+
 
 .formulario__login{
     opacity: 1;
