@@ -61,4 +61,8 @@ anchoPage();
             caja_trasera_login.style.display = "block";
             caja_trasera_login.style.opacity = "1";
         }
+
+        var scrollSpy = new bootstrap.ScrollSpy(document.body, {
+            target: '#navbar-example'
+          })
 }
