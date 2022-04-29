@@ -5,6 +5,7 @@
  */
 package bobinator.bobinados.Entity;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import lombok.Data;
 
@@ -13,6 +14,7 @@ import lombok.Data;
  * @author groxa
  */
 
+@DiscriminatorValue(value="monofasico")
 @Entity
 @Data
 public class Monofasico extends Motor {

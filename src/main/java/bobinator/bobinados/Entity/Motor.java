@@ -18,6 +18,7 @@ import lombok.Data;
  * @author groxa
  */
 
+@DiscriminatorColumn(name="tipoDeMotor")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Entity
 @Data

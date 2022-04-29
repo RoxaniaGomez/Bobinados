@@ -5,6 +5,8 @@
  */
 package bobinator.bobinados.Service;
 
+import bobinator.bobinados.Entity.Cliente;
+import bobinator.bobinados.Entity.Empleado;
 import bobinator.bobinados.Entity.Proyecto;
 import bobinator.bobinados.Repository.ProyectoRepository;
 import java.util.List;
@@ -21,8 +23,10 @@ public class ProyectoService{
      @Autowired
     private ProyectoRepository proyectoRepo;
      
-    public Proyecto CrearProyecto() throws Exception {
+    public Proyecto CrearProyecto(Empleado empleado, Boolean alta) throws Exception {
 	Proyecto proyecto =new Proyecto();
+       proyecto.setEmpleado(empleado);
+       proyecto.setAlta(true);
 	return proyectoRepo.save(proyecto);
     }
 

@@ -41,25 +41,36 @@
 
                                 <button class="btn btn-dark" type="submit">Ingresar un proyecto nuevo</button>
                             </form>
+                  <!--          <table class="table caption-top ">
+                                <thead class="text-white">
+                                    <tr>
+                                        <th>motor</th>
+                                        <th>alta-baja</th>
+                                        <th>eliminar</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-white">
+                                    <tr th:href="@{/taller/list}" th:each="proyecto: ${lista}">
+                                        <td th:text="${proyecto.id}"></td>
+                                        <td>
+                                            <a th:href="@{/taller/delete(id = ${proyecto.id})}" th:if="${proyecto.alta}">
+                                                <button type="button" class="btn btn-danger w-5">Dar Alta</button></a>
+                                            <a th:href="@{/taller/alta(id = ${proyecto.id})}" th:if="${!proyecto.alta}">
+                                                <button type="button" class="btn btn-success">Dar Baja</button></a>
+                                        </td>
 
-                            <h1>hola</h1>
-                            <tr th:each="taller : ${proyecto}">
-                                <td th:text="${proyecto.id}"></td>
+                                        <td>
+                                            <a th:href="@{/taller/eliminar(id = ${proyecto.id})}">
+                                                <button type="button" class="btn btn-danger">Eliminar</button>
+                                            </a>
+                                        </td>
+                                    </tr>
 
 
-                                <td>
-                                    <a th:href="@{/taller/delete(id = ${proyecto.id})}" th:if="${proyecto.alta}">
-                                        <button type="button" class="btn btn-danger w-5">Dar Alta</button></a>
-                                    <a th:href="@{/taller/alta(id = ${proyecto.id})}" th:if="${!proyecto.alta}">
-                                        <button type="button" class="btn btn-success">Dar Baja</button></a>
-                                </td>
 
-                                <td>
-                                    <a th:href="@{/taller/eliminar(id = ${proyecto.id})}">
-                                        <button type="button" class="btn btn-danger">Eliminar</button>
-                                    </a>
-                                </td>
-                            </tr>
+                                </tbody>
+
+                            </table>-->
                         </div>
                     </div>
                 </div>
@@ -182,6 +193,6 @@
         <script src="/js/index.js"></script>
         <script src="/js/script.js"></script>
     </body>
-    >>>>>>> 9c4f6b0c87bacd62dff9388328d25935e3f9eb8f
+
 
 </html>
