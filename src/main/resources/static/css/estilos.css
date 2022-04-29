@@ -7,7 +7,6 @@
 }
 
 body{
-    background-image: url(../images/bg4.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -96,9 +95,10 @@ main{
 .contenedor__login-register form{
     width: 100%;
     padding: 80px 20px;
-    background: white;
+    background: rgb(106, 100, 100);
     position: absolute;
-    border-radius: 20px;
+    height: 500px;
+    overflow-y: auto;
 }
 
 .contenedor__login-register form h2{
@@ -131,8 +131,6 @@ main{
 }
 
 
-
-
 .formulario__login{
     opacity: 1;
     display: block;
@@ -140,8 +138,6 @@ main{
 .formulario__register{
     display: none;
 }
-
-
 
 @media screen and (max-width: 850px){
 
