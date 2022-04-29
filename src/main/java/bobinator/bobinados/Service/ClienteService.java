@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ClienteService{
- @Autowired
+    @Autowired
     private ClienteRepository clienteRepositorio;
 
     public Cliente registrarUsuario(String name,String username,String telefono, String password, String password2) throws Exception {

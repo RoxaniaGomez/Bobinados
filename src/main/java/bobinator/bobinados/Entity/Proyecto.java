@@ -16,11 +16,13 @@ public class Proyecto {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
-
     @ManyToOne
     private Cliente cliente;
     @ManyToOne
     private Empleado empleado;
     @OneToOne
-    private MotorTrifasico motor;
+    private Motor motor;
+    
+    private boolean alta;
+    
 }
