@@ -1,35 +1,4 @@
-
-                  <!--          <table class="table caption-top ">
-                                <thead class="text-white">
-                                    <tr>
-                                        <th>motor</th>
-                                        <th>alta-baja</th>
-                                        <th>eliminar</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="text-white">
-                                    <tr th:href="@{/taller/list}" th:each="proyecto: ${lista}">
-                                        <td th:text="${proyecto.id}"></td>
-                                        <td>
-                                            <a th:href="@{/taller/delete(id = ${proyecto.id})}" th:if="${proyecto.alta}">
-                                                <button type="button" class="btn btn-danger w-5">Dar Alta</button></a>
-                                            <a th:href="@{/taller/alta(id = ${proyecto.id})}" th:if="${!proyecto.alta}">
-                                                <button type="button" class="btn btn-success">Dar Baja</button></a>
-                                        </td>
-
-                                        <td>
-                                            <a th:href="@{/taller/eliminar(id = ${proyecto.id})}">
-                                                <button type="button" class="btn btn-danger">Eliminar</button>
-                                            </a>
-                                        </td>
-                                    </tr>
-
-
-
-                                </tbody>
-
-                            </table>-->
-                        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -68,6 +37,37 @@
           <div class="d-grid gap-2">
             <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#miModal" type="button">Crear nuevo
               proyecto </button>
+              
+             <table class="table caption-top ">
+                    <thead class="text-white">
+                        <tr>
+                            <th>motor</th>
+                            <th>alta-baja</th>
+                            <th>eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-white">
+                        <tr th:href="@{/taller/list}" th:each="proyecto: ${lista}">
+                            <td th:text="${proyecto.id}"></td>
+                            <td>
+                                <a th:href="@{/taller/delete(id = ${proyecto.id})}" th:if="${proyecto.alta}">
+                                    <button type="button" class="btn btn-danger w-5">Dar Alta</button></a>
+                                <a th:href="@{/taller/alta(id = ${proyecto.id})}" th:if="${!proyecto.alta}">
+                                    <button type="button" class="btn btn-success">Dar Baja</button></a>
+                            </td>
+
+                            <td>
+                                <a th:href="@{/taller/eliminar(id = ${proyecto.id})}">
+                                    <button type="button" class="btn btn-danger">Eliminar</button>
+                                </a>
+                            </td>
+                        </tr>
+
+
+
+                    </tbody>
+
+                </table>
           </div>
         </div>
       </div>
@@ -129,12 +129,12 @@
                       <input type="text" placeholder="Numero de polos" name="numero-polos" required>
                       <input type="text" placeholder="Numero de Ranuras" name="numero-ranuras" required>
                       <input type="text" placeholder="Diametro interno estator" name="d-interno" required>
-                      <input type="password" placeholder="Diametro externo estator" name="d-Externo" required>
-                      <input type="password" placeholder="Apilamiento de chapa" name="apilamiento-chapa" required>
+                      <input type="text" placeholder="Diametro externo estator" name="d-Externo" required>
+                      <input type="text" placeholder="Apilamiento de chapa" name="apilamiento-chapa" required>
                       <input type="text" placeholder="Potencia en HP" name="potencia" required>
                       <input type="text" placeholder="Corriente en Amper" name="corriente" required>
-                      <input type="password" placeholder="Tension" name="tension" required>
-                      <input type="password" placeholder="Frecuencia en HZ" name="frecuencia" required>
+                      <input type="text" placeholder="Tension" name="tension" required>
+                      <input type="text" placeholder="Frecuencia en HZ" name="frecuencia" required>
                       <div class="caja-check">
                         <label for="indoor" class="text"><input id="indoor" type="radio" name="indoor-outdoor">Conexion:
                           Estrella</label><br>
@@ -152,13 +152,13 @@
                       <input type="text" placeholder="Numero de polos" name="numero-polos" required>
                       <input type="text" placeholder="Numero de Ranuras" name="numero-ranuras" required>
                       <input type="text" placeholder="Diametro interno estator" name="d-interno" required>
-                      <input type="password" placeholder="Diametro externo estator" name="d-Externo" required>
-                      <input type="password" placeholder="Apilamiento de chapa" name="apilamiento-chapa" required>
+                      <input type="text" placeholder="Diametro externo estator" name="d-Externo" required>
+                      <input type="text" placeholder="Apilamiento de chapa" name="apilamiento-chapa" required>
                       <input type="text" placeholder="Potencia en HP" name="potencia" required>
                       <input type="text" placeholder="Corriente en Amper" name="corriente" required>
-                      <input type="password" placeholder="Tension" name="tension" required>
-                      <input type="password" placeholder="Frecuencia en HZ" name="frecuencia" required>
-                      <input type="password" placeholder="Capacitor" name="capacitor" required>
+                      <input type="text" placeholder="Tension" name="tension" required>
+                      <input type="text" placeholder="Frecuencia en HZ" name="frecuencia" required>
+                      <input type="text" placeholder="Capacitor" name="capacitor" required>
                       <div>
                         <label for="indoor" class="txt"><input id="indoor" type="radio"
                             name="indoor-outdoor">Permamente</label>

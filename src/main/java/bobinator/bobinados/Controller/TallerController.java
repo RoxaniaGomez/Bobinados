@@ -1,10 +1,15 @@
 package bobinator.bobinados.Controller;
 
 
+import bobinator.bobinados.Entity.Cliente;
 import bobinator.bobinados.Entity.Empleado;
+import bobinator.bobinados.Entity.Monofasico;
+import bobinator.bobinados.Entity.Motor;
 import bobinator.bobinados.Entity.Proyecto;
 import bobinator.bobinados.Entity.Usuario;
 import bobinator.bobinados.Service.EmpleadoService;
+import bobinator.bobinados.Service.MonofasicoService;
+import bobinator.bobinados.Service.MotorService;
 import bobinator.bobinados.Service.ProyectoService;
 import java.util.List;
 import javax.servlet.http.HttpSession;
@@ -27,20 +32,45 @@ public class TallerController {
 private ProyectoService proyectoService;
 @Autowired
 private EmpleadoService empleadoService;
+@Autowired
+private MonofasicoService monofasicoService;
     @PreAuthorize("hasAnyRole('ROLE_TALLER')")
     @GetMapping("")
     public String postLogueo() {
         return "taller";
     }
-   
+    @GetMapping("/pedirDatosMonofasico")
+    public String registro(Model modelo) {
+        modelo.addAttribute("numero-polo", "");
+	modelo.addAttribute("numero-ranuras", "");
+        modelo.addAttribute("d-interno", "");
+        modelo.addAttribute("d-Externo", "");
+	modelo.addAttribute("apilamiento-chapa", "");
+	modelo.addAttribute("potencia", "");
+        modelo.addAttribute("corriente", "");
+	modelo.addAttribute("tension", "");
+	modelo.addAttribute("frecuencia", "");
+        modelo.addAttribute("username");
+	return "taller";
+    }
     @PostMapping("/crearProyecto")
-    public String CrearProyecto(HttpSession sesion) throws Exception{
+    public String CrearProyecto(HttpSession sesion,
+    @RequestParam("numero-polo") Double numeroPolo,
+    @RequestParam("numero-ranuras") String numeroRanuras,
+    @RequestParam("d-interno") String dInterno,
+    @RequestParam("apilamiento-chapa") String apilamientoDeChapa,
+    @RequestParam("potencia") String potencia,
+    @RequestParam("corriente") String corriente,
+    @RequestParam("tension") String tension,
+    @RequestParam("frecuencia") String frecuencia,
+    @RequestParam("username") String username,Model modelo) throws Exception{
     Usuario usuario = (Usuario) sesion.getAttribute("usuario");
-       
-      
-    Proyecto proyecto= proyectoService.CrearProyecto((Empleado) usuario,true);
-    
-    return "redirect:/taller";
+//    Motor mono = monofasicoService.
+////    
+////      
+//    Proyecto proyecto= proyectoService.CrearProyecto((Empleado) usuario,username,true);
+//    
+    return "taller/list";
     }
    @GetMapping("/list")
     public String list(Model modelo) {

@@ -22,10 +22,15 @@ import org.springframework.stereotype.Service;
 public class ProyectoService{
      @Autowired
     private ProyectoRepository proyectoRepo;
+  
      
-    public Proyecto CrearProyecto(Empleado empleado, Boolean alta) throws Exception {
+    public Proyecto CrearProyecto(Empleado empleado,String username, Boolean alta) throws Exception {
 	Proyecto proyecto =new Proyecto();
+        Cliente cliente= new Cliente();
+        ClienteService clienteService;
        proyecto.setEmpleado(empleado);
+//
+//       clienteService.registrarUsuario(" ", username,"","1234", "1234");
        proyecto.setAlta(true);
 	return proyectoRepo.save(proyecto);
     }

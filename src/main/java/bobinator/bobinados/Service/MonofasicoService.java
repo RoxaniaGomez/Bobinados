@@ -28,7 +28,10 @@ public class MonofasicoService {
     public List<Motor> findAll() {
 	return motorRepositorio.findAll();
     }
-    
+    public Motor CargarMotor(){
+        Monofasico motor= new Monofasico();
+        
+    return motor;}
      
 }
 
