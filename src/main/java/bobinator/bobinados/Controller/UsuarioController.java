@@ -42,7 +42,11 @@ public class UsuarioController {
 //	    @RequestParam("password2") String password2,
 //	    Model modelo) {
 //	try {
+<<<<<<< HEAD
 //	    Cliente cliente = clienteService.registrarUsuario(cliente);
+=======
+//	    Cliente cliente = clienteService.registrarUsuario(name,username,telefono, password, password2);
+>>>>>>> 617171c03a9458e13e46d49bb8424247b73b041f
 //	    modelo.addAttribute("success", "Usuario registrado con exito");
 //	    return "usuario-formulario";
 //	} catch (Exception ex) {
@@ -54,7 +58,10 @@ public class UsuarioController {
 //	    return "usuario-formulario";
 //	}
 //    }
+<<<<<<< HEAD
     
+=======
+>>>>>>> 617171c03a9458e13e46d49bb8424247b73b041f
      @PostMapping("/registroTaller")
     public String registroTaller(
             @RequestParam("name") String name,
