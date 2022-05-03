@@ -54,7 +54,9 @@ public Empleado registrarUsuario(String name,String username,String usuario, Str
   public Empleado buscarPorId(String id) {
 	return empleadoRepository.getById(id);
     }
-     
+      public Empleado buscarPorUsername(String username) {
+	return empleadoRepository.findByUsername(username);
+    } 
 }
 
 //    public MotorTrifasico guardarDatos(MotorTrifasico motor) throws Exception {

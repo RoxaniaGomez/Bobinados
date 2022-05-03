@@ -47,17 +47,17 @@
                         </tr>
                     </thead>
                     <tbody class="text-white">
-                        <tr th:href="@{/taller/list}" th:each="proyecto: ${lista}">
+                        <tr th:href="@{/taller}" th:each="proyecto: ${lista}">
                             <td th:text="${proyecto.id}"></td>
                             <td>
-                                <a th:href="@{/taller/delete(id = ${proyecto.id})}" th:if="${proyecto.alta}">
+                                <a th:href="@{/taller/baja(id = ${proyecto.id})}" th:if="${proyecto.alta}">
                                     <button type="button" class="btn btn-danger w-5">Dar Alta</button></a>
                                 <a th:href="@{/taller/alta(id = ${proyecto.id})}" th:if="${!proyecto.alta}">
                                     <button type="button" class="btn btn-success">Dar Baja</button></a>
                             </td>
 
                             <td>
-                                <a th:href="@{/taller/eliminar(id = ${proyecto.id})}">
+                                <a th:href="@{/taller/delete(id = ${proyecto.id})}">
                                     <button type="button" class="btn btn-danger">Eliminar</button>
                                 </a>
                             </td>
@@ -122,31 +122,33 @@
                 
                 <div class="contenedor">
                   <div class="contenedor__login-register fixed-top">
-                    <form th:action="@{/usuario/registroCliente}" class="formulario__login" method="POST">
+                    <form th:action="@{/taller/pedirDatosMonofasico}" th:object="${proyecto}"class="formulario__login" method="POST">
                       <h2>Cargar datos Monofasico</h2>
                       <p th:if="${error != null}" style="color:red;" th:text="${error}"></p>
                       <p th:if="${success != null}" style="color:green;" th:text="${success}"></p>
-                      <input type="text" placeholder="Numero de polos" name="numero-polos" required>
-                      <input type="text" placeholder="Numero de Ranuras" name="numero-ranuras" required>
-                      <input type="text" placeholder="Diametro interno estator" name="d-interno" required>
-                      <input type="text" placeholder="Diametro externo estator" name="d-Externo" required>
-                      <input type="text" placeholder="Apilamiento de chapa" name="apilamiento-chapa" required>
-                      <input type="text" placeholder="Potencia en HP" name="potencia" required>
-                      <input type="text" placeholder="Corriente en Amper" name="corriente" required>
-                      <input type="text" placeholder="Tension" name="tension" required>
-                      <input type="text" placeholder="Frecuencia en HZ" name="frecuencia" required>
+                      <input type="text" placeholder="Numero de polos" th:field="*{motor.numeroPolo}" required>
+                      <input type="text" placeholder="Numero de Ranuras" th:field="*{motor.numeroRanura}" required>
+                      <input type="text" placeholder="Diametro interno estator" th:field="*{motor.dInterno}" required>
+                      <input type="text" placeholder="Diametro externo estator" th:field="*{motor.dExterno}"  required>
+                      <input type="text" placeholder="Apilamiento de chapa" th:field="*{motor.apilamientoChapa}" required>
+                      <input type="text" placeholder="Potencia en HP" th:field="*{motor.potencia}"  required>
+                      <input type="text" placeholder="Corriente en Amper" th:field="*{motor.corriente}"  required>
+                      <input type="text" placeholder="Tension" th:field="*{motor.tension}"  required>
+                      <input type="text" placeholder="Frecuencia en HZ" th:field="*{motor.frecuencia}"  required>
                       <div class="caja-check">
-                        <label for="indoor" class="text"><input id="indoor" type="radio" name="indoor-outdoor">Conexion:
+                        <label for="indoor" class="text"><input id="indoor" type="radio" th:field="*{motor.conexion}" >Conexion:
                           Estrella</label><br>
                         <label for="outdoor" class="text"><input id="outdoor" type="radio"
-                            name="indoor-outdoor">Conexion:
+                            th:field="*{motor.conexion}" >Conexion:
                           Triangulo</label>
                       </div>
+                        <input type="text" placeholder="Correo" th:field="*{cliente.username}" required>
+
                       <button type="button" class="btn btn-primary">Guardar cambios</button>
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                     </form>
 
-                    <form th:action="@{/usuario/registroTaller}" method="POST" class="formulario__register">
+                    <!--<form th:action="@{/taller/}" method="POST" class="formulario__register">
                       <h2>Cargar datos Trifasico</h2>
                       <p th:if="${error != null}" style="color:red;" th:text="${error}"></p>
                       <input type="text" placeholder="Numero de polos" name="numero-polos" required>
@@ -172,7 +174,7 @@
                       </div>
                       <button type="button" class="btn btn-primary">Guardar cambios</button>
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    </form>
+                    </form>-->
                   </div>
                 </div>
               </div>

@@ -5,12 +5,14 @@
  */
 package bobinator.bobinados.Service;
 
+import bobinator.bobinados.Entity.Empleado;
 import bobinator.bobinados.Entity.Monofasico;
 import bobinator.bobinados.Entity.Motor;
+import bobinator.bobinados.Enum.Rol;
 import bobinator.bobinados.Repository.MonofasicoRepository;
-import bobinator.bobinados.Repository.MotorRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -28,10 +30,13 @@ public class MonofasicoService {
     public List<Motor> findAll() {
 	return motorRepositorio.findAll();
     }
-    public Motor CargarMotor(){
-        Monofasico motor= new Monofasico();
-        
-    return motor;}
+    public void CargarMotor(Model modelo){
+   
+	
+    }  
+
      
+        
+  
 }
 

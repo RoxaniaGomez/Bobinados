@@ -24,15 +24,9 @@ public class ProyectoService{
     private ProyectoRepository proyectoRepo;
   
      
-    public Proyecto CrearProyecto(Empleado empleado,String username, Boolean alta) throws Exception {
-	Proyecto proyecto =new Proyecto();
-        Cliente cliente= new Cliente();
-        ClienteService clienteService;
-       proyecto.setEmpleado(empleado);
-//
-//       clienteService.registrarUsuario(" ", username,"","1234", "1234");
-       proyecto.setAlta(true);
-	return proyectoRepo.save(proyecto);
+    public Proyecto CrearProyecto(Proyecto proyecto) throws Exception {
+      proyecto.setAlta(true);
+    return proyectoRepo.save(proyecto);
     }
 
     public void darBaja(String id) throws Error {
