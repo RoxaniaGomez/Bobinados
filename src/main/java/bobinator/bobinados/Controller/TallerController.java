@@ -7,6 +7,7 @@ import bobinator.bobinados.Entity.Monofasico;
 import bobinator.bobinados.Entity.Motor;
 import bobinator.bobinados.Entity.Proyecto;
 import bobinator.bobinados.Entity.Usuario;
+import bobinator.bobinados.Service.ClienteService;
 import bobinator.bobinados.Service.EmpleadoService;
 import bobinator.bobinados.Service.MonofasicoService;
 import bobinator.bobinados.Service.MotorService;
@@ -32,34 +33,40 @@ public class TallerController {
 @Autowired
 private ProyectoService proyectoService;
 @Autowired
-private EmpleadoService empleadoService;
+private ClienteService clienteService;
 @Autowired
 private MonofasicoService monofasicoService;
     @PreAuthorize("hasAnyRole('ROLE_TALLER')")
     @GetMapping("")
     public String postLogueo(Model modelo) {
         List<Proyecto> proyecto = proyectoService.listarProyectos();
-        System.out.println("Proyecto: "+proyecto);
 	modelo.addAttribute("lista", proyecto);
+       modelo.addAttribute("cliente", new Cliente());      
+       modelo.addAttribute("mono", new Monofasico());  
+           modelo.addAttribute("mono", new Monofasico());    
         return "taller";
     }
-    @GetMapping("/pedirDatosMonofasico")
-    public String registro(Model modelo,HttpSession sesion) {
-        Proyecto proyecto = new Proyecto();
-        proyecto.setMotor(new Monofasico());
-        proyecto.setCliente(new Cliente());
-       Usuario usuario = (Usuario) sesion.getAttribute("usuario");
-       proyecto.setEmpleado((Empleado) usuario);
-        modelo.addAttribute("proyecto", proyecto);
+    @GetMapping("/form")
+    public String registro(Model modelo) {
+       
+      modelo.addAttribute("cliente", new Cliente());
+    
+
+      
+   
+               
 	return "taller";
     }
-    @PostMapping("/crearProyecto")
-    public String CrearProyecto(@ModelAttribute("proyecto")Proyecto proyecto,Model modelo) throws Exception{
-
-//    
-//    
-    return "taller";
+     
+    @PostMapping("/save")
+    public String CrearCliente(@ModelAttribute("cliente")Cliente cliente) throws Exception{
+        
+        clienteService.registrarUsuario(cliente);
+       
+//         
+	    return "redirect:/taller";
     }
+
   
     @GetMapping("/alta")
     public String alta(@RequestParam("id") String id) {
