@@ -93,30 +93,32 @@
                 
                 <div class="contenedor">
                   <div class="contenedor__login-register fixed-top">
-                    <form th:action="@{/usuario/registroCliente}" class="formulario__login" method="POST">
-                      <h2>Cargar datos Monofasico</h2>
-                      <p th:if="${error != null}" style="color:red;" th:text="${error}"></p>
-                      <p th:if="${success != null}" style="color:green;" th:text="${success}"></p>
-                      <input type="text" placeholder="Numero de polos" name="numero-polos" required>
-                      <input type="text" placeholder="Numero de Ranuras" name="numero-ranuras" required>
-                      <input type="text" placeholder="Diametro interno estator" name="d-interno" required>
-                      <input type="password" placeholder="Diametro externo estator" name="d-Externo" required>
-                      <input type="password" placeholder="Apilamiento de chapa" name="apilamiento-chapa" required>
-                      <input type="text" placeholder="Potencia en HP" name="potencia" required>
-                      <input type="text" placeholder="Corriente en Amper" name="corriente" required>
-                      <input type="password" placeholder="Tension" name="tension" required>
-                      <input type="password" placeholder="Frecuencia en HZ" name="frecuencia" required>
-                      <div class="caja-check">
-                        <label for="indoor" class="text"><input id="indoor" type="radio" name="indoor-outdoor">Conexion:
-                          Estrella</label><br>
-                        <label for="outdoor" class="text"><input id="outdoor" type="radio"
-                            name="indoor-outdoor">Conexion:
-                          Triangulo</label>
-                      </div>
-                      <button type="button" class="btn btn-primary">Guardar cambios</button>
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    </form>
+                    <form th:action="@{/taller/crearProyecto}" th:object="${proyectoMonofasico}"
+                    class="formulario__login" method="POST">
+                    <h2>Cargar datos Monofasico</h2>
+                    <p th:if="${error != null}" style="color:red;" th:text="${error}"></p>
+                    <p th:if="${success != null}" style="color:green;" th:text="${success}"></p>
+                    <input type="text" placeholder="correo" th:field="*{cliente.username}" required>
+                    <input type="number" placeholder="numeroDePolos" th:field="*{motorMonofasico.numeroDePolos}"
+                        required>
+                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                    <button type="button" class="btn btn-secondary"
+                        data-bs-dismiss="modal">Cerrar</button>
+                </form>
 
+                <form method="POST" th:action="@{/taller/crearProyecto}" th:object="${proyectoTrifasico}"
+                    class="formulario__register">
+                    <h2>Cargar datos Trifasico</h2>
+                    <p th:if="${error != null}" style="color:red;" th:text="${error}"></p>
+                    <input type="text" placeholder="correo" th:field="*{cliente.username}" required>
+                    <input type="number" placeholder="numeroDePolos" th:field="*{motorTrifasico.numeroDePolos}"
+                    required>
+
+
+                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                </form>
+
+                    <!--
                     <form th:action="@{/usuario/registroTaller}" method="POST" class="formulario__register">
                       <h2>Cargar datos Trifasico</h2>
                       <p th:if="${error != null}" style="color:red;" th:text="${error}"></p>
@@ -144,6 +146,7 @@
                       <button type="button" class="btn btn-primary">Guardar cambios</button>
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                     </form>
+                    -->
                   </div>
                 </div>
               </div>
