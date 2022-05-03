@@ -50,11 +50,7 @@ private MonofasicoService monofasicoService;
     public String registro(Model modelo) {
        
       modelo.addAttribute("cliente", new Cliente());
-    
-
       
-   
-               
 	return "taller";
     }
      
