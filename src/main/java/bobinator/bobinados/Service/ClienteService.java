@@ -17,11 +17,16 @@ import org.springframework.stereotype.Service;
  * @author groxa
  */
 @Service
-public class ClienteService{
+public class ClienteService {
+
     @Autowired
     private ClienteRepository clienteRepositorio;
 
-    public Cliente registrarUsuario(Cliente cliente) throws Exception {
+    public Cliente buscarPorUsername(String username) {
+        return clienteRepositorio.buscarUsuarioPorUsername(username);
+    }
+
+////    public Cliente registrarUsuario(Cliente cliente) throws Exception {
 //	Cliente cliente = clienteRepositorio.findByUsername(username);
 //
 //	if (username.isEmpty()) {
@@ -40,20 +45,32 @@ public class ClienteService{
 //	    throw new Exception("Las contraseñas ingresadas deben ser iguales");
 //
 //	}
-	
-BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-cliente.setPassword(encoder.encode("1234"));
+//BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+//cliente.setPassword(encoder.encode("1234"));
+//
+//cliente.setRol(Rol.USUARIO);
+////    cliente.setRol(Rol.USUARIO);
+//        cliente=clienteRepositorio.save(cliente);
+////        if(isCliente){
+////        clienteServicio.crearCliente();
+////        }else{
+////        
+////        }
+//	return cliente;
+//    }  
+    public Cliente registrarClientePorDefecto(Cliente cliente) {
 
-cliente.setRol(Rol.USUARIO);
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        cliente.setPassword(encoder.encode("1234"));
+
+        cliente.setRol(Rol.USUARIO);
 //    cliente.setRol(Rol.USUARIO);
-        cliente=clienteRepositorio.save(cliente);
+        cliente = clienteRepositorio.save(cliente);
 //        if(isCliente){
 //        clienteServicio.crearCliente();
 //        }else{
 //        
 //        }
-	return cliente;
-    }  
- 
-  
+        return cliente;
+    }
 }

@@ -124,31 +124,34 @@
 
                                 <div class="contenedor">
                                     <div class="contenedor__login-register fixed-top">
-                                        <form th:action="@{/taller/save}" th:object="${cliente}"
+                                        <form th:action="@{/taller/crearProyecto}" th:object="${proyectoMonofasico}"
                                             class="formulario__login" method="POST">
                                             <h2>Cargar datos Monofasico</h2>
                                             <p th:if="${error != null}" style="color:red;" th:text="${error}"></p>
                                             <p th:if="${success != null}" style="color:green;" th:text="${success}"></p>
-                                            <input type="text" placeholder="correo" th:field="*{username}" required>
-                                            <!--
-                                                 <input type="text" placeholder="numeroDePolos" th:field="*{numeroDePolos}" required>
-                                                -->
+                                            <input type="text" placeholder="correo" th:field="*{cliente.username}" required>
+                                            <input type="number" placeholder="numeroDePolos" th:field="*{motorMonofasico.numeroDePolos}"
+                                                required>
                                             <button type="submit" class="btn btn-primary">Guardar cambios</button>
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Cerrar</button>
                                         </form>
 
-                                        <form method="POST" th:action="@{/taller/save}" th:object="${cliente}"
+                                        <form method="POST" th:action="@{/taller/crearProyecto}" th:object="${proyectoTrifasico}"
                                             class="formulario__register">
                                             <h2>Cargar datos Trifasico</h2>
                                             <p th:if="${error != null}" style="color:red;" th:text="${error}"></p>
-                                            <input type="text" placeholder="correo" th:field="*{username}" required>
+                                            <input type="text" placeholder="correo" th:field="*{cliente.username}" required>
+                                            <input type="number" placeholder="numeroDePolos" th:field="*{motorTrifasico.numeroDePolos}"
+                                            required>
+
+
                                             <button type="submit" class="btn btn-primary">Guardar cambios</button>
                                         </form>
                                         <!--
                                                   <form  method="POST"  th:action="@{/taller/saveMotor}" th:object="${mono}" class="formulario__register">
                                                 <h2>Cargar datos Trifasico</h2>
-                                                  <input type="text" placeholder="Numero de polos" th:field="*{numeroDePolos}" required>
+                                                  <input type="text" placeholder="Numero de polos" th:field="*{proyectoTrifasico.numeroDePolos}" required>
                                                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
                                              
                                                 <input type="text" placeholder="Numero de Ranuras" name="numero-ranuras" required>

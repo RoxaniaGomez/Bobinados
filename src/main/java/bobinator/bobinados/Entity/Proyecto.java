@@ -21,7 +21,9 @@ public class Proyecto {
     @ManyToOne
     private Empleado empleado;
     @OneToOne
-    private Motor motor;
+    private Trifasico motorTrifasico;
+    @OneToOne
+    private Monofasico motorMonofasico;
     
     private boolean alta;
     

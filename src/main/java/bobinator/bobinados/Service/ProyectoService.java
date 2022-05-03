@@ -6,7 +6,6 @@
 package bobinator.bobinados.Service;
 
 import bobinator.bobinados.Entity.Cliente;
-import bobinator.bobinados.Entity.Empleado;
 import bobinator.bobinados.Entity.Proyecto;
 import bobinator.bobinados.Repository.ProyectoRepository;
 import java.util.List;
@@ -22,9 +21,19 @@ import org.springframework.stereotype.Service;
 public class ProyectoService{
      @Autowired
     private ProyectoRepository proyectoRepo;
+     
+     @Autowired
+     private ClienteService clienteService;
   
      
-    public Proyecto CrearProyecto(Proyecto proyecto) throws Exception {
+    public Proyecto crearProyecto(Proyecto proyecto) throws Exception {
+        if (proyecto.getCliente().getUsername() != null) {
+            Cliente cliente = clienteService.buscarPorUsername(proyecto.getCliente().getUsername());
+            if (cliente == null) {
+                cliente  = clienteService.registrarClientePorDefecto(proyecto.getCliente());
+            }
+            proyecto.setCliente(cliente);
+        }
       proyecto.setAlta(true);
     return proyectoRepo.save(proyecto);
     }
@@ -44,7 +53,6 @@ public class ProyectoService{
     public List<Proyecto> listarProyectos() {
 	return proyectoRepo.findAll();
     }
-
     
     public Proyecto buscarPorId(String id) {
        return proyectoRepo.getById(id);
