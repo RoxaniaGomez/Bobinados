@@ -17,44 +17,58 @@ import org.springframework.stereotype.Service;
  * @author groxa
  */
 @Service
-public class ClienteService{
- @Autowired
+public class ClienteService {
+
+    @Autowired
     private ClienteRepository clienteRepositorio;
 
-    public Cliente registrarUsuario(String name,String username,String telefono, String password, String password2) throws Exception {
-	Cliente cliente = clienteRepositorio.findByUsername(username);
+    public Cliente buscarPorUsername(String username) {
+        return clienteRepositorio.buscarUsuarioPorUsername(username);
+    }
 
-	if (username.isEmpty()) {
-	    throw new Exception("El username no puede estar vacio");
-	}
-	if (cliente != null) {
-	    throw new Exception("El usuario ya existe, pruebe otro nombre");
-	}
-	if (password.isEmpty()) {
-	    throw new Exception("La contraseña no puede estar vacia");
-	}
-	if (password2.isEmpty()) {
-	    throw new Exception("La contraseña no puede estar vacia");
-	}
-	if (!password.equals(password2)) {
-	    throw new Exception("Las contraseñas ingresadas deben ser iguales");
-
-	}
-	cliente = new Cliente();
-	cliente.setName(name);
-        cliente.setUsername(username);
-        cliente.setTelefono(telefono);
-	BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-	cliente.setPassword(encoder.encode(password));
-    cliente.setRol(Rol.USUARIO);
-        cliente=clienteRepositorio.save(cliente);
+////    public Cliente registrarUsuario(Cliente cliente) throws Exception {
+//	Cliente cliente = clienteRepositorio.findByUsername(username);
+//
+//	if (username.isEmpty()) {
+//	    throw new Exception("El username no puede estar vacio");
+//	}
+//	if (cliente != null) {
+//	    throw new Exception("El usuario ya existe, pruebe otro nombre");
+//	}
+//	if (password.isEmpty()) {
+//	    throw new Exception("La contraseña no puede estar vacia");
+//	}
+//	if (password2.isEmpty()) {
+//	    throw new Exception("La contraseña no puede estar vacia");
+//	}
+//	if (!password.equals(password2)) {
+//	    throw new Exception("Las contraseñas ingresadas deben ser iguales");
+//
+//	}
+//BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+//cliente.setPassword(encoder.encode("1234"));
+//
+//cliente.setRol(Rol.USUARIO);
+////    cliente.setRol(Rol.USUARIO);
+//        cliente=clienteRepositorio.save(cliente);
+////        if(isCliente){
+////        clienteServicio.crearCliente();
+////        }else{
+////        
+////        }
+//	return cliente;
+//    }  
+    public Cliente registrarClientePorDefecto(Cliente cliente) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        cliente.setPassword(encoder.encode("1234"));
+        cliente.setRol(Rol.USUARIO);
+//    cliente.setRol(Rol.USUARIO);
+        cliente = clienteRepositorio.save(cliente);
 //        if(isCliente){
 //        clienteServicio.crearCliente();
 //        }else{
 //        
 //        }
-	return cliente;
-    }  
- 
-  
+        return cliente;
+    }
 }

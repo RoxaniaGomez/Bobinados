@@ -3,7 +3,9 @@ package bobinator.bobinados.Service;
 import bobinator.bobinados.Entity.Empleado;
 import bobinator.bobinados.Enum.Rol;
 import bobinator.bobinados.Repository.EmpleadoRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -52,7 +54,9 @@ public Empleado registrarUsuario(String name,String username,String usuario, Str
   public Empleado buscarPorId(String id) {
 	return empleadoRepository.getById(id);
     }
-     
+      public Empleado buscarPorUsername(String username) {
+	return empleadoRepository.findByUsername(username);
+    } 
 }
 
 //    public MotorTrifasico guardarDatos(MotorTrifasico motor) throws Exception {
