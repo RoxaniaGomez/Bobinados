@@ -22,11 +22,11 @@ public class ClienteService{
     private ClienteRepository clienteRepositorio;
 
     public Cliente registrarUsuario(Cliente cliente) throws Exception {
-//	Cliente cliente = clienteRepositorio.findByUsername(username);
-//
-//	if (username.isEmpty()) {
+//	 cliente = clienteRepositorio.findByUsername(cliente.getUsername());
+
+//	if (cliente.getUsername().isEmpty()) {
 //	    throw new Exception("El username no puede estar vacio");
-//	}
+////	}
 //	if (cliente != null) {
 //	    throw new Exception("El usuario ya existe, pruebe otro nombre");
 //	}
