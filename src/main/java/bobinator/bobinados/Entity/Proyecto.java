@@ -1,5 +1,6 @@
 package bobinator.bobinados.Entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,11 +21,12 @@ public class Proyecto {
     private Cliente cliente;
     @ManyToOne
     private Empleado empleado;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Trifasico motorTrifasico;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Monofasico motorMonofasico;
-    
     private boolean alta;
+
+    
     
 }

@@ -14,7 +14,6 @@ import lombok.Data;
  * @author groxa
  */
 
-@DiscriminatorValue(value="monofasico")
 @Entity
 @Data
 public class Monofasico extends Motor {

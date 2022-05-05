@@ -27,7 +27,7 @@ public class MonofasicoService {
     private MonofasicoRepository motorRepositorio;
     
    
-    public List<Motor> findAll() {
+    public List<Monofasico> findAll() {
 	return motorRepositorio.findAll();
     }
     public Monofasico CargarMotor(Monofasico mono){
