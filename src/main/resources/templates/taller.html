@@ -129,38 +129,41 @@
                   <div class="contenedor__login-register fixed-top">
                     <form th:action="@{/taller/crearProyecto}" th:object="${proyectoMonofasico}"
                       class="formulario__login" method="POST">
-                      <h3>correo del cliente</h3>
                       <p th:if="${error != null}" style="color:red;" th:text="${error}"></p>
                       <p th:if="${success != null}" style="color:green;" th:text="${success}"></p>
-                      <input type="text" placeholder="correo del cliente" th:field="*{cliente.username}" required>
-                      <h3>Cargar datos Monofasico</h3>
-                      <input type="text" placeholder="fabricante" th:field="*{motorMonofasico.fabricante}">
-                      <input type="text" placeholder="nacionalidad" th:field="*{motorMonofasico.Nacionalidad}">
-                      <input type="text" placeholder="numero de motor" th:field="*{motorMonofasico.numDeMotor}">
-                      <input type="text" placeholder="modelo" th:field="*{motorMonofasico.modelo}">
-                      <input type="text" placeholder="regimen de Servicio"
+
+                      <h2 class="text-center p-2">Correo del cliente</h2>
+                      <input type="text" placeholder="Ingrese el correo " th:field="*{cliente.username}" required>
+                      <hr>
+
+                      <h3 class="text-center p-2">Cargar datos Motor Monofasico</h3>
+                      <input type="text" placeholder="Fabricante" th:field="*{motorMonofasico.fabricante}">
+                      <input type="text" placeholder="Nacionalidad" th:field="*{motorMonofasico.Nacionalidad}">
+                      <input type="text" placeholder="Numero de motor" th:field="*{motorMonofasico.numDeMotor}">
+                      <input type="text" placeholder="Modelo" th:field="*{motorMonofasico.modelo}">
+                      <input type="text" placeholder="Regimen de Servicio"
                         th:field="*{motorMonofasico.regimenDeServicio}">
-                      <input type="text" placeholder="tipo de Aislacion" th:field="*{motorMonofasico.tipoDeAislacion}">
-                      <input type="number" placeholder="numero De Polos* " th:field="*{motorMonofasico.numeroDePolos}"
+                      <input type="text" placeholder="Tipo de Aislacion" th:field="*{motorMonofasico.tipoDeAislacion}">
+                      <input type="number" placeholder="Numero De Polos* " th:field="*{motorMonofasico.numeroDePolos}"
                         required>
-                      <input type="number" placeholder="numero de Ranuras* "
+                      <input type="number" placeholder="Numero de Ranuras* "
                         th:field="*{motorMonofasico.numeroDeRanuras}" required>
-                      <input type="number" placeholder="diametro interno del estator*"
+                      <input type="number" placeholder="Diametro interno del estator*"
                         th:field="*{motorMonofasico.dInternoDEstator}" required>
-                      <input type="number" placeholder="diametro externo del estator*"
+                      <input type="number" placeholder="Diametro externo del estator*"
                         th:field="*{motorMonofasico.dExternoDEstator}" required>
-                      <input type="number" placeholder="altura de cabeza*" th:field="*{motorMonofasico.alturaDeCabeza}"
+                      <input type="number" placeholder="Altura de cabeza*" th:field="*{motorMonofasico.alturaDeCabeza}"
                         required>
-                      <input type="number" placeholder="apilamiento de chapa*"
+                      <input type="number" placeholder="Apilamiento de chapa*"
                         th:field="*{motorMonofasico.apilamientoDChapa}" required>
-                      <input type="number" placeholder="potencia en HP*" th:field="*{motorMonofasico.potenciaEnHP}"
+                      <input type="number" placeholder="Potencia en HP*" th:field="*{motorMonofasico.potenciaEnHP}"
                         required>
-                      <input type="number" placeholder="corriente en amp*" th:field="*{motorMonofasico.corrienteEnAmp}"
+                      <input type="number" placeholder="Corriente en amp*" th:field="*{motorMonofasico.corrienteEnAmp}"
                         required>
-                      <input type="number" placeholder="tension*" th:field="*{motorMonofasico.tension}" required>
-                      <input type="number" placeholder="freciencia en hz" th:field="*{motorMonofasico.frecuenciaEnHZ}"
+                      <input type="number" placeholder="Tension*" th:field="*{motorMonofasico.tension}" required>
+                      <input type="number" placeholder="Freciencia en hz" th:field="*{motorMonofasico.frecuenciaEnHZ}"
                         required>
-                      <input type="number" placeholder="capacitor" th:field="*{motorMonofasico.capacitor}" required>
+                      <input type="number" placeholder="Capacitor" th:field="*{motorMonofasico.capacitor}" required>
                       <div>
                         <label for="indoor" class="txt"><input id="indoor" type="radio"
                             name="indoor-outdoor">Permamente</label>
@@ -182,36 +185,30 @@
 
                     <form method="POST" th:action="@{/taller/crearProyecto}" th:object="${proyectoTrifasico}"
                       class="formulario__register">
-                      <h2>Correo del empleado</h2>
                       <p th:if="${error != null}" style="color:red;" th:text="${error}"></p>
-                      <input type="text" placeholder="correo" th:field="*{cliente.username}" required>
+                      <p th:if="${success != null}" style="color:green;" th:text="${success}"></p>
+                      <h2 class="text-center p-2">Correo del cliente</h2>
+                      <input type="text" placeholder="Ingrese el correo" th:field="*{cliente.username}" required>
+                      <hr>
 
-                      <h3>Cargar datos Trifasico</h3>
-                      <input type="text" placeholder="fabricante" th:field="*{motorTrifasico.fabricante}">
-                      <input type="text" placeholder="nacionalidad" th:field="*{motorTrifasico.Nacionalidad}">
-                      <input type="text" placeholder="numero de motor" th:field="*{motorTrifasico.numDeMotor}">
-                      <input type="text" placeholder="modelo" th:field="*{motorTrifasico.modelo}">
-                      <input type="text" placeholder="regimen de Servicio"
-                        th:field="*{motorTrifasico.regimenDeServicio}">
-                      <input type="text" placeholder="tipo de Aislacion" th:field="*{motorTrifasico.tipoDeAislacion}">
-                      <input type="number" placeholder="numero De Polos* " th:field="*{motorTrifasico.numeroDePolos}"
-                        required>
-                      <input type="number" placeholder="numero de Ranuras* "
-                        th:field="*{motorTrifasico.numeroDeRanuras}" required>
-                      <input type="number" placeholder="diametro interno del estator*"
-                        th:field="*{motorTrifasico.dInternoDEstator}" required>
-                      <input type="number" placeholder="diametro externo del estator*"
-                        th:field="*{motorTrifasico.dExternoDEstator}" required>
-                      <input type="number" placeholder="altura de cabeza*" th:field="*{motorTrifasico.alturaDeCabeza}"
-                        required>
-                      <input type="number" placeholder="apilamiento de chapa*"
-                        th:field="*{motorTrifasico.apilamientoDChapa}" required>
-                      <input type="number" placeholder="potencia en HP*" th:field="*{motorTrifasico.potenciaEnHP}"
-                        required>
-                      <input type="number" placeholder="corriente en amp*" th:field="*{motorTrifasico.corrienteEnAmp}"
-                        required>
-                      <input type="number" placeholder="tension*" th:field="*{motorTrifasico.tension}" required>
-                      <input type="number" placeholder="freciencia en hz" th:field="*{motorTrifasico.frecuenciaEnHZ}"
+
+                      <h3 class="text-center p-3">Cargar datos Motor Trifasico</h3>
+                      <input type="text" placeholder="Fabricante" th:field="*{motorTrifasico.fabricante}">
+                      <input type="text" placeholder="Nacionalidad" th:field="*{motorTrifasico.Nacionalidad}">
+                      <input type="text" placeholder="Numero de motor" th:field="*{motorTrifasico.numDeMotor}">
+                      <input type="text" placeholder="Modelo" th:field="*{motorTrifasico.modelo}">
+                      <input type="text" placeholder="Regimen de Servicio"   th:field="*{motorTrifasico.regimenDeServicio}">
+                      <input type="text" placeholder="Tipo de Aislacion" th:field="*{motorTrifasico.tipoDeAislacion}">
+                      <input type="number" placeholder="Numero De Polos* " th:field="*{motorTrifasico.numeroDePolos}" required>
+                      <input type="number" placeholder="Numero de Ranuras*" th:field="*{motorTrifasico.numeroDeRanuras}" required>
+                      <input type="number" placeholder="Diametro interno del estator*" th:field="*{motorTrifasico.dInternoDEstator}" required>
+                      <input type="number" placeholder="Diametro externo del estator*" th:field="*{motorTrifasico.dExternoDEstator}" required>
+                      <input type="number" placeholder="Altura de cabeza*" th:field="*{motorTrifasico.alturaDeCabeza}" required>
+                      <input type="number" placeholder="Apilamiento de chapa*" th:field="*{motorTrifasico.apilamientoDChapa}" required>
+                      <input type="number" placeholder="Potencia en HP*" th:field="*{motorTrifasico.potenciaEnHP}" required>
+                      <input type="number" placeholder="Corriente en amp*" th:field="*{motorTrifasico.corrienteEnAmp}" required>
+                      <input type="number" placeholder="Tension*" th:field="*{motorTrifasico.tension}" required>
+                      <input type="number" placeholder="Freciencia en hz" th:field="*{motorTrifasico.frecuenciaEnHZ}"
                         required>
                       <div>
                         <label for="indoor" class="txt"><input id="indoor" type="radio" name="indoor-outdoor">conexion
