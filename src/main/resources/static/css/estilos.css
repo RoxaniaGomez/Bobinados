@@ -97,8 +97,7 @@ main{
     padding: 80px 20px;
     background: rgb(106, 100, 100);
     position: absolute;
-    height: 500px;
-    overflow-y: auto;
+    height: 600px;
 }
 
 .contenedor__login-register form h2{
