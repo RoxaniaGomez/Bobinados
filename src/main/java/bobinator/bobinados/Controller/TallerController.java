@@ -4,11 +4,14 @@ import bobinator.bobinados.Entity.Cliente;
 import bobinator.bobinados.Entity.Monofasico;
 import bobinator.bobinados.Entity.Proyecto;
 import bobinator.bobinados.Entity.Trifasico;
+import bobinator.bobinados.Entity.Usuario;
 import bobinator.bobinados.Service.ClienteService;
+import bobinator.bobinados.Service.EmpleadoService;
 import bobinator.bobinados.Service.MonofasicoService;
 import bobinator.bobinados.Service.ProyectoService;
 import bobinator.bobinados.Service.TrifasicoServicio;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -31,6 +34,9 @@ public class TallerController {
     private MonofasicoService monofasicoService;
     @Autowired
     private TrifasicoServicio trifasicoService;
+    @Autowired
+    private EmpleadoService empleadoService;
+
     @PreAuthorize("hasAnyRole('ROLE_TALLER')")
     @GetMapping("")
     public String postLogueo(Model modelo) {
@@ -40,7 +46,7 @@ public class TallerController {
 
         Proyecto proyectoTrifasico = new Proyecto();
         proyectoTrifasico.setCliente(new Cliente());
-        
+
         proyectoTrifasico.setMotorTrifasico(new Trifasico());
         modelo.addAttribute("proyectoTrifasico", proyectoTrifasico);
 
@@ -48,7 +54,7 @@ public class TallerController {
         proyectoMonofasico.setCliente(new Cliente());
         proyectoMonofasico.setMotorMonofasico(new Monofasico());
         modelo.addAttribute("proyectoMonofasico", proyectoMonofasico);
-        
+
         return "taller";
     }
 
@@ -60,15 +66,14 @@ public class TallerController {
     }
 
     @PostMapping("/crearProyecto")
-    public String CrearProyecto(@ModelAttribute("proyecto")Proyecto proyecto) throws Exception {
-        
-        
-        
+    public String CrearProyecto(@ModelAttribute("proyecto") Proyecto proyecto, HttpSession httpSession) throws Exception {
+        Usuario usuario = (Usuario) httpSession.getAttribute("usuario");
+        proyecto.setEmpleado(empleadoService.buscarPorId(usuario.getId()));
         System.out.println("Entro :");
-        proyecto=proyectoService.crearProyecto(proyecto);
-
+        proyecto = proyectoService.crearProyecto(proyecto);
         return "redirect:/taller";
     }
+
     @GetMapping("/alta")
     public String alta(@RequestParam("id") String id) {
         try {
@@ -101,7 +106,7 @@ public class TallerController {
             return "redirect:/taller";
         }
     }
-    
+
     @GetMapping("/calcular")
     public String calcular(@RequestParam("id") String id) {
         try {
