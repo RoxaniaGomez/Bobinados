@@ -15,7 +15,7 @@ import org.springframework.data.repository.query.Param;
  * @author groxa
  */
 public interface MotorRepository extends JpaRepository<Motor,String> {
-        @Query("Select u from Usuario u where u.username = :pepe")
+        @Query("Select u from Motor u where u.id = :pepe")
     public Motor buscarMotorPorId(@Param("pepe") Integer id);
     
     // otra forma sin jpql

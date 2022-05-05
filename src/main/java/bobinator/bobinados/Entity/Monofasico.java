@@ -1,23 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package bobinator.bobinados.Entity;
 
 import bobinator.bobinados.Enum.TipoDeMotor;
-import javax.persistence.DiscriminatorValue;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
-/**
- *
- * @author groxa
- */
-@DiscriminatorValue(value = "monofasico")
 @Entity
 @Data
 

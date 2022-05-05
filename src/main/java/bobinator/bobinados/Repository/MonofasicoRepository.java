@@ -15,8 +15,8 @@ import org.springframework.data.repository.query.Param;
  *
  * @author groxa
  */
-public interface MonofasicoRepository  extends JpaRepository<Motor,String>{
-    @Query("Select u from Usuario u where u.username = :pepe")
+public interface MonofasicoRepository  extends JpaRepository<Monofasico,String>{
+    @Query("Select u from Monofasico u where u.id = :pepe")
     public Monofasico buscarMotorPorId(@Param("pepe") Integer id);
     
     // otra forma sin jpql

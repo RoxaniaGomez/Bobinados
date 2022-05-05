@@ -1,13 +1,17 @@
 package bobinator.bobinados.Entity;
+
+
 import bobinator.bobinados.Enum.TipoDeMotor;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import lombok.Data;
+
 import org.hibernate.annotations.GenericGenerator;
 
 @DiscriminatorValue(value="trifasico")
+
 @Entity
 @Data
 public class Trifasico {

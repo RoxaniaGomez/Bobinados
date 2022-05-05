@@ -42,7 +42,7 @@ public class UsuarioController {
 //	    @RequestParam("password2") String password2,
 //	    Model modelo) {
 //	try {
-//	    Cliente cliente = clienteService.registrarUsuario(cliente);
+//	    Cliente cliente = clienteService.registrarUsuario(name,username,telefono, password, password2);
 //	    modelo.addAttribute("success", "Usuario registrado con exito");
 //	    return "usuario-formulario";
 //	} catch (Exception ex) {
@@ -54,7 +54,6 @@ public class UsuarioController {
 //	    return "usuario-formulario";
 //	}
 //    }
-
      @PostMapping("/registroTaller")
     public String registroTaller(
             @RequestParam("name") String name,

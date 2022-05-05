@@ -1,13 +1,17 @@
 package bobinator.bobinados.Controller;
 
 import bobinator.bobinados.Entity.Cliente;
+import bobinator.bobinados.Entity.Empleado;
 import bobinator.bobinados.Entity.Monofasico;
 import bobinator.bobinados.Entity.Proyecto;
 import bobinator.bobinados.Entity.Trifasico;
+import bobinator.bobinados.Entity.Usuario;
 import bobinator.bobinados.Service.ClienteService;
 import bobinator.bobinados.Service.MonofasicoService;
 import bobinator.bobinados.Service.ProyectoService;
+import bobinator.bobinados.Service.TrifasicoServicio;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -28,15 +32,18 @@ public class TallerController {
     private ClienteService clienteService;
     @Autowired
     private MonofasicoService monofasicoService;
-
+    @Autowired
+    private TrifasicoServicio trifasicoService;
     @PreAuthorize("hasAnyRole('ROLE_TALLER')")
     @GetMapping("")
     public String postLogueo(Model modelo) {
+
         List<Proyecto> proyectos = proyectoService.listarProyectos();
         modelo.addAttribute("lista", proyectos);
 
         Proyecto proyectoTrifasico = new Proyecto();
         proyectoTrifasico.setCliente(new Cliente());
+        
         proyectoTrifasico.setMotorTrifasico(new Trifasico());
         modelo.addAttribute("proyectoTrifasico", proyectoTrifasico);
 
@@ -44,6 +51,7 @@ public class TallerController {
         proyectoMonofasico.setCliente(new Cliente());
         proyectoMonofasico.setMotorMonofasico(new Monofasico());
         modelo.addAttribute("proyectoMonofasico", proyectoMonofasico);
+        
         return "taller";
     }
 
@@ -51,26 +59,19 @@ public class TallerController {
     public String registro(Model modelo) {
 
         modelo.addAttribute("cliente", new Cliente());
-
         return "taller";
     }
 
     @PostMapping("/crearProyecto")
-    public String CrearProyecto(@ModelAttribute("proyecto") Proyecto proyecto) throws Exception {
+    public String CrearProyecto(@ModelAttribute("proyecto")Proyecto proyecto) throws Exception {
+        
+        
+        
         System.out.println("Entro :");
-        proyectoService.crearProyecto(proyecto);
+        proyecto=proyectoService.crearProyecto(proyecto);
 
         return "redirect:/taller";
     }
-
-//  @PostMapping("/save")
-//    public String CrearProyecto(@ModelAttribute("cliente")Cliente cliente) throws Exception{
-//        clienteService.registrarUsuario(cliente);
-//  
-//      
-//	    return "redirect:/taller";
-//    }
-//  
     @GetMapping("/alta")
     public String alta(@RequestParam("id") String id) {
         try {
