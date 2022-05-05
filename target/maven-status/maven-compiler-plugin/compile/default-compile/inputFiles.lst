@@ -1,5 +1,37 @@
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\bobinados\bobinados\src\main\java\bobinator\bobinados\BobinadosApplication.java
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\bobinados\bobinados\src\main\java\bobinator\bobinados\Controller\LoginController.java
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\bobinados\bobinados\src\main\java\bobinator\bobinados\Security.java
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\bobinados\bobinados\src\main\java\bobinator\bobinados\Controller\UsuarioController.java
-C:\Users\groxa\Desktop\proyectos\BobinadosEgg\bobinados\bobinados\src\main\java\bobinator\bobinados\Entity\Usuario.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Controller\LoginController.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Service\ClienteService.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Service\UsuarioService.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Entity\Motor.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Service\ProyectoService.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\BobinadosApplication.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Service\EmpleadoService.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Enum\Rol.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Service\motor.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Controller\MainController.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Entity\Alambre.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Entity\Proyecto.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Controller\EditarPerfilController.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Entity\Cliente.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Controller\UsuarioController.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Controller\ClienteController.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Entity\CalculoDiametro.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Repository\TrifasicoRepository.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Entity\Trifasico.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Entity\Polo.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Enum\TipoDeMotor.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Repository\MonofasicoRepository.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Controller\MonofascoController.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Repository\AlambreRepository.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Security.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Entity\Monofasico.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Repository\ProyectoRepository.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Service\TrifasicoServicio.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Repository\EmpleadoRepository.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Service\MonofasicoService.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Repository\ClienteRepository.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Controller\TallerController.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Repository\MotorRepository.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Entity\Empleado.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Repository\UsuarioRepository.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Entity\Usuario.java
+C:\Users\feden\OneDrive\Escritorio\FullStack\Proyecto Final\Bobinados\src\main\java\bobinator\bobinados\Service\MotorService.java
