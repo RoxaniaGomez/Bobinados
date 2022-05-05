@@ -44,7 +44,7 @@
 
             <div class="contenedor__login-register">
                 <!--Login-->
-                <form th:action="@{/usuario/registroCliente}" class="formulario__login" method="POST">
+                <form th:action="@{/usuario/registroTaller}" class="formulario__login" method="POST">
                     <h2>Regístrate</h2>
                     <p th:if="${error != null}" style="color:red;" th:text="${error}"></p>
                     <p th:if="${success != null}" style="color:green;" th:text="${success}"></p>

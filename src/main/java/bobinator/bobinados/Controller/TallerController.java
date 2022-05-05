@@ -1,17 +1,14 @@
 package bobinator.bobinados.Controller;
 
 import bobinator.bobinados.Entity.Cliente;
-import bobinator.bobinados.Entity.Empleado;
 import bobinator.bobinados.Entity.Monofasico;
 import bobinator.bobinados.Entity.Proyecto;
 import bobinator.bobinados.Entity.Trifasico;
-import bobinator.bobinados.Entity.Usuario;
 import bobinator.bobinados.Service.ClienteService;
 import bobinator.bobinados.Service.MonofasicoService;
 import bobinator.bobinados.Service.ProyectoService;
 import bobinator.bobinados.Service.TrifasicoServicio;
 import java.util.List;
-import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -98,6 +95,17 @@ public class TallerController {
     public String delete(@RequestParam("id") String id) {
         try {
             proyectoService.borrarProyecto(id);
+            return "redirect:/taller";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/taller";
+        }
+    }
+    
+    @GetMapping("/calcular")
+    public String calcular(@RequestParam("id") String id) {
+        try {
+            proyectoService.calcularProyecto(id);
             return "redirect:/taller";
         } catch (Exception e) {
             e.printStackTrace();
