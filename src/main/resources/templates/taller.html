@@ -44,6 +44,7 @@
                                         <th>dueño</th>
                                         <th>codigo de motor</th>
                                         <th>alta-baja</th>
+                                        <th>calcular</th>
                                         <th>eliminar</th>
                                     </tr>
                                 </thead>
@@ -52,23 +53,24 @@
                                     <td  th:text="${proyecto.cliente.username}"></td>
                                     <td th:if="${proyecto.motorMonofasico != null}" th:text="${proyecto.motorMonofasico.numDeMotor}" class="text-center"></td>
                                     <td th:if="${proyecto.motorTrifasico != null}" th:text="${proyecto.motorTrifasico.numDeMotor}"class="text-center"></td>
-                                    
+                        
                                     <td>
                                             <a th:href="@{/taller/baja(id = ${proyecto.id})}" th:if="${proyecto.alta}">
-                                                <button type="button" class="btn btn-danger w-5">Dar Alta</button></a>
+                                                <button type="button" class="btn btn-danger w-5"> Baja</button></a>
                                             <a th:href="@{/taller/alta(id = ${proyecto.id})}" th:if="${!proyecto.alta}">
-                                                <button type="button" class="btn btn-success">Dar Baja</button></a>
+                                                <button type="button" class="btn btn-success">Alta</button></a>
                                         </td>
-
+                                        <td>
+                                            <a th:if="${proyecto.motorTrifasico != null}" th:href="@{/taller/calcular(id = ${proyecto.id})}">
+                                                <button type="button" class="btn btn-primary">Calcular</button>
+                                            </a>
+                                        </td>
                                         <td>
                                             <a th:href="@{/taller/delete(id = ${proyecto.id})}">
                                                 <button type="button" class="btn btn-danger">Eliminar</button>
                                             </a>
                                         </td>
                                     </tr>
-
-
-
                                 </tbody>
 
                             </table>

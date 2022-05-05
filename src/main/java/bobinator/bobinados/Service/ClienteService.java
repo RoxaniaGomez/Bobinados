@@ -27,8 +27,17 @@ public class ClienteService{
 //	if (cliente.getUsername().isEmpty()) {
 //	    throw new Exception("El username no puede estar vacio");
 ////	}
-//	if (cliente != null) {
-//	    throw new Exception("El usuario ya existe, pruebe otro nombre");
+	
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+cliente.setPassword(encoder.encode("1234"));
+
+cliente.setRol(Rol.USUARIO);
+
+        cliente=clienteRepositorio.save(cliente);
+//      
+	return cliente;
+        
+        
 //	}
 //	if (password.isEmpty()) {
 //	    throw new Exception("La contraseña no puede estar vacia");
@@ -41,18 +50,7 @@ public class ClienteService{
 //
 //	}
 	
-BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-cliente.setPassword(encoder.encode("1234"));
 
-cliente.setRol(Rol.USUARIO);
-//    cliente.setRol(Rol.USUARIO);
-        cliente=clienteRepositorio.save(cliente);
-//        if(isCliente){
-//        clienteServicio.crearCliente();
-//        }else{
-//        
-//        }
-	return cliente;
     }  
  
   

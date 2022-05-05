@@ -65,9 +65,6 @@ public class TallerController {
     @PostMapping("/crearProyecto")
     public String CrearProyecto(@ModelAttribute("proyecto")Proyecto proyecto) throws Exception {
         
-        
-        
-        System.out.println("Entro :");
         proyecto=proyectoService.crearProyecto(proyecto);
 
         return "redirect:/taller";
@@ -93,7 +90,16 @@ public class TallerController {
             return "redirect:/taller";
         }
     }
-
+    @GetMapping("/calcular")
+    public String calcular(@RequestParam("id") String id) {
+        try {
+            proyectoService.calcularProyecto(id);
+            return "redirect:/taller";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/taller";
+        }
+    }
     @GetMapping("/delete")
     public String delete(@RequestParam("id") String id) {
         try {

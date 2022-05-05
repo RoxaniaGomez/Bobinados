@@ -32,7 +32,7 @@ public class ProyectoService{
   private TrifasicoServicio trifasicoService;
      
     public Proyecto crearProyecto(Proyecto proyecto) throws Exception {
-        if (proyecto.getCliente().getUsername() != null) {
+
             Cliente cliente = clienteService.registrarUsuario(proyecto.getCliente());
             if(proyecto.getMotorMonofasico()!=null){
              Monofasico mono = monofasicoService.CargarMotor(proyecto.getMotorMonofasico());
@@ -41,21 +41,6 @@ public class ProyectoService{
             
             Trifasico tri = trifasicoService.CargarMotor(proyecto.getMotorTrifasico());
             proyecto.setMotorTrifasico(tri);
-            }
-            if (cliente == null) {
-                cliente  = clienteService.registrarUsuario(proyecto.getCliente());
-                if(proyecto.getMotorMonofasico()!=null){
-             Monofasico mono = monofasicoService.CargarMotor(proyecto.getMotorMonofasico());
-            proyecto.setMotorMonofasico(mono);
-            proyecto.setCliente(cliente);
-            }else{
-            
-            Trifasico tri = trifasicoService.CargarMotor(proyecto.getMotorTrifasico());
-            proyecto.setMotorTrifasico(tri);
-            }
-                
-            }
-      
             
             
         }
@@ -106,6 +91,18 @@ public class ProyectoService{
 	    throw new Error("No se encontro el proyecto");
 
 	}
+    }
+
+    public void calcularProyecto(String id) {
+    Optional<Proyecto> proyecto = proyectoRepo.findById(id);
+	if (proyecto.isPresent()) {
+	    Proyecto dato = proyecto.get();
+            
+            
+	    
+	} else {
+	    throw new Error("No se encontró el proyecto");
+	}    
     }
 
     
