@@ -27,7 +27,6 @@
     </div>
   </nav>
 
-
   <div class="container-fluid bg-black d-flex justify-content-center min-vh-100">
     <div class="p-5 my-3 min-width-20">
       <div class="card text-white bg-secondary p-3  h-100 width-100">
@@ -45,6 +44,7 @@
                   <th>Alta-baja</th>
                   <th>Modificar</th>
                   <th>Eliminar</th>
+                  <th>Ver</th>
                 </tr>
               </thead>
 
@@ -70,6 +70,11 @@
                   <td>
                     <a th:href="@{/taller/delete(id = ${proyecto.id})}">
                       <button type="button" class="btn btn-danger">Eliminar</button>
+                    </a>
+                  </td>
+                  <td>
+                    <a th:href="@{/taller/ver(id = ${proyecto.id})}">
+                      <button type="button" class="btn btn-danger">Ver informacion</button>
                     </a>
                   </td>
                 </tr>
