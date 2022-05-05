@@ -115,6 +115,7 @@ main{
     background: #F2F2F2;
     font-size: 16px;
     outline: none;
+    overflow-y: auto;
 }
 
 .contenedor__login-register form button{
