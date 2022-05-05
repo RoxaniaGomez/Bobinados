@@ -58,6 +58,7 @@ public class ClienteService {
 ////        }
 //	return cliente;
 //    }  
+    
     public Cliente registrarClientePorDefecto(Cliente cliente) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         cliente.setPassword(encoder.encode("1234"));

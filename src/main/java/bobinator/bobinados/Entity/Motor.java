@@ -36,23 +36,16 @@ abstract public class Motor{
     private String tipoDeAislacion;
     private String notas;
    
-    private TipoDeMotor  tipo;
+    private TipoDeMotor tipo;
     private Integer numeroDePolos;
-    
     private Integer numeroDeRanuras;
-    
     private Double dInternoDEstator;
-     
     private Double dExternoDEstator;
     private String alturaDeCabeza;
     private Double apilamientoDChapa;
-    
     private Double potenciaEnHP;
-    
     private Integer corrienteEnAmp;
-    
     private Double tension;
-    
     private Double frecuenciaEnHZ;
     
 }
