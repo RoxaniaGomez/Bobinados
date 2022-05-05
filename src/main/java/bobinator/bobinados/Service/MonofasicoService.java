@@ -30,10 +30,13 @@ public class MonofasicoService {
     public List<Monofasico> findAll() {
 	return motorRepositorio.findAll();
     }
-//    public Monofasico CargarMotor(Monofasico mono){
-//   
-//	return motorRepositorio.save(mono);
-//    }  
+    public Monofasico CargarMotor(Monofasico mono){
+   
+	return motorRepositorio.save(mono);
+    }  
 
+     
+        
+  
 }
 

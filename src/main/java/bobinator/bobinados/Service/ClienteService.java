@@ -38,7 +38,6 @@ public class ClienteService{
 //	}
 //	if (!password.equals(password2)) {
 //	    throw new Exception("Las contraseñas ingresadas deben ser iguales");
-//
 //	}
 	
 BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();

@@ -7,7 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import lombok.Data;
-
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -18,7 +17,6 @@ public class Proyecto {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
-
     @ManyToOne
     private Cliente cliente;
     @ManyToOne
@@ -29,4 +27,6 @@ public class Proyecto {
     private Monofasico motorMonofasico;
     private boolean alta;
 
+    
+    
 }
