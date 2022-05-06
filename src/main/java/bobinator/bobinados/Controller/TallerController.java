@@ -18,7 +18,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -34,6 +33,7 @@ public class TallerController {
     private MonofasicoService monofasicoService;
     @Autowired
     private TrifasicoServicio trifasicoService;
+
     @Autowired
     private EmpleadoService empleadoService;
 
@@ -65,7 +65,6 @@ public class TallerController {
         return "taller";
     }
 
-    @PostMapping("/crearProyecto")
     public String CrearProyecto(@ModelAttribute("proyecto") Proyecto proyecto, HttpSession httpSession) throws Exception {
         Usuario usuario = (Usuario) httpSession.getAttribute("usuario");
         proyecto.setEmpleado(empleadoService.buscarPorId(usuario.getId()));
@@ -95,18 +94,6 @@ public class TallerController {
             return "redirect:/taller";
         }
     }
-
-    @GetMapping("/delete")
-    public String delete(@RequestParam("id") String id) {
-        try {
-            proyectoService.borrarProyecto(id);
-            return "redirect:/taller";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "redirect:/taller";
-        }
-    }
-
     @GetMapping("/calcular")
     public String calcular(@RequestParam("id") String id) {
         try {
@@ -117,4 +104,14 @@ public class TallerController {
             return "redirect:/taller";
         }
     }
-}
+    @GetMapping("/delete")
+    public String delete(@RequestParam("id") String id) {
+        try {
+            proyectoService.borrarProyecto(id);
+            return "redirect:/taller";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/taller";
+        }
+
+}}

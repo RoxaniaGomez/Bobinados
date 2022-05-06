@@ -6,6 +6,7 @@
 package bobinator.bobinados.Service;
 
 import bobinator.bobinados.Entity.Cliente;
+import bobinator.bobinados.Entity.Empleado;
 import bobinator.bobinados.Entity.Monofasico;
 import bobinator.bobinados.Entity.Proyecto;
 import bobinator.bobinados.Entity.Trifasico;
@@ -24,28 +25,31 @@ public class ProyectoService {
 
     @Autowired
     private ProyectoRepository proyectoRepo;
-    @Autowired
-    private ClienteService clienteService;
-    @Autowired
-    private MonofasicoService monofasicoService;
-    @Autowired
-    private TrifasicoServicio trifasicoService;
-
+  @Autowired
+     private ClienteService clienteService;
+  @Autowired
+  private MonofasicoService monofasicoService;
+   @Autowired
+  private TrifasicoServicio trifasicoService;
+     
     public Proyecto crearProyecto(Proyecto proyecto) throws Exception {
-        Cliente cliente = clienteService.registrarUsuario(proyecto.getCliente());
-        if (proyecto.getMotorMonofasico() != null) {
-            Monofasico mono = monofasicoService.CargarMotor(proyecto.getMotorMonofasico());
-            proyecto.setMotorMonofasico(mono);
-        } else {
 
+            Cliente cliente = clienteService.registrarUsuario(proyecto.getCliente());
+            if(proyecto.getMotorMonofasico()!=null){
+             Monofasico mono = monofasicoService.CargarMotor(proyecto.getMotorMonofasico());
+            proyecto.setMotorMonofasico(mono);
+            }else{
+            
             Trifasico tri = trifasicoService.CargarMotor(proyecto.getMotorTrifasico());
             proyecto.setMotorTrifasico(tri);
-
+            
+            
         }
-        proyecto.setAlta(true);
+      proyecto.setAlta(true);
 
-        return proyectoRepo.save(proyecto);
+    return proyectoRepo.save(proyecto);
     }
+
 
     public void darBaja(String id) throws Error {
         Optional<Proyecto> respuesta = proyectoRepo.findById(id);
@@ -91,11 +95,16 @@ public class ProyectoService {
     }
 
     public void calcularProyecto(String id) {
-        Optional<Proyecto> proyecto = proyectoRepo.findById(id);
-        if (proyecto.isPresent()) {
-            Proyecto dato = proyecto.get();
-        } else {
-            throw new Error("No se encontró el proyecto");
-        }
+    Optional<Proyecto> proyecto = proyectoRepo.findById(id);
+	if (proyecto.isPresent()) {
+	    Proyecto dato = proyecto.get();
+            
+            
+	    
+	} else {
+	    throw new Error("No se encontró el proyecto");
+	}    
     }
+
+    
 }
