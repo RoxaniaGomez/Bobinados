@@ -1,12 +1,12 @@
 package bobinator.bobinados.Controller;
 
 import bobinator.bobinados.Entity.Cliente;
-import bobinator.bobinados.Entity.Empleado;
 import bobinator.bobinados.Entity.Monofasico;
 import bobinator.bobinados.Entity.Proyecto;
 import bobinator.bobinados.Entity.Trifasico;
 import bobinator.bobinados.Entity.Usuario;
 import bobinator.bobinados.Service.ClienteService;
+import bobinator.bobinados.Service.EmpleadoService;
 import bobinator.bobinados.Service.MonofasicoService;
 import bobinator.bobinados.Service.ProyectoService;
 import bobinator.bobinados.Service.TrifasicoServicio;
@@ -18,7 +18,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -34,6 +33,10 @@ public class TallerController {
     private MonofasicoService monofasicoService;
     @Autowired
     private TrifasicoServicio trifasicoService;
+
+    @Autowired
+    private EmpleadoService empleadoService;
+
     @PreAuthorize("hasAnyRole('ROLE_TALLER')")
     @GetMapping("")
     public String postLogueo(Model modelo) {
@@ -43,7 +46,7 @@ public class TallerController {
 
         Proyecto proyectoTrifasico = new Proyecto();
         proyectoTrifasico.setCliente(new Cliente());
-        
+
         proyectoTrifasico.setMotorTrifasico(new Trifasico());
         modelo.addAttribute("proyectoTrifasico", proyectoTrifasico);
 
@@ -51,7 +54,7 @@ public class TallerController {
         proyectoMonofasico.setCliente(new Cliente());
         proyectoMonofasico.setMotorMonofasico(new Monofasico());
         modelo.addAttribute("proyectoMonofasico", proyectoMonofasico);
-        
+
         return "taller";
     }
 
@@ -62,13 +65,14 @@ public class TallerController {
         return "taller";
     }
 
-    @PostMapping("/crearProyecto")
-    public String CrearProyecto(@ModelAttribute("proyecto")Proyecto proyecto) throws Exception {
-        
-        proyecto=proyectoService.crearProyecto(proyecto);
-
+    public String CrearProyecto(@ModelAttribute("proyecto") Proyecto proyecto, HttpSession httpSession) throws Exception {
+        Usuario usuario = (Usuario) httpSession.getAttribute("usuario");
+        proyecto.setEmpleado(empleadoService.buscarPorId(usuario.getId()));
+        System.out.println("Entro :");
+        proyecto = proyectoService.crearProyecto(proyecto);
         return "redirect:/taller";
     }
+
     @GetMapping("/alta")
     public String alta(@RequestParam("id") String id) {
         try {
@@ -109,5 +113,5 @@ public class TallerController {
             e.printStackTrace();
             return "redirect:/taller";
         }
-    }
-}
+
+}}

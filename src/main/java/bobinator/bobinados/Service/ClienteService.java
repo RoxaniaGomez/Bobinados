@@ -47,7 +47,6 @@ cliente.setRol(Rol.USUARIO);
 //	}
 //	if (!password.equals(password2)) {
 //	    throw new Exception("Las contraseñas ingresadas deben ser iguales");
-//
 //	}
 	
 
