@@ -69,7 +69,6 @@ public class TallerController {
     public String CrearProyecto(@ModelAttribute("proyecto") Proyecto proyecto, HttpSession httpSession) throws Exception {
         Usuario usuario = (Usuario) httpSession.getAttribute("usuario");
         proyecto.setEmpleado(empleadoService.buscarPorId(usuario.getId()));
-        System.out.println("Entro :");
         proyecto = proyectoService.crearProyecto(proyecto);
         return "redirect:/taller";
     }
