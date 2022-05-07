@@ -102,20 +102,6 @@ html{
   text-align: center;
 }
 
-.txt {
-  color: #000;
-  margin-left: 40px;
-}
-
-.txto {
-  color: #000;
-  margin-left: 70px;
-}
-
-.txta {
-  color: #000;
-  margin-left: 100px;
-}
 
 *{
   margin: 0;
@@ -289,4 +275,12 @@ main{
   .contenedor__login-register form{
       position: relative;
   }
+}
+
+.txt {
+margin-left: 90px;
+}
+
+.txto{
+  margin-left: 121px;
 }
