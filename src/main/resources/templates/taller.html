@@ -66,10 +66,11 @@
 
                   <td>
                     <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                      th:data-bs-target="${'#idd'+proyecto.id}" th:disabled="${proyecto.motorMonofasico !=null}">Ver calculos</button>
+                      th:data-bs-target="${'#idd'+proyecto.id}" th:if="${proyecto.motorMonofasico !=null}">Ver
+                      calculos</button>
 
                     <!-- Modal Calcular -->
-                    <div class="modal fade" th:id="'idd'+${proyecto.id}" tabindex="-1"
+                    <div class="modal fade" th:id="'idd'+${proyecto.id}" th:if="${proyecto.motorMonofasico !=null}" tabindex="-1"
                       aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content bg-dark">
@@ -104,8 +105,8 @@
                       </div>
                     </div>
                   </td>
-                  <td>
 
+                  <td>
                     <button type="button" class="btn btn-success" data-bs-toggle="modal"
                       th:data-bs-target="${'#id'+proyecto.id}">Ver</button>
                     <!-- Modal Ver -->
@@ -127,8 +128,8 @@
                       </div>
                     </div>
                   </td>
-                  <td>
 
+                  <td>
                     <a th:href="@{/taller/delete(id = ${proyecto.id})}">
                       <button type="button" class="btn btn-danger">Eliminar</button>
                     </a>
