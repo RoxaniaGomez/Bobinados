@@ -2,10 +2,12 @@ package bobinator.bobinados.Entity;
 
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 
@@ -13,6 +15,8 @@ import lombok.Data;
 @Data
 public class Calculos{
     @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
 
     private Double diametroDelAlmbreMM;
