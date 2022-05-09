@@ -119,7 +119,30 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
-                            Cuerpo del modal
+                              
+                              <!--estoy trabajando aqui!!!-->
+                              <div th:href="@{/taller/ver}" th:if="${proyecto.motorMonofasico !=null}">
+                                 fabricante: <p th:text="${proyecto.motorMonofasico.fabricante}"></p>
+                                 Nacionalida: <p th:text="${proyecto.motorMonofasico.Nacionalidad}"></p> 
+                                  <p th:text="${proyecto.motorMonofasico.numDeMotor}"></p> 
+                                  <p th:text="${proyecto.motorMonofasico.modelo}"></p> 
+                                  <p th:text="${proyecto.motorMonofasico.regimenDeServicio}"></p> 
+                                  <p th:text="${proyecto.motorMonofasico.tipoDeAislacion}"></p> 
+                                  <p th:text="${proyecto.motorMonofasico.tipo}"></p> 
+                                  <p th:text="${proyecto.motorMonofasico.numeroDePolos}"></p> 
+                                  <p th:text="${proyecto.motorMonofasico.numeroDeRanuras}"></p> 
+                                  <p th:text="${proyecto.motorMonofasico.dInternoDEstator}"></p> 
+                                  <p th:text="${proyecto.motorMonofasico.dExternoDEstator}"></p> 
+                                  <p th:text="${proyecto.motorMonofasico.alturaDeCabeza}"></p> 
+                                  <p th:text="${proyecto.motorMonofasico.apilamientoDChapa}"></p> 
+                                  <p th:text="${proyecto.motorMonofasico.potenciaEnHP}"></p> 
+                                  <p th:text="${proyecto.motorMonofasico.corrienteEnAmp}"></p> 
+                                  <p th:text="${proyecto.motorMonofasico.tension}"></p> 
+                                  <p th:text="${proyecto.motorMonofasico.frecuenciaEnHZ}"></p> 
+                                  <p th:text="${proyecto.motorMonofasico.Notas}"></p> 
+                                  
+                                  
+                              </div>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -212,9 +235,7 @@
                         <input type="number" placeholder="Diametro de alambre (opcional)" th:field="*{motorTrifasico.diametroAlambre}" step=".001">
                       <input type="number" placeholder="Capacitor" th:field="*{motorMonofasico.capacitor}" required>
                       <div>
-                        <label for="indoor" class="txt"><input id="indoor" type="checkbox" name="indoor-outdoor"
-                            th:field="*{motorMonofasico.esPermanente}"> Es Permamente</label>
-
+                       
                         <br>
 
                       <!--hacer el es polo-->
@@ -261,13 +282,13 @@
                         required>
                         <input type="number" placeholder="Diametro de alambre (opcional)" th:field="*{motorTrifasico.diametroAlambre}" step=".001">
                       <div>
-                        <label for="indoor" th:field="*{motorTrifasico.conexion}">
+                        <!--<label for="indoor" th:field="*{motorTrifasico.conexion}">
                           <input id="indoor" value="indoor" type="radio" name="indoor-outdoor" class="text-center">Triangulo
                         </label>
                         <br>
                         <label for="outdoor" th:field="*{motorTrifasico.conexion}">
                           <input id="outdoor" value="outdoor" type="radio" name="indoor-outdoor">Estrella
-                        </label>
+                        </label>-->
                       </div>
                       <input type="text" placeholder="Notas" th:field="*{motorTrifasico.notas}">
                       <button type="submit" class="btn btn-primary">Guardar datos</button>
