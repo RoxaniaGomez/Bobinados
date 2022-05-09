@@ -9,5 +9,5 @@ public class Monofasico extends Motor {
 
     private Integer capacitor;
     private Boolean esPermanente;
-    private Boolean esPolo;
+    
 }
