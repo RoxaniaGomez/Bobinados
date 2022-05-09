@@ -216,8 +216,7 @@
 
                         <br>
 
-                        <label for="indoor" class="txto"><input id="indoor" type="checkbox" name="indoor-outdoor"
-                            th:field="*{motorMonofasico.esPolo}">Es Polo</label>
+                      <!--hacer el es polo-->
                       </div>
                       <input type="text" placeholder="notas" th:field="*{motorMonofasico.notas}">
                       <button type="submit" class="btn btn-primary">Guardar datos</button>
@@ -241,7 +240,7 @@
                       <input type="text" placeholder="Regimen de Servicio"
                         th:field="*{motorTrifasico.regimenDeServicio}">
                       <input type="text" placeholder="Tipo de Aislacion" th:field="*{motorTrifasico.tipoDeAislacion}">
-                      <input type="number" placeholder="Numero De Polos* " th:field="*{motorTrifasico.numeroDePolos}"
+                      <input type="number" placeholder="Numero De Polos* (2p)" th:field="*{motorTrifasico.numeroDePolos}"
                         required>
                       <input type="number" placeholder="Numero de Ranuras*" th:field="*{motorTrifasico.numeroDeRanuras}"
                         required>
@@ -261,9 +260,7 @@
                       <input type="number" placeholder="Freciencia en hz" th:field="*{motorTrifasico.frecuenciaEnHZ}"
                         required>
                       <div>
-                        <label for="indoor" class="txt"><input id="indoor" type="checkbox" name="indoor-outdoor"
-                            th:field="*{motorTrifasico.conexion}">Conexion
-                          estrella / <br> Conexion triangulo</label>
+                       <!--hacer conexion -->
                       </div>
                       <input type="text" placeholder="notas" th:field="*{motorTrifasico.notas}">
                       <button type="submit" class="btn btn-primary">Guardar datos</button>
