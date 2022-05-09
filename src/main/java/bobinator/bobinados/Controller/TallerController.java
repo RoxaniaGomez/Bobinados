@@ -104,6 +104,16 @@ public class TallerController {
             return "redirect:/taller";
         }
     }
+    @GetMapping("/ver")
+    public String ver(@RequestParam("id") String id) {
+        try {
+            proyectoService.buscarPorId(id);
+            return "redirect:/taller";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/taller";
+        }
+    }
     @GetMapping("/delete")
     public String delete(@RequestParam("id") String id) {
         try {
