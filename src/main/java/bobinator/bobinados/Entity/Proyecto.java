@@ -26,6 +26,8 @@ public class Proyecto {
     @OneToOne(cascade = CascadeType.ALL)
     private Monofasico motorMonofasico;
     private boolean alta;
+    @OneToOne
+    private PresupuestoCliente presupuesto;
 
     
     
