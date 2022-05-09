@@ -5,6 +5,7 @@
  */
 package bobinator.bobinados.Service;
 
+import bobinator.bobinados.Entity.Calculos;
 import bobinator.bobinados.Entity.Cliente;
 import bobinator.bobinados.Entity.Empleado;
 import bobinator.bobinados.Entity.Monofasico;
@@ -23,21 +24,24 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProyectoService {
 
-    @Autowired
-    private ProyectoRepository proyectoRepo;
+   @Autowired
+     private CalculoService calculoService;
   @Autowired
      private ClienteService clienteService;
   @Autowired
   private MonofasicoService monofasicoService;
    @Autowired
   private TrifasicoServicio trifasicoService;
-     
+      @Autowired
+    private ProyectoRepository proyectoRepo;
+      
     public Proyecto crearProyecto(Proyecto proyecto) throws Exception {
 
             Cliente cliente = clienteService.registrarUsuario(proyecto.getCliente());
             if(proyecto.getMotorMonofasico()!=null){
              Monofasico mono = monofasicoService.CargarMotor(proyecto.getMotorMonofasico());
             proyecto.setMotorMonofasico(mono);
+          
             }else{
             
             Trifasico tri = trifasicoService.CargarMotor(proyecto.getMotorTrifasico());
@@ -94,16 +98,16 @@ public class ProyectoService {
         }
     }
 
-    public void calcularProyecto(String id) {
-    Optional<Proyecto> proyecto = proyectoRepo.findById(id);
-	if (proyecto.isPresent()) {
-	    Proyecto dato = proyecto.get();
-            
-            
-	    
-	} else {
-	    throw new Error("No se encontró el proyecto");
-	}    
+    public Calculos calcularProyecto(String id) {
+        Optional<Proyecto> respuesta = proyectoRepo.findById(id);
+        if (respuesta.isPresent()) {
+            Proyecto edit = respuesta.get();
+            return calculoService.resolver(edit.getMotorTrifasico());
+        } else {
+            throw new Error("No se encontro el proyecto");
+
+        }
+        
     }
 
     

@@ -1,4 +1,5 @@
 package bobinator.bobinados.Entity;
+import bobinator.bobinados.Enum.Conexion;
 import javax.persistence.Entity;
 import lombok.Data;
 
@@ -6,6 +7,6 @@ import lombok.Data;
 @Data
 public class Trifasico extends Motor{
     
-    private boolean conexion;
+    private Conexion conexion;
     
 }
