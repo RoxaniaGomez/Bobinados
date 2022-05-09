@@ -168,23 +168,27 @@
     </div>
   </div>
 
-            fetch(`http://localhost:8080/taller/calcular?id=${id}`).then(r => r.json)
-            .then(calculo => console.log("calculo", calculo))
-        /*    <p th:text="${calculo.diametroDeAlambreEnMM}"></p>
-            <p th:text="${calculo.PesoDeAlambreEnKG}"></p>
-            <p th:text="${calculo.paso1}"></p>
-            <p th:text="${calculo.paso2}"></p>
-            <p th:text="${calculo.paso3}"></p>
-            <p th:text="${calculo.grupos}"></p>
-            <p th:text="${calculo.ranuraPorPoloPorFase}"></p>
-            <p th:text="${calculo.numeroDeBobinaPorGrupo}"></p>
-            <p th:text="${calculo.amplitudDeGrupo}"></p>
-            <p th:text="${calculo.pasoPolar}"></p>
-            <p th:text="${calculo.flujoMagnetico}"></p>
-            <p th:text="${calculo.vueltasPorBobinas}"></p>
-            <p th:text="${calculo.seccionDelAlambre}"></p>*/
-            }
-     
+  const realizarCalculo= (id) => {
+  const modal = document.getElementById(`idd${id}`)
+  fetch(`http://localhost:8080/taller/calcular?id=${id}`).then(r => r.json)
+  .then(calculo => console.log("calculo", calculo))
+ <!--
+  <p th:text="${calculo.diametroDeAlambreEnMM}"></p>
+  <p th:text="${calculo.PesoDeAlambreEnKG}"></p>
+  <p th:text="${calculo.paso1}"></p>
+  <p th:text="${calculo.paso2}"></p>
+  <p th:text="${calculo.paso3}"></p>
+  <p th:text="${calculo.grupos}"></p>
+  <p th:text="${calculo.ranuraPorPoloPorFase}"></p>
+  <p th:text="${calculo.numeroDeBobinaPorGrupo}"></p>
+  <p th:text="${calculo.amplitudDeGrupo}"></p>
+  <p th:text="${calculo.pasoPolar}"></p>
+  <p th:text="${calculo.flujoMagnetico}"></p>
+  <p th:text="${calculo.vueltasPorBobinas}"></p>
+  <p th:text="${calculo.seccionDelAlambre}"></p>
+  }
+  */
+-->
 
   <div class="modal fade" id="miModal" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
     <div class="modal-dialog modal-fullscreen">
