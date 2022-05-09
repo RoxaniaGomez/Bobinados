@@ -8,10 +8,12 @@ package bobinator.bobinados.Entity;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
@@ -23,6 +25,8 @@ import lombok.Data;
 @Data
 public class Calculos{
     @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     
     
