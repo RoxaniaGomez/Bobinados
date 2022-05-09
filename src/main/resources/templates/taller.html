@@ -42,9 +42,10 @@
                   <th>Dueño</th>
                   <th>Codigo de motor</th>
                   <th>Alta-baja</th>
-                  <th>Modificar</th>
-                  <th>Eliminar</th>
+                  <th>Calcular</th>
                   <th>Ver</th>
+                  <th>Eliminar</th>
+
                 </tr>
               </thead>
 
@@ -62,63 +63,80 @@
                     <a th:href="@{/taller/alta(id = ${proyecto.id})}" th:if="${!proyecto.alta}">
                       <button type="button" class="btn btn-success">Alta</button></a>
                   </td>
+
                   <td>
-                    <a th:if="${proyecto.motorTrifasico != null}" th:href="@{/taller/calcular(id = ${proyecto.id})}">
-                      <button type="button" class="btn btn-primary">Calcular</button>
-                    </a>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                      th:data-bs-target="${'#idd'+proyecto.id}" th:disabled="${proyecto.motorMonofasico !=null}">Ver calculos</button>
+
+                    <!-- Modal Calcular -->
+                    <div class="modal fade" th:id="'idd'+${proyecto.id}" tabindex="-1"
+                      aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content bg-dark">
+                          <div class="modal-header">
+                            <h5 class="modal-title text-light" id="exampleModalLabel">Estado de calculos</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="p-5 my-3 min-width-20">
+                              <div class="card text-white bg-secondary p-3 mb-3 h-100 width-100">
+                                <div class="card-header text-center">Resultados</div>
+                                <div>
+                                  <img src="/img/bobinado.jpg" alt="">
+                                </div>
+                                <hr>
+                                <div class="alert alert-success text-center">
+                                  <strong>Alambre</strong> Resultado Alambre
+                                </div>
+                                <div class="alert alert-success text-center">
+                                  <strong>Grosor</strong> Resultado Grosor
+                                </div>
+                                <div class="alert alert-success text-center">
+                                  <strong>Cantidad</strong> Resultado Cantidad
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </td>
                   <td>
+
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                      th:data-bs-target="${'#id'+proyecto.id}">Ver</button>
+                    <!-- Modal Ver -->
+                    <div class="modal fade" th:id="'id'+${proyecto.id}" tabindex="-1"
+                      aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content bg-dark">
+                          <div class="modal-header">
+                            <h5 class="modal-title text-light" id="exampleModalLabel">Estado del motor</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            Cuerpo del modal
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+
                     <a th:href="@{/taller/delete(id = ${proyecto.id})}">
                       <button type="button" class="btn btn-danger">Eliminar</button>
                     </a>
                   </td>
-                  <td>
-                      <button type="button" class="btn btn-danger" data-bs-toggle="modal" th:data-bs-target="${'#id'+proyecto.id}">Ver</button>
-              
-
-<!-- Modal -->
-<div class="modal fade" th:id="'id'+${proyecto.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-                  </td>
                 </tr>
               </tbody>
-
             </table>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="p-5 my-3 min-width-20">
-      <div class="card text-white bg-secondary p-3 mb-3 h-100 width-100">
-        <div class="card-header text-center">Resultados</div>
-        <div>
-          <img src="/img/bobinado.jpg" alt="">
-        </div>
-        <hr>
-        <div class="alert alert-success text-center">
-          <strong>Alambre</strong> Resultado Alambre
-        </div>
-        <div class="alert alert-success text-center">
-          <strong>Grosor</strong> Resultado Grosor
-        </div>
-        <div class="alert alert-success text-center">
-          <strong>Cantidad</strong> Resultado Cantidad
         </div>
       </div>
     </div>
@@ -159,7 +177,7 @@
                       <p th:if="${success != null}" style="color:green;" th:text="${success}"></p>
 
                       <h2 class="text-center p-2">Correo del cliente</h2>
-                      <input type="text" readonly placeholder="Ingrese el correo " th:field="*{cliente.username}" required>
+                      <input type="text" placeholder="Ingrese el correo " th:field="*{cliente.username}" required>
                       <hr>
 
                       <h3 class="text-center p-2">Cargar datos Motor Monofasico</h3>
@@ -181,31 +199,29 @@
                       <input type="number" placeholder="Altura de cabeza*" th:field="*{motorMonofasico.alturaDeCabeza}"
                         required>
                       <input type="number" placeholder="Apilamiento de chapa*"
-                        th:field="*{motorMonofasico.apilamientoDChapa}"step=".001" required>
+                        th:field="*{motorMonofasico.apilamientoDChapa}" step=".001" required>
                       <input type="number" placeholder="Potencia en HP*" th:field="*{motorMonofasico.potenciaEnHP}"
                         required>
                       <input type="number" placeholder="Corriente en amp*" th:field="*{motorMonofasico.corrienteEnAmp}"
                         required>
-                      <input type="number" placeholder="Tension*"step=".001" th:field="*{motorMonofasico.tension}" required>
-                      <input type="number" placeholder="Freciencia en hz" step=".001"th:field="*{motorMonofasico.frecuenciaEnHZ}"
+                      <input type="number" placeholder="Tension*" step=".001" th:field="*{motorMonofasico.tension}"
                         required>
+                      <input type="number" placeholder="Freciencia en hz" step=".001"
+                        th:field="*{motorMonofasico.frecuenciaEnHZ}" required>
                       <input type="number" placeholder="Capacitor" th:field="*{motorMonofasico.capacitor}" required>
                       <div>
-                        <label for="indoor" class="txt"><input id="indoor" type="checkbox"
-                            name="indoor-outdoor" th:field="*{motorMonofasico.esPermanente}"> Es Permamente</label>
-  
+                        <label for="indoor" class="txt"><input id="indoor" type="checkbox" name="indoor-outdoor"
+                            th:field="*{motorMonofasico.esPermanente}"> Es Permamente</label>
+
                         <br>
-                        <label for="indoor" class="txt"><input id="indoor" type="checkbox"
-                            name="indoor-outdoor" th:field="*{motorMonofasico.esPolo}">Es Polo</label>
 
+                        <label for="indoor" class="txto"><input id="indoor" type="checkbox" name="indoor-outdoor"
+                            th:field="*{motorMonofasico.esPolo}">Es Polo</label>
                       </div>
-
                       <input type="text" placeholder="notas" th:field="*{motorMonofasico.notas}">
-
                       <button type="submit" class="btn btn-primary">Guardar datos</button>
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                     </form>
-
 
                     <form method="POST" th:action="@{/taller/crearProyecto}" th:object="${proyectoTrifasico}"
                       class="formulario__register">
@@ -213,40 +229,46 @@
                       <p th:if="${success != null}" style="color:green;" th:text="${success}"></p>
                       <h2 class="text-center p-2">Correo del cliente</h2>
                       <input type="text" placeholder="Ingrese el correo" th:field="*{cliente.username}" required>
-                      <hr>
 
+                      <hr>
 
                       <h3 class="text-center p-3">Cargar datos Motor Trifasico</h3>
                       <input type="text" placeholder="Fabricante" th:field="*{motorTrifasico.fabricante}">
                       <input type="text" placeholder="Nacionalidad" th:field="*{motorTrifasico.Nacionalidad}">
                       <input type="text" placeholder="Numero de motor" th:field="*{motorTrifasico.numDeMotor}">
                       <input type="text" placeholder="Modelo" th:field="*{motorTrifasico.modelo}">
-                      <input type="text" placeholder="Regimen de Servicio"   th:field="*{motorTrifasico.regimenDeServicio}">
+                      <input type="text" placeholder="Regimen de Servicio"
+                        th:field="*{motorTrifasico.regimenDeServicio}">
                       <input type="text" placeholder="Tipo de Aislacion" th:field="*{motorTrifasico.tipoDeAislacion}">
-                      <input type="number" placeholder="Numero De Polos* " th:field="*{motorTrifasico.numeroDePolos}" required>
-                      <input type="number" placeholder="Numero de Ranuras*" th:field="*{motorTrifasico.numeroDeRanuras}" required>
-                      <input type="number" placeholder="Diametro interno del estator*" th:field="*{motorTrifasico.dInternoDEstator}" required>
-                      <input type="number" placeholder="Diametro externo del estator*" th:field="*{motorTrifasico.dExternoDEstator}" required>
-                      <input type="number" placeholder="Altura de cabeza*" th:field="*{motorTrifasico.alturaDeCabeza}" required>
-                      <input type="number" placeholder="Apilamiento de chapa*" th:field="*{motorTrifasico.apilamientoDChapa}" required>
-                      <input type="number" placeholder="Potencia en HP*" th:field="*{motorTrifasico.potenciaEnHP}" required>
-                      <input type="number" placeholder="Corriente en amp*" th:field="*{motorTrifasico.corrienteEnAmp}" required>
+                      <input type="number" placeholder="Numero De Polos* " th:field="*{motorTrifasico.numeroDePolos}"
+                        required>
+                      <input type="number" placeholder="Numero de Ranuras*" th:field="*{motorTrifasico.numeroDeRanuras}"
+                        required>
+                      <input type="number" placeholder="Diametro interno del estator*"
+                        th:field="*{motorTrifasico.dInternoDEstator}" required>
+                      <input type="number" placeholder="Diametro externo del estator*"
+                        th:field="*{motorTrifasico.dExternoDEstator}" required>
+                      <input type="number" placeholder="Altura de cabeza*" th:field="*{motorTrifasico.alturaDeCabeza}"
+                        required>
+                      <input type="number" placeholder="Apilamiento de chapa*"
+                        th:field="*{motorTrifasico.apilamientoDChapa}" required>
+                      <input type="number" placeholder="Potencia en HP*" th:field="*{motorTrifasico.potenciaEnHP}"
+                        required>
+                      <input type="number" placeholder="Corriente en amp*" th:field="*{motorTrifasico.corrienteEnAmp}"
+                        required>
                       <input type="number" placeholder="Tension*" th:field="*{motorTrifasico.tension}" required>
                       <input type="number" placeholder="Freciencia en hz" th:field="*{motorTrifasico.frecuenciaEnHZ}"
                         required>
                       <div>
-                        <label for="indoor" class="txt"><input id="indoor" type="radio" name="indoor-outdoor">Conexion
-                          estrella</label>
-                        <label for="outdoor" class="txt"><input id="outdoor" type="radio" name="indoor-outdoor">Conexion
-                          triangulo</label>
+                        <label for="indoor" class="txt"><input id="indoor" type="checkbox" name="indoor-outdoor"
+                            th:field="*{motorTrifasico.conexion}">Conexion
+                          estrella / <br> Conexion triangulo</label>
                       </div>
                       <input type="text" placeholder="notas" th:field="*{motorTrifasico.notas}">
-
                       <button type="submit" class="btn btn-primary">Guardar datos</button>
                       <button type="submit" class="btn btn-primary">calcular</button>
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                     </form>
-
                   </div>
                 </div>
               </div>

@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -60,15 +61,14 @@ public class TallerController {
 
     @GetMapping("/form")
     public String registro(Model modelo) {
-
         modelo.addAttribute("cliente", new Cliente());
         return "taller";
     }
 
+    @PostMapping("/crearProyecto")
     public String CrearProyecto(@ModelAttribute("proyecto") Proyecto proyecto, HttpSession httpSession) throws Exception {
         Usuario usuario = (Usuario) httpSession.getAttribute("usuario");
         proyecto.setEmpleado(empleadoService.buscarPorId(usuario.getId()));
-        System.out.println("Entro :");
         proyecto = proyectoService.crearProyecto(proyecto);
         return "redirect:/taller";
     }
