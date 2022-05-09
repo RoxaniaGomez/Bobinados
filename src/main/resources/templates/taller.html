@@ -70,8 +70,8 @@
                       calculos</button>
 
                     <!-- Modal Calcular -->
-                    <div class="modal fade" th:id="'idd'+${proyecto.id}" th:if="${proyecto.motorMonofasico !=null}" tabindex="-1"
-                      aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" th:id="'idd'+${proyecto.id}" th:if="${proyecto.motorMonofasico !=null}"
+                      tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content bg-dark">
                           <div class="modal-header">
@@ -119,37 +119,37 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
-                              
-                              <!--estoy trabajando aqui!!!-->
-                              <div th:href="@{/taller/ver}" th:if="${proyecto.motorMonofasico !=null}">
-                                 fabricante: <p th:text="${proyecto.motorMonofasico.fabricante}"></p>
-                                 Nacionalida: <p th:text="${proyecto.motorMonofasico.Nacionalidad}"></p> 
-                                  <p th:text="${proyecto.motorMonofasico.numDeMotor}"></p> 
-                                  <p th:text="${proyecto.motorMonofasico.modelo}"></p> 
-                                  <p th:text="${proyecto.motorMonofasico.regimenDeServicio}"></p> 
-                                  <p th:text="${proyecto.motorMonofasico.tipoDeAislacion}"></p> 
-                                  <p th:text="${proyecto.motorMonofasico.tipo}"></p> 
-                                  <p th:text="${proyecto.motorMonofasico.numeroDePolos}"></p> 
-                                  <p th:text="${proyecto.motorMonofasico.numeroDeRanuras}"></p> 
-                                  <p th:text="${proyecto.motorMonofasico.dInternoDEstator}"></p> 
-                                  <p th:text="${proyecto.motorMonofasico.dExternoDEstator}"></p> 
-                                  <p th:text="${proyecto.motorMonofasico.alturaDeCabeza}"></p> 
-                                  <p th:text="${proyecto.motorMonofasico.apilamientoDChapa}"></p> 
-                                  <p th:text="${proyecto.motorMonofasico.potenciaEnHP}"></p> 
-                                  <p th:text="${proyecto.motorMonofasico.corrienteEnAmp}"></p> 
-                                  <p th:text="${proyecto.motorMonofasico.tension}"></p> 
-                                  <p th:text="${proyecto.motorMonofasico.frecuenciaEnHZ}"></p> 
-                                  <p th:text="${proyecto.motorMonofasico.Notas}"></p> 
-                                  
-                                  
+
+                            <!--estoy trabajando aqui!!!-->
+                            <div th:href="@{/taller/ver}" th:if="${proyecto.motorMonofasico !=null}">
+                              <div class="container px-4">
+                                <p th:text="${proyecto.motorMonofasico.fabricante}">Fabricante:</p>
+                                Nacionalidad: <p th:text="${proyecto.motorMonofasico.Nacionalidad}"></p>
+                                Numero de motor: <p th:text="${proyecto.motorMonofasico.numDeMotor}"></p>
+                                Modelo: <p th:text="${proyecto.motorMonofasico.modelo}"></p>
+                                Regimen de servicio: <p th:text="${proyecto.motorMonofasico.regimenDeServicio}"></p>
+                                Tipo de aislaciom: <p th:text="${proyecto.motorMonofasico.tipoDeAislacion}"></p>
+                                Numero de polos: <p th:text="${proyecto.motorMonofasico.numeroDePolos}"></p>
+                                Numero de ranuras: <p th:text="${proyecto.motorMonofasico.numeroDeRanuras}"></p>
+                                Diamentro interno de estator: <p th:text="${proyecto.motorMonofasico.dInternoDEstator}"></p>
+                                Diamentro externo de estator: <p th:text="${proyecto.motorMonofasico.dExternoDEstator}"></p>
+                                Altura de cabeza: <p th:text="${proyecto.motorMonofasico.alturaDeCabeza}"></p>
+                                Apilamiento de chapa: <p th:text="${proyecto.motorMonofasico.apilamientoDChapa}"></p>
+                                Potencia hp: <p th:text="${proyecto.motorMonofasico.potenciaEnHP}"></p>
+                                Corriente: <p th:text="${proyecto.motorMonofasico.corrienteEnAmp}"></p>
+                                <div class="alert alert-light ">
+                                  Tension: <p th:text="${proyecto.motorMonofasico.tension}"></p>
+                                </div>
+                                Fabricante: <p th:text="${proyecto.motorMonofasico.frecuenciaEnHZ}"></p>
+                                <p th:text="${proyecto.motorMonofasico.Notas}"></p>
                               </div>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
                   </td>
 
                   <td>
@@ -232,13 +232,14 @@
                         required>
                       <input type="number" placeholder="Freciencia en hz" step=".001"
                         th:field="*{motorMonofasico.frecuenciaEnHZ}" required>
-                        <input type="number" placeholder="Diametro de alambre (opcional)" th:field="*{motorTrifasico.diametroAlambre}" step=".001">
+                      <input type="number" placeholder="Diametro de alambre (opcional)"
+                        th:field="*{motorTrifasico.diametroAlambre}" step=".001">
                       <input type="number" placeholder="Capacitor" th:field="*{motorMonofasico.capacitor}" required>
                       <div>
-                       
+
                         <br>
 
-                      <!--hacer el es polo-->
+                        <!--hacer el es polo-->
                       </div>
                       <input type="text" placeholder="Notas" th:field="*{motorMonofasico.notas}">
                       <button type="submit" class="btn btn-primary">Guardar datos</button>
@@ -262,25 +263,26 @@
                       <input type="text" placeholder="Regimen de Servicio"
                         th:field="*{motorTrifasico.regimenDeServicio}">
                       <input type="text" placeholder="Tipo de Aislacion" th:field="*{motorTrifasico.tipoDeAislacion}">
-                      <input type="number" placeholder="Numero De Polos* (2p)" th:field="*{motorTrifasico.numeroDePolos}"
-                        required>
+                      <input type="number" placeholder="Numero De Polos* (2p)"
+                        th:field="*{motorTrifasico.numeroDePolos}" required>
                       <input type="number" placeholder="Numero de Ranuras*" th:field="*{motorTrifasico.numeroDeRanuras}"
                         required>
                       <input type="number" placeholder="Diametro interno del estator*"
                         th:field="*{motorTrifasico.dInternoDEstator}" step=".001" required>
                       <input type="number" placeholder="Diametro externo del estator*"
                         th:field="*{motorTrifasico.dExternoDEstator}" step=".001" required>
-                      <input type="number" placeholder="Altura de cabeza*" th:field="*{motorTrifasico.alturaDeCabeza}" step=".001"
-                        required>
-                      <input type="number" placeholder="Apilamiento de chapa*" 
+                      <input type="number" placeholder="Altura de cabeza*" th:field="*{motorTrifasico.alturaDeCabeza}"
+                        step=".001" required>
+                      <input type="number" placeholder="Apilamiento de chapa*"
                         th:field="*{motorTrifasico.apilamientoDChapa}" step=".001" required>
-                      <input type="number" placeholder="Potencia en HP*" th:field="*{motorTrifasico.potenciaEnHP}" step=".001"
+                      <input type="number" placeholder="Potencia en HP*" th:field="*{motorTrifasico.potenciaEnHP}"
+                        step=".001" required>
+                      <input type="number" placeholder="Corriente en amp*" th:field="*{motorTrifasico.corrienteEnAmp}"
+                        step=".001" required>
+                      <input type="number" placeholder="Freciencia en hz" th:field="*{motorTrifasico.frecuenciaEnHZ}"
                         required>
-                      <input type="number" placeholder="Corriente en amp*" th:field="*{motorTrifasico.corrienteEnAmp}" step=".001"
-                        required>
-                      <input type="number" placeholder="Freciencia en hz" th:field="*{motorTrifasico.frecuenciaEnHZ}" 
-                        required>
-                        <input type="number" placeholder="Diametro de alambre (opcional)" th:field="*{motorTrifasico.diametroAlambre}" step=".001">
+                      <input type="number" placeholder="Diametro de alambre (opcional)"
+                        th:field="*{motorTrifasico.diametroAlambre}" step=".001">
                       <div>
                         <!--<label for="indoor" th:field="*{motorTrifasico.conexion}">
                           <input id="indoor" value="indoor" type="radio" name="indoor-outdoor" class="text-center">Triangulo
@@ -309,7 +311,6 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
   <script src="/js/caja.js"></script>
-  <script src="/js/index.js"></script>
   <script src="/js/script.js"></script>
 </body>
 

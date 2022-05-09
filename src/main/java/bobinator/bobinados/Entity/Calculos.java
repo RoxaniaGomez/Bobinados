@@ -1,22 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package bobinator.bobinados.Entity;
 
-import java.io.Serializable;
-import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import lombok.Data;
 
-/**
- *
- * @author groxa
- */
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 
 @Entity
@@ -24,8 +14,7 @@ import lombok.Data;
 public class Calculos{
     @Id
     private String id;
-    
-    
+
     private Double diametroDelAlmbreMM;
     private Double PesoDelAlambreKG;
     private Integer paso1;

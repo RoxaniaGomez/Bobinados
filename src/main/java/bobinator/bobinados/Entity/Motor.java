@@ -27,7 +27,6 @@ abstract public class Motor {
     private String regimenDeServicio;
 
     private String notas;
-    private TipoDeMotor tipo;
 
     private String tipoDeAislacion;
     private Integer numeroDePolos;
