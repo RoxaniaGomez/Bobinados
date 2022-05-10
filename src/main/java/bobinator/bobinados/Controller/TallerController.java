@@ -12,9 +12,11 @@ import bobinator.bobinados.Service.EmpleadoService;
 import bobinator.bobinados.Service.MonofasicoService;
 import bobinator.bobinados.Service.ProyectoService;
 import bobinator.bobinados.Service.TrifasicoServicio;
+import static java.util.Calendar.DATE;
+import java.util.Date;
 import java.util.List;
+import static javax.persistence.TemporalType.DATE;
 import javax.servlet.http.HttpSession;
-import javax.xml.ws.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +41,7 @@ public class TallerController {
     private MonofasicoService monofasicoService;
     @Autowired
     private TrifasicoServicio trifasicoService;
+    
     @Autowired
     private CalculoService calculoService;
     @Autowired
@@ -55,12 +58,14 @@ public class TallerController {
         modelo.addAttribute("calculo",calculo);
         Proyecto proyectoTrifasico = new Proyecto();
         proyectoTrifasico.setCliente(new Cliente());
+        
 
         proyectoTrifasico.setMotorTrifasico(new Trifasico());
         modelo.addAttribute("proyectoTrifasico", proyectoTrifasico);
 
         Proyecto proyectoMonofasico = new Proyecto();
         proyectoMonofasico.setCliente(new Cliente());
+        
         proyectoMonofasico.setMotorMonofasico(new Monofasico());
         
         modelo.addAttribute("proyectoMonofasico", proyectoMonofasico);
@@ -114,6 +119,18 @@ public class TallerController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+     @GetMapping("/presupuesto")
+    public String presupuesto(@RequestParam("id") String id,@RequestParam("fecha") Date fecha,@RequestParam("presupuesto") Double presupuesto) {
+        try {
+          proyectoService.calcularPresupuestoProyecto(id, fecha, presupuesto);
+             return "redirect:/taller";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/taller";
+            
+        }
+    }
+        
         
     @GetMapping("/ver")
     public String ver(@RequestParam("id") String id) {

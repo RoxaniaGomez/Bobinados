@@ -15,7 +15,7 @@ import org.springframework.data.repository.query.Param;
  *
  * @author groxa
  */
-public interface CalculosRepository   extends JpaRepository<Calculos,String>{
+public interface CalculosRepository extends JpaRepository<Calculos,String>{
      @Query("Select u from Calculos u where u.id = :pepe")
     public Calculos buscarMotorPorId(@Param("pepe") Integer id);
     

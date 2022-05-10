@@ -10,8 +10,6 @@ import bobinator.bobinados.Entity.Trifasico;
 import bobinator.bobinados.Repository.CalculosRepository;
 import static java.lang.Math.PI;
 import static java.lang.Math.sqrt;
-import java.util.ArrayList;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

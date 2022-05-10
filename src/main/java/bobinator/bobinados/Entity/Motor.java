@@ -1,6 +1,5 @@
 package bobinator.bobinados.Entity;
 
-import bobinator.bobinados.Enum.TipoDeMotor;
 import bobinator.bobinados.Enum.polo;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

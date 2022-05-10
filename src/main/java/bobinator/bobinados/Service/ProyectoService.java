@@ -7,11 +7,12 @@ package bobinator.bobinados.Service;
 
 import bobinator.bobinados.Entity.Calculos;
 import bobinator.bobinados.Entity.Cliente;
-import bobinator.bobinados.Entity.Empleado;
 import bobinator.bobinados.Entity.Monofasico;
 import bobinator.bobinados.Entity.Proyecto;
 import bobinator.bobinados.Entity.Trifasico;
+import bobinator.bobinados.Enum.Estado;
 import bobinator.bobinados.Repository.ProyectoRepository;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,7 @@ public class ProyectoService {
     private MonofasicoService monofasicoService;
     @Autowired
     private TrifasicoServicio trifasicoService;
+       
     @Autowired
     private ProyectoRepository proyectoRepo;
 
@@ -49,7 +51,7 @@ public class ProyectoService {
 
         }
         proyecto.setAlta(true);
-
+        proyecto.setEstado(Estado.EnRevision);
         return proyectoRepo.save(proyecto);
     }
 
@@ -105,6 +107,22 @@ public class ProyectoService {
                 edit.setCalculo(calculo);
                 proyectoRepo.save(edit);
             }
+
+            return edit.getCalculo();
+        } else {
+            throw new Error("No se encontro el proyecto");
+
+        }
+
+    }
+    public Calculos calcularPresupuestoProyecto(String id, Date fecha, Double presupuesto) {
+        Optional<Proyecto> respuesta = proyectoRepo.findById(id);
+        if (respuesta.isPresent()) {
+            Proyecto edit = respuesta.get();
+                edit.setPresupuesto(presupuesto);
+                edit.setFecha(fecha);
+                proyectoRepo.save(edit);
+            
 
             return edit.getCalculo();
         } else {
