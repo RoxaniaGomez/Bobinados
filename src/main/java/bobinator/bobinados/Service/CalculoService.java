@@ -19,6 +19,7 @@ public class CalculoService {
     private CalculosRepository calculoRepository;
     
     public Calculos resolver(Trifasico trifasico) {
+        
         Calculos calculo = new Calculos();
         calculo.setRanuraPorPoloPorFase((trifasico.getNumeroDeRanuras() / (trifasico.getNumeroDePolos() * 3)));
         if ((trifasico.getNumeroDeRanuras() / (trifasico.getNumeroDePolos() * 3)) % 2 == 0) {

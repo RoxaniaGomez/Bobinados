@@ -24,36 +24,34 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProyectoService {
 
-   @Autowired
-     private CalculoService calculoService;
-  @Autowired
-     private ClienteService clienteService;
-  @Autowired
-  private MonofasicoService monofasicoService;
-   @Autowired
-  private TrifasicoServicio trifasicoService;
-      @Autowired
+    @Autowired
+    private CalculoService calculoService;
+    @Autowired
+    private ClienteService clienteService;
+    @Autowired
+    private MonofasicoService monofasicoService;
+    @Autowired
+    private TrifasicoServicio trifasicoService;
+    @Autowired
     private ProyectoRepository proyectoRepo;
-      
+
     public Proyecto crearProyecto(Proyecto proyecto) throws Exception {
 
-            Cliente cliente = clienteService.registrarUsuario(proyecto.getCliente());
-            if(proyecto.getMotorMonofasico()!=null){
-             Monofasico mono = monofasicoService.CargarMotor(proyecto.getMotorMonofasico());
+        Cliente cliente = clienteService.registrarUsuario(proyecto.getCliente());
+        if (proyecto.getMotorMonofasico() != null) {
+            Monofasico mono = monofasicoService.CargarMotor(proyecto.getMotorMonofasico());
             proyecto.setMotorMonofasico(mono);
-          
-            }else{
-            
+
+        } else {
+
             Trifasico tri = trifasicoService.CargarMotor(proyecto.getMotorTrifasico());
             proyecto.setMotorTrifasico(tri);
-            
-            
+
         }
-      proyecto.setAlta(true);
+        proyecto.setAlta(true);
 
-    return proyectoRepo.save(proyecto);
+        return proyectoRepo.save(proyecto);
     }
-
 
     public void darBaja(String id) throws Error {
         Optional<Proyecto> respuesta = proyectoRepo.findById(id);
@@ -102,12 +100,18 @@ public class ProyectoService {
         Optional<Proyecto> respuesta = proyectoRepo.findById(id);
         if (respuesta.isPresent()) {
             Proyecto edit = respuesta.get();
-            return calculoService.resolver(edit.getMotorTrifasico());
+            if (edit.getCalculo() == null) {
+                Calculos calculo = calculoService.resolver(edit.getMotorTrifasico());
+                edit.setCalculo(calculo);
+                proyectoRepo.save(edit);
+            }
+
+            return edit.getCalculo();
         } else {
             throw new Error("No se encontro el proyecto");
 
         }
-        
+
     }
-    
+
 }
