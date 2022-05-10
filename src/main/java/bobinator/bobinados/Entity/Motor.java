@@ -1,6 +1,5 @@
 package bobinator.bobinados.Entity;
 
-import bobinator.bobinados.Enum.TipoDeMotor;
 import bobinator.bobinados.Enum.polo;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,13 +20,12 @@ abstract public class Motor {
     private String id;
 
     private String fabricante;
-    private String Nacionalidad;
+    private String nacionalidad;
     private String numDeMotor;
     private String modelo;
     private String regimenDeServicio;
 
     private String notas;
-    
 
     private String tipoDeAislacion;
     private Integer numeroDePolos;
