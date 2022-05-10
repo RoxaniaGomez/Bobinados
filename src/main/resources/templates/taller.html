@@ -44,6 +44,7 @@
                                         <th>Alta-baja</th>
                                         <th>Calcular</th>
                                         <th>Ver</th>
+
                                         <th>Eliminar</th>
 
                                     </tr>
@@ -119,9 +120,9 @@
 
                                                             <!--estoy trabajando aqui!!!-->
                                                             <div th:href="@{/taller/ver}" th:if="${proyecto.motorMonofasico !=null}">
-                                                                fabricante: <p th:text="${proyecto.motorMonofasico.fabricante}"></p>
-                                                                Nacionalidad: <p th:text="${proyecto.motorMonofasico.Nacionalidad}"></p> 
-                                                                <p th:text="${proyecto.motorMonofasico.numDeMotor}"></p> 
+                                                                <p th:text="'fabricante: '+${proyecto.motorMonofasico.fabricante}"></p></strong>
+                                                                <p th:text="'Nacionalidad: '+${proyecto.motorMonofasico.Nacionalidad}"></p> 
+                                                                <p th:text="'numero de motor: '+${proyecto.motorMonofasico.numDeMotor}"></p> 
                                                                 <p th:text="${proyecto.motorMonofasico.modelo}"></p> 
                                                                 <p th:text="${proyecto.motorMonofasico.regimenDeServicio}"></p> 
                                                                 <p th:text="${proyecto.motorMonofasico.tipoDeAislacion}"></p> 
@@ -141,8 +142,8 @@
 
                                                             </div>
                                                             <div th:href="@{/taller/ver}" th:if="${proyecto.motorTrifasico !=null}">
-                                                                fabricante: <p th:text="${proyecto.motorTrifasico.fabricante}"></p>
-                                                                Nacionalidad: <p th:text="${proyecto.motorTrifasico.Nacionalidad}"></p> 
+                                                                <p th:text="${proyecto.motorTrifasico.fabricante}"></p>
+                                                                <p th:text="${proyecto.motorTrifasico.Nacionalidad}"></p> 
                                                                 <p th:text="${proyecto.motorTrifasico.numDeMotor}"></p> 
                                                                 <p th:text="${proyecto.motorTrifasico.modelo}"></p> 
                                                                 <p th:text="${proyecto.motorTrifasico.regimenDeServicio}"></p> 
@@ -231,6 +232,11 @@
                                                 <input type="text" placeholder="Regimen de Servicio"
                                                        th:field="*{motorMonofasico.regimenDeServicio}">
                                                 <input type="text" placeholder="Tipo de Aislacion" th:field="*{motorMonofasico.tipoDeAislacion}">
+                                                <div>
+                                                    <select th:field="*{motorMonofasico.polo}">
+                                                        <option th:each=" item : ${T(bobinator.bobinados.Enum.polo).values()}" th:value="${item}" th:text="${item}" ></option>
+                                                    </select>
+                                                </div>
                                                 <input type="number" placeholder="Numero De Polos* " th:field="*{motorMonofasico.numeroDePolos}"
                                                        required>
                                                 <input type="number" placeholder="Numero de Ranuras* "
@@ -327,23 +333,29 @@
         </div>
         <script>
             const realizarCalculo= (id) => {
-            const modal = document.getElementById(`idd${id}`)
+            const modalBody = document.getElementById(`bodyCalculo${id}`)
 
-            fetch(`http://localhost:8080/taller/calcular?id=${id}`).then(r => r.json)
-            .then(calculo => console.log("calculo", calculo))
-            /*    <p th:text="${calculo.diametroDeAlambreEnMM}"></p>
-            <p th:text="${calculo.PesoDeAlambreEnKG}"></p>
-            <p th:text="${calculo.paso1}"></p>
-            <p th:text="${calculo.paso2}"></p>
-            <p th:text="${calculo.paso3}"></p>
-            <p th:text="${calculo.grupos}"></p>
-            <p th:text="${calculo.ranuraPorPoloPorFase}"></p>
-            <p th:text="${calculo.numeroDeBobinaPorGrupo}"></p>
-            <p th:text="${calculo.amplitudDeGrupo}"></p>
-            <p th:text="${calculo.pasoPolar}"></p>
-            <p th:text="${calculo.flujoMagnetico}"></p>
-            <p th:text="${calculo.vueltasPorBobinas}"></p>
-            <p th:text="${calculo.seccionDelAlambre}"></p>*/
+            fetch(`http://localhost:8080/taller/calcular?id=${id}`).then(r => r.json())
+            .then(calculo => {
+            console.log("calculo", calculo)
+            modalBody.innerHTML = `
+            <p>${calculo.diametroDeAlambreEnMM}</p>
+            <p >${calculo.PesoDeAlambreEnKG}</p>
+            <p >${calculo.paso1}</p>
+            <p >${calculo.paso2}</p>
+            <p >${calculo.paso3}</p>
+            <p >${calculo.grupos}</p>
+            <p >${calculo.ranuraPorPoloPorFase}</p>
+            <p >${calculo.numeroDeBobinaPorGrupo}</p>
+            <p >${calculo.amplitudDeGrupo}</p>
+            <p >${calculo.pasoPolar}</p>
+            <p >${calculo.flujoMagnetico}</p>
+            <p >${calculo.vueltasPorBobinas}</p>
+            <p >${calculo.seccionDelAlambre}</p>
+            `
+
+
+            })
             }
 
 
