@@ -49,9 +49,9 @@ public class TallerController {
 
         List<Proyecto> proyectos = proyectoService.listarProyectos();
         modelo.addAttribute("lista", proyectos);
-        
+
         Calculos calculo = new Calculos();
-        modelo.addAttribute("calculo",calculo);
+        modelo.addAttribute("calculo", calculo);
         Proyecto proyectoTrifasico = new Proyecto();
         proyectoTrifasico.setCliente(new Cliente());
 
@@ -61,7 +61,7 @@ public class TallerController {
         Proyecto proyectoMonofasico = new Proyecto();
         proyectoMonofasico.setCliente(new Cliente());
         proyectoMonofasico.setMotorMonofasico(new Monofasico());
-        
+
         modelo.addAttribute("proyectoMonofasico", proyectoMonofasico);
 
         return "taller";
@@ -74,7 +74,7 @@ public class TallerController {
     }
 
     @PostMapping("/crearProyecto")
-    public String CrearProyecto(@ModelAttribute("proyecto") Proyecto proyecto, HttpSession httpSession  ) throws Exception {
+    public String CrearProyecto(@ModelAttribute("proyecto") Proyecto proyecto, HttpSession httpSession) throws Exception {
         Usuario usuario = (Usuario) httpSession.getAttribute("usuario");
         proyecto.setEmpleado(empleadoService.buscarPorId(usuario.getId()));
         proyecto = proyectoService.crearProyecto(proyecto);
@@ -102,18 +102,18 @@ public class TallerController {
             return "redirect:/taller";
         }
     }
-   
+
     @GetMapping("/calcular")
     public ResponseEntity<Calculos> calcular(@RequestParam("id") String id) {
         try {
-          Calculos calculo = proyectoService.calcularProyecto(id);
-            return new ResponseEntity<>(calculo,HttpStatus.OK);
+            Calculos calculo = proyectoService.calcularProyecto(id);
+            return new ResponseEntity<>(calculo, HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
-        
+
     @GetMapping("/ver")
     public String ver(@RequestParam("id") String id) {
         try {
@@ -124,6 +124,7 @@ public class TallerController {
             return "redirect:/taller";
         }
     }
+
     @GetMapping("/delete")
     public String delete(@RequestParam("id") String id) {
         try {
@@ -134,4 +135,5 @@ public class TallerController {
             return "redirect:/taller";
         }
 
-}}
+    }
+}

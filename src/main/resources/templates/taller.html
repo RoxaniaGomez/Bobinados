@@ -124,7 +124,6 @@
                                                             aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-
                                                         <!--estoy trabajando aqui!!!-->
                                                         <div th:href="@{/taller/ver}"
                                                             th:if="${proyecto.motorMonofasico !=null}">
@@ -158,8 +157,6 @@
                                                             <p th:text="${proyecto.motorMonofasico.tension}"></p>
                                                             <p th:text="${proyecto.motorMonofasico.frecuenciaEnHZ}"></p>
                                                             <p th:text="${proyecto.motorMonofasico.Notas}"></p>
-
-
                                                         </div>
                                                         <div th:href="@{/taller/ver}"
                                                             th:if="${proyecto.motorTrifasico !=null}">
@@ -170,7 +167,6 @@
                                                             <p th:text="${proyecto.motorTrifasico.regimenDeServicio}">
                                                             </p>
                                                             <p th:text="${proyecto.motorTrifasico.tipoDeAislacion}"></p>
-
                                                             <p th:text="${proyecto.motorTrifasico.numeroDePolos}"></p>
                                                             <p th:text="${proyecto.motorTrifasico.numeroDeRanuras}"></p>
                                                             <p th:text="${proyecto.motorTrifasico.dInternoDEstator}">
@@ -185,7 +181,6 @@
                                                             <p th:text="${proyecto.motorTrifasico.tension}"></p>
                                                             <p th:text="${proyecto.motorTrifasico.frecuenciaEnHZ}"></p>
                                                             <p th:text="${proyecto.motorTrifasico.Notas}"></p>
-
 
                                                         </div>
                                                     </div>
@@ -434,8 +429,6 @@
             <p >${calculo.vueltasPorBobinas}</p>
             <p >${calculo.seccionDelAlambre}</p>
             `
-
-
                 })
         }
 
