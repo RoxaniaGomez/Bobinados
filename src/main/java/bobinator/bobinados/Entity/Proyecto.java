@@ -25,6 +25,8 @@ public class Proyecto {
     private Trifasico motorTrifasico;
     @OneToOne(cascade = CascadeType.ALL)
     private Monofasico motorMonofasico;
+    @OneToOne
+    private Calculos calculo;
     private boolean alta;
    
 

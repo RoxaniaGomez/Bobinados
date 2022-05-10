@@ -5,6 +5,7 @@
  */
 package bobinator.bobinados.Entity;
 
+import bobinator.bobinados.Enum.Estado;
 import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,6 +27,6 @@ public class PresupuestoCliente {
     private String id;
     
     private double presupuesto;
-    private boolean estado;
+    private Estado estado;
     private LocalDate fecha;
 }
