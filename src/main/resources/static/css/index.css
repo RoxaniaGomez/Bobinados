@@ -1,11 +1,20 @@
+body {
+  background-image: url(/img/motor2.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+}
+
 .caja-grande {
-    margin-top: 12%;
+    margin-top: 8%;
   }
-  
-  .caja-next{
-    margin-top: -160px;
-  }
-  
-  .caja-prev{
-    margin-top: -160px;
-  }
+
+.img-card {
+  height: 350px;
+  width: 550px;
+}
+
+.img-card2 {
+  height: 350px;
+  width: 540px;
+}
