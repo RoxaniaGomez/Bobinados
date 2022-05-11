@@ -16,16 +16,11 @@
   <nav class="navbar navbar-light bg-dark ">
     <div class="container-fluid">
       <a class="navbar-brand " href="/cliente">
-        <button type="button" class="btn btn-dark">Bobinados</button>
+        <button type="button" class="btn btn-dark">Taller</button>
       </a>
-
       <div class="btn-group" role="group" aria-label="Basic outlined example">
-        <form action="">
-          <button type="button" class="btn btn-outline-light">Mis motores</button>
-        </form>
-        <form action=""> <a href="/editar">
+         <a href="/editar">
             <button type="button" class="btn btn-outline-light">Editar perfil</button> </a>
-        </form>
         <form th:action="@{/logout}" method="POST">
           <button type="submit" class="btn btn-outline-light">Cerrar Sesión</button>
         </form>
