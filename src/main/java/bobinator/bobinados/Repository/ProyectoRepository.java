@@ -24,6 +24,8 @@ public interface ProyectoRepository extends JpaRepository<Proyecto,String> {
      @Query("Select u from Proyecto u where u.cliente.id = :idCliente")
     public List<Proyecto> buscarProyectoPorIdCliente(@Param("idCliente") String idCliente);
     
+    @Query("Select u from Proyecto u where u.cliente.id = :idCliente")
+    public Proyecto buscarUnProyectoPorIdCliente(@Param("idCliente") String idCliente);
     
     
    
