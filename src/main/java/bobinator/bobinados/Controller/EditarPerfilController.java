@@ -34,13 +34,13 @@ public class EditarPerfilController {
     }
     @PreAuthorize("hasAnyRole('ROLE_USUARIO')")
     @PostMapping("/editarCliente")
-   public String editarControler(@RequestParam("password") String password,@RequestParam("telefono") String telefono, HttpSession httpSession, RedirectAttributes redirectAttributes) {
+   public String editarControler(@RequestParam("name") String name,@RequestParam("password") String password,@RequestParam("telefono") String telefono, HttpSession httpSession, RedirectAttributes redirectAttributes) {
          Usuario usuario = (Usuario) httpSession.getAttribute("usuario");
         try {
            
-         proyectoService.modificarCliente(usuario.getId(),password,telefono);
-         
-        return "editar";
+         proyectoService.modificarCliente(usuario.getId(),name,password,telefono);
+          redirectAttributes.addFlashAttribute("error", "cambios guardados con exito");
+           return "redirect:/editar";
         } catch (Exception e) {
             if (usuario == null) {
                 redirectAttributes.addFlashAttribute("error", "Debe volver a logearse");
