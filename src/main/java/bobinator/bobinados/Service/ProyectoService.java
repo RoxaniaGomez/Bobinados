@@ -172,14 +172,17 @@ public class ProyectoService {
     }
 }
 
-    public void modificarCliente(String id, String password, String telefono) {
+    public void modificarCliente(String id,String name, String password, String telefono) {
          Proyecto respuesta =  proyectoRepo.buscarUnProyectoPorIdCliente(id);
+            if(respuesta.getId() != null){
+             respuesta.getCliente().setName(name);
          BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
              respuesta.getCliente().setPassword(encoder.encode(password));
              respuesta.getCliente().setTelefono(telefono);
                      
                      
             proyectoRepo.save(respuesta); 
+            }
       }
 
 }
