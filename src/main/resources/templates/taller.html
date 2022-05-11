@@ -190,6 +190,7 @@
                                                                     th:text="'Notas: '+${proyecto.motorMonofasico.Notas}">
                                                                 </p>
                                                             </div>
+                                                            
                                                         </div>
                                                         <div th:href="@{/taller/ver} " class="row"
                                                             th:if="${proyecto.motorTrifasico !=null}">
@@ -220,8 +221,8 @@
                                                                     th:text="'Numero de ranuras: '+${proyecto.motorTrifasico.numeroDeRanuras}">
                                                                 </p>
 
-
                                                             </div>
+                                                            
                                                             <div class="col">
                                                                 <p
                                                                     th:text="'Diametro int del estator: '+${proyecto.motorTrifasico.dInternoDEstator}">
@@ -286,7 +287,6 @@
                                                     <form th:action="@{/taller/presupuesto}" method="POST">
                                                         <div class="modal-body">
 
-
                                                             <input hidden name="id" th:value="${proyecto.id}" />
 
                                                             <div class="text-center">
@@ -322,7 +322,7 @@
                                                 Retirado
                                             </button>
                                         </a>
-                                        <button th:disabled="${proyecto.estado.texto == 'Entregado'}" type="button"
+                                        <button th:if="${proyecto.estado.texto == 'Entregado'}" type="button"
                                             class="btn btn-primary">
                                             Entregado
                                         </button>
