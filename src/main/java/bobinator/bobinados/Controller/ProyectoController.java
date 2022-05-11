@@ -26,7 +26,15 @@ public class ProyectoController {
     @GetMapping("/aprobar")
     public String aprobar(@RequestParam("id")String id) {
         
-        // proyectoService.aprobar(id)
+        proyectoService.aprobar(id);
+        
+        return "redirect:/cliente";
+        
+    }
+     @GetMapping("/rechazar")
+    public String rechazar(@RequestParam("id")String id) {
+        
+        proyectoService.rechazar(id);
         
         return "redirect:/cliente";
         

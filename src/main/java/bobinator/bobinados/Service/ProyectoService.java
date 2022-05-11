@@ -13,9 +13,11 @@ import bobinator.bobinados.Entity.Trifasico;
 import bobinator.bobinados.Enum.Estado;
 import bobinator.bobinados.Repository.ProyectoRepository;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -73,14 +75,6 @@ public class ProyectoService {
     public List<Proyecto> listarProyectosPorIdCliente(String idCliente) {
         return proyectoRepo.buscarProyectoPorIdCliente(idCliente);
     }
-    
-    /*
-    aprobar(String id)
-    {
-    Proyecto proyecto = melotraigoconelid
-    proyecto.setEstado(Estado.Aprobar)
-    }    
-    */
 
     public Proyecto buscarPorId(String id) {
         return proyectoRepo.getById(id);
@@ -154,4 +148,38 @@ public class ProyectoService {
     }
 
 }
+/*
+    aprobar(String id)
+    {
+    Proyecto proyecto = melotraigoconelid
+    proyecto.setEstado(Estado.Aprobar)
+    }    
+    */
+    public void aprobar(String id) {
+       Optional<Proyecto> respuesta = proyectoRepo.findById(id);
+        if (respuesta.isPresent()) {
+            Proyecto edit = respuesta.get();
+             edit.setEstado(Estado.APROBADO);
+            proyectoRepo.save(edit);
+    
+    }
+    }
+    public void rechazar(String id) {
+       Optional<Proyecto> respuesta = proyectoRepo.findById(id);
+        if (respuesta.isPresent()) {
+            Proyecto edit = respuesta.get();
+             edit.setEstado(Estado.RECHAZADO);
+            proyectoRepo.save(edit); 
+    }
+}
+
+    public void modificarCliente(String id, String password, String telefono) {
+         Proyecto respuesta =  proyectoRepo.buscarUnProyectoPorIdCliente(id);
+         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+             respuesta.getCliente().setPassword(encoder.encode(password));
+             respuesta.getCliente().setTelefono(telefono);
+                     
+                     
+            proyectoRepo.save(respuesta); 
+      }
 }
