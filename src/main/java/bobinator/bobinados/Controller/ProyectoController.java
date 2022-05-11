@@ -39,6 +39,22 @@ public class ProyectoController {
         return "redirect:/cliente";
         
     }
+    @GetMapping("/listo")
+    public String listo(@RequestParam("id")String id) {
+        
+        proyectoService.listo(id);
+        
+        return "redirect:/taller";
+        
+    }
+    @GetMapping("/retirado")
+    public String retirado(@RequestParam("id")String id) {
+        
+        proyectoService.retirado(id);
+        
+        return "redirect:/taller";
+        
+    }
     
     
 }
