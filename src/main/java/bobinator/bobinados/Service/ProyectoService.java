@@ -185,4 +185,21 @@ public class ProyectoService {
             }
       }
 
+    public void listo(String id) {
+        Optional<Proyecto> respuesta = proyectoRepo.findById(id);
+        if (respuesta.isPresent()) {
+            Proyecto edit = respuesta.get();
+             edit.setEstado(Estado.LISTO_PARA_RETIRAR);
+            proyectoRepo.save(edit); 
+    }
+    }
+
+    public void retirado(String id) {
+        Optional<Proyecto> respuesta = proyectoRepo.findById(id);
+        if (respuesta.isPresent()) {
+            Proyecto edit = respuesta.get();
+             edit.setEstado(Estado.ENTREGADO);
+            proyectoRepo.save(edit); 
+        }
+    }
 }
