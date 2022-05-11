@@ -7,11 +7,12 @@ package bobinator.bobinados.Service;
 
 import bobinator.bobinados.Entity.Calculos;
 import bobinator.bobinados.Entity.Cliente;
-import bobinator.bobinados.Entity.Empleado;
 import bobinator.bobinados.Entity.Monofasico;
 import bobinator.bobinados.Entity.Proyecto;
 import bobinator.bobinados.Entity.Trifasico;
+import bobinator.bobinados.Enum.Estado;
 import bobinator.bobinados.Repository.ProyectoRepository;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,7 @@ public class ProyectoService {
     private MonofasicoService monofasicoService;
     @Autowired
     private TrifasicoServicio trifasicoService;
+       
     @Autowired
     private ProyectoRepository proyectoRepo;
 
@@ -49,7 +51,7 @@ public class ProyectoService {
 
         }
         proyecto.setAlta(true);
-
+        proyecto.setEstado(Estado.EN_REVISION);
         return proyectoRepo.save(proyecto);
     }
 
@@ -67,6 +69,9 @@ public class ProyectoService {
 
     public List<Proyecto> listarProyectos() {
         return proyectoRepo.findAll();
+    }
+    public List<Proyecto> listarProyectosPorIdCliente(String idCliente) {
+        return proyectoRepo.buscarProyectoPorIdCliente(idCliente);
     }
 
     public Proyecto buscarPorId(String id) {
@@ -113,5 +118,56 @@ public class ProyectoService {
         }
 
     }
+    public void calcularPresupuestoProyecto(String id, Date fecha, Double presupuesto) {
+        Optional<Proyecto> respuesta = proyectoRepo.findById(id);
+        if (respuesta.isPresent()) {
+            Proyecto edit = respuesta.get();
+                edit.setPresupuesto(presupuesto);
+                edit.setFecha(fecha);
+                edit.setEstado(Estado.PRESUPUESTADO);
+                proyectoRepo.save(edit);
+            
 
+            
+        } else {
+            throw new Error("No se encontro el proyecto");
+
+        }
+
+    }
+
+    public void modificarEstado(String id, Estado estado) {
+        Optional<Proyecto> respuesta = proyectoRepo.findById(id);
+        if (respuesta.isPresent()) {
+            Proyecto edit = respuesta.get();
+             edit.setEstado(estado);
+            proyectoRepo.save(edit);
+    
+    }
+
+}
+/*
+    aprobar(String id)
+    {
+    Proyecto proyecto = melotraigoconelid
+    proyecto.setEstado(Estado.Aprobar)
+    }    
+    */
+    public void aprobar(String id) {
+       Optional<Proyecto> respuesta = proyectoRepo.findById(id);
+        if (respuesta.isPresent()) {
+            Proyecto edit = respuesta.get();
+             edit.setEstado(Estado.APROBADO);
+            proyectoRepo.save(edit);
+    
+    }
+    }
+    public void rechazar(String id) {
+       Optional<Proyecto> respuesta = proyectoRepo.findById(id);
+        if (respuesta.isPresent()) {
+            Proyecto edit = respuesta.get();
+             edit.setEstado(Estado.RECHAZADO);
+            proyectoRepo.save(edit); 
+    }
+}
 }

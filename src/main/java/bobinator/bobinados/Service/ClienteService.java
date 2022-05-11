@@ -22,35 +22,19 @@ public class ClienteService{
     private ClienteRepository clienteRepositorio;
 
     public Cliente registrarUsuario(Cliente cliente) throws Exception {
-//	 cliente = clienteRepositorio.findByUsername(cliente.getUsername());
 
-//	if (cliente.getUsername().isEmpty()) {
-//	    throw new Exception("El username no puede estar vacio");
-////	}
-	
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 cliente.setPassword(encoder.encode("1234"));
 
 cliente.setRol(Rol.USUARIO);
 
-        cliente=clienteRepositorio.save(cliente);
-//      
+        cliente=clienteRepositorio.save(cliente);    
 	return cliente;
-        
-        
-//	}
-//	if (password.isEmpty()) {
-//	    throw new Exception("La contraseña no puede estar vacia");
-//	}
-//	if (password2.isEmpty()) {
-//	    throw new Exception("La contraseña no puede estar vacia");
-//	}
-//	if (!password.equals(password2)) {
-//	    throw new Exception("Las contraseñas ingresadas deben ser iguales");
-//	}
-	
-
+ 
     }  
  
-  
+  public Cliente buscarPorId(String id) {
+        return clienteRepositorio.getById(id);
+    }
+
 }

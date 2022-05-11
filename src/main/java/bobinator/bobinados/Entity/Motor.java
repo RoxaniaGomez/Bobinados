@@ -20,12 +20,13 @@ abstract public class Motor {
     private String id;
 
     private String fabricante;
-    private String nacionalidad;
+    private String Nacionalidad;
     private String numDeMotor;
     private String modelo;
     private String regimenDeServicio;
 
     private String notas;
+    
 
     private String tipoDeAislacion;
     private Integer numeroDePolos;

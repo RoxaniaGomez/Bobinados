@@ -12,7 +12,11 @@ import bobinator.bobinados.Service.EmpleadoService;
 import bobinator.bobinados.Service.MonofasicoService;
 import bobinator.bobinados.Service.ProyectoService;
 import bobinator.bobinados.Service.TrifasicoServicio;
+import java.text.SimpleDateFormat;
+
+
 import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,6 +42,7 @@ public class TallerController {
     private MonofasicoService monofasicoService;
     @Autowired
     private TrifasicoServicio trifasicoService;
+    
     @Autowired
     private CalculoService calculoService;
     @Autowired
@@ -54,12 +59,14 @@ public class TallerController {
         modelo.addAttribute("calculo",calculo);
         Proyecto proyectoTrifasico = new Proyecto();
         proyectoTrifasico.setCliente(new Cliente());
+        
 
         proyectoTrifasico.setMotorTrifasico(new Trifasico());
         modelo.addAttribute("proyectoTrifasico", proyectoTrifasico);
 
         Proyecto proyectoMonofasico = new Proyecto();
         proyectoMonofasico.setCliente(new Cliente());
+        
         proyectoMonofasico.setMotorMonofasico(new Monofasico());
         
         modelo.addAttribute("proyectoMonofasico", proyectoMonofasico);
@@ -113,6 +120,19 @@ public class TallerController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+     @PostMapping("/presupuesto")
+    public String presupuesto(@RequestParam("id") String id,@RequestParam("fecha") String fecha,@RequestParam("presupuesto") Double presupuesto) {
+        try {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+          proyectoService.calcularPresupuestoProyecto(id, format.parse(fecha), presupuesto);
+             return "redirect:/taller";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/taller";
+            
+        }
+    }
+        
         
     @GetMapping("/ver")
     public String ver(@RequestParam("id") String id) {
