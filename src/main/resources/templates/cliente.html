@@ -16,7 +16,7 @@
   <nav class="navbar navbar-light bg-dark ">
     <div class="container-fluid">
       <a class="navbar-brand " href="/cliente">
-        <button type="button" class="btn btn-dark">Taller</button>
+        <button type="button" class="btn btn-dark">Bobinados</button>
       </a>
       <div class="btn-group" role="group" aria-label="Basic outlined example">
          <a href="/editar">
@@ -27,8 +27,7 @@
       </div>
     </div>
   </nav>
-     <!--<p th:if="${error !=null}" class="error" th:text="${error}">
-      <p th:if="${cambios !=null}" class="error" th:text="${cambios}">-->
+
   <table class="table table-success table-striped">
     <thead>
       <tr>
@@ -37,19 +36,18 @@
         <th scope="col">Presupuesto</th>
         <th scope="col">Estado</th>
         <th scope="col">Acciones</th>
-        
       </tr>
     </thead>
     <tbody>
 
       <tr th:href="@{/cliente}" th:each="proyecto: ${proyectos}">
-       <td th:text="${(proyecto.empleado != null && proyecto.empleado.name != null) ? proyecto.empleado.name : 'no tiene  nombre'}"></td>
        <td th:text="${(proyecto.empleado != null && proyecto.empleado.nameTaller != null) ? proyecto.empleado.nameTaller : 'no tiene nombre'}"></td>
-        
+        <td th:text="${(proyecto.empleado != null && proyecto.empleado.name != null) ? proyecto.empleado.name : 'no tiene  nombre'}"></td>
         <td th:text="${proyecto.presupuesto}"></td>
         <td th:text="${proyecto.estado.texto}"></td>
         <td >
-           
+            <span th:text="${proyecto.estado.texto != 'En revision'}"></span>
+            <span th:text="${proyecto.estado.texto != 'Presupuestado'}"></span>
 
             <a th:href="@{/proyecto/aprobar(id=${proyecto.id})}">
                 <button th:disabled="${proyecto.estado.texto != 'En revision' && proyecto.estado.texto != 'Presupuestado' }" class="bg-succes">Aprobar</button>
