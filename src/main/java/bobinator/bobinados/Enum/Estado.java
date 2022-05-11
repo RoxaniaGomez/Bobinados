@@ -10,5 +10,5 @@ package bobinator.bobinados.Enum;
  * @author groxa
  */
 public enum Estado {
-    EnRevision, PRESUPUESTADO,APROBADO,ListoParaRetirar,ENTREGADO;
+    EnRevision, PRESUPUESTADO,APROBADO,DESAPROBAR,ListoParaRetirar,ENTREGADO;
 }

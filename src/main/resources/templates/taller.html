@@ -41,7 +41,7 @@
                             <thead class="text-white">
                                 <tr>
                                     <th>Dueño</th>
-                                    <th>Codigo de motor</th>
+                                    <th>Numero de motor</th>
                                     <th>Alta-baja</th>
                                     <th>Calcular</th>
                                     <th>Ver</th>
@@ -53,11 +53,19 @@
 
                             <tbody class="text-white">
                                 <tr th:href="@{/taller}" th:each="proyecto: ${lista}">
-                                    <td th:text="${proyecto.cliente.username}"></td>
+
+                                    <td th:text="${proyecto.cliente.username}">
+                                    </td>
+                                    <!--dueño-->
+
                                     <td th:if="${proyecto.motorMonofasico != null}"
-                                        th:text="${proyecto.motorMonofasico.numDeMotor}" class="text-center"></td>
+                                        th:text="${proyecto.motorMonofasico.numDeMotor}" class="text-center">
+                                    </td>
+                                    <!--numero de motor-->
                                     <td th:if="${proyecto.motorTrifasico != null && proyecto.motorTrifasico.numDeMotor != null}"
-                                        th:text="${proyecto.motorTrifasico.numDeMotor}" class="text-center"></td>
+                                        th:text="${proyecto.motorTrifasico.numDeMotor}" class="text-center">
+                                    </td>
+                                    <!--numero de motor-->
 
                                     <td>
                                         <a th:href="@{/taller/baja(id = ${proyecto.id})}" th:if="${proyecto.alta}">
@@ -70,7 +78,8 @@
                                         <button type="button" class="btn btn-success" data-bs-toggle="modal"
                                             th:data-bs-target="${'#idd'+proyecto.id}"
                                             th:if="${proyecto.motorMonofasico ==null}"
-                                            th:attr="onclick=|realizarCalculo('${proyecto.id}')|">Ver calculos</button>
+                                            th:attr="onclick=|realizarCalculo('${proyecto.id}')|">Ver calculos
+                                        </button>
 
                                         <!-- Modal Calcular -->
                                         <div class="modal fade" th:id="'idd'+${proyecto.id}"
@@ -108,6 +117,7 @@
                                             </div>
                                         </div>
                                     </td>
+                                    <!--Ver Calculo fin-->
 
                                     <td>
                                         <button type="button" class="btn btn-success" data-bs-toggle="modal"
@@ -124,7 +134,8 @@
                                                             aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <!--estoy trabajando aqui!!!-->
+
+
                                                         <div th:href="@{/taller/ver}"
                                                             th:if="${proyecto.motorMonofasico !=null}">
                                                             <p
@@ -157,6 +168,8 @@
                                                             <p th:text="${proyecto.motorMonofasico.tension}"></p>
                                                             <p th:text="${proyecto.motorMonofasico.frecuenciaEnHZ}"></p>
                                                             <p th:text="${proyecto.motorMonofasico.Notas}"></p>
+
+
                                                         </div>
                                                         <div th:href="@{/taller/ver}"
                                                             th:if="${proyecto.motorTrifasico !=null}">
@@ -167,6 +180,7 @@
                                                             <p th:text="${proyecto.motorTrifasico.regimenDeServicio}">
                                                             </p>
                                                             <p th:text="${proyecto.motorTrifasico.tipoDeAislacion}"></p>
+
                                                             <p th:text="${proyecto.motorTrifasico.numeroDePolos}"></p>
                                                             <p th:text="${proyecto.motorTrifasico.numeroDeRanuras}"></p>
                                                             <p th:text="${proyecto.motorTrifasico.dInternoDEstator}">
@@ -182,6 +196,7 @@
                                                             <p th:text="${proyecto.motorTrifasico.frecuenciaEnHZ}"></p>
                                                             <p th:text="${proyecto.motorTrifasico.Notas}"></p>
 
+
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
@@ -192,6 +207,7 @@
                                             </div>
                                         </div>
                                     </td>
+                                    <!--fin de ver datos ingresados -->
 
                                     <td>
                                         <!-- Button trigger modal -->
@@ -201,26 +217,41 @@
                                         </button>
 
                                         <!-- Modal -->
+                                        <!-- TRABAJO AQUI!!!!!!!!!!!!!! -->
                                         <div class="modal fade" id="exampleModal" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content bg-dark">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Carga presupuesto</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel">Carga presupuesto
+                                                        </h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                     </div>
-                                                    <div class="modal-body">
-                                                        <div class="text-center">
-                                                        <p>Ingrese el presupuesto</p>
-                                                        <input type="number" class="bg-light">
-                                                    </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">Cerrar</button>
-                                                        <button type="button" class="btn btn-primary">Guardar cambios</button>
-                                                    </div>
+                                                    <form th:action="@{/taller/presupuesto}" method="POST">
+                                                        <div class="modal-body">
+
+
+                                                            <input hidden name="id" th:value="${proyecto.id}" />
+
+                                                            <div class="text-center">
+
+                                                                <p>Ingrese el presupuesto</p>
+                                                                <input type="number" name="presupuesto" Step="0.001"
+                                                                    class="bg-light" th:value="${proyecto.presupuesto}">
+                                                                <input type="date" name="fecha" class="bg-light"
+                                                                    th:value="${proyecto.fecha}">
+
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Cerrar</button>
+                                                            <button type="SUBMIT" class="btn btn-primary">Guardar
+                                                                cambios</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -330,7 +361,7 @@
 
                                                 <!--hacer el es polo-->
                                             </div>
-                                            <input type="text" placeholder="Notas" th:field="*{motorMonofasico.notas}">
+                                            <input type="text" placeholder="notas" th:field="*{motorMonofasico.notas}">
                                             <button type="submit" class="btn btn-primary">Guardar datos</button>
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Cerrar</button>
@@ -393,7 +424,7 @@
                                                 </select>
 
                                             </div>
-                                            <input type="text" placeholder="Notas" th:field="*{motorTrifasico.notas}">
+                                            <input type="text" placeholder="notas" th:field="*{motorTrifasico.notas}">
                                             <button type="submit" class="btn btn-primary">Guardar datos</button>
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Cerrar</button>
@@ -431,8 +462,6 @@
             `
                 })
         }
-
-
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

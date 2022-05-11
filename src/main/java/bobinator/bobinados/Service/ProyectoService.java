@@ -1,27 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package bobinator.bobinados.Service;
 
 import bobinator.bobinados.Entity.Calculos;
 import bobinator.bobinados.Entity.Cliente;
-import bobinator.bobinados.Entity.Empleado;
 import bobinator.bobinados.Entity.Monofasico;
 import bobinator.bobinados.Entity.Proyecto;
 import bobinator.bobinados.Entity.Trifasico;
+import bobinator.bobinados.Enum.Estado;
 import bobinator.bobinados.Repository.ProyectoRepository;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-/**
- *
- * @author groxa
- */
-@Service
+
+
 public class ProyectoService {
 
     @Autowired
@@ -32,6 +25,7 @@ public class ProyectoService {
     private MonofasicoService monofasicoService;
     @Autowired
     private TrifasicoServicio trifasicoService;
+       
     @Autowired
     private ProyectoRepository proyectoRepo;
 
@@ -49,7 +43,7 @@ public class ProyectoService {
 
         }
         proyecto.setAlta(true);
-
+        proyecto.setEstado(Estado.EnRevision);
         return proyectoRepo.save(proyecto);
     }
 
@@ -107,6 +101,23 @@ public class ProyectoService {
             }
 
             return edit.getCalculo();
+        } else {
+            throw new Error("No se encontro el proyecto");
+
+        }
+
+    }
+    public void calcularPresupuestoProyecto(String id, Date fecha, Double presupuesto) {
+        Optional<Proyecto> respuesta = proyectoRepo.findById(id);
+        if (respuesta.isPresent()) {
+            Proyecto edit = respuesta.get();
+                edit.setPresupuesto(presupuesto);
+                edit.setFecha(fecha);
+                edit.setEstado(Estado.PRESUPUESTADO);
+                proyectoRepo.save(edit);
+            
+
+            
         } else {
             throw new Error("No se encontro el proyecto");
 
