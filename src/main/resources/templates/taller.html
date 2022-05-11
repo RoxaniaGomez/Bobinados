@@ -513,9 +513,9 @@
         const realizarCalculo = (id) => {
             const modalBody = document.getElementById(`bodyCalculo${id}`)
             fetch(`http://localhost:8080/taller/calcular?id=${id}`).then(r => r.json())
-            .then(calculo => {
-             console.log("calculo", calculo)
-             modalBody.innerHTML = `
+                .then(calculo => {
+                    console.log("calculo", calculo)
+                    modalBody.innerHTML = `
             <p>diametro del alambre: ${calculo.diametroDelAlmbreMM} mm</p>
             <p>cantidad de alambre: ${calculo.PesoDelAlambreKG} kg</p>
             <p>pasos: ${calculo.paso1} - ${calculo.paso2} - ${calculo.paso3}</p>

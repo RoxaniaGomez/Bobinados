@@ -34,7 +34,7 @@ public class ProyectoService {
     private MonofasicoService monofasicoService;
     @Autowired
     private TrifasicoServicio trifasicoService;
-       
+
     @Autowired
     private ProyectoRepository proyectoRepo;
 
@@ -71,6 +71,7 @@ public class ProyectoService {
     public List<Proyecto> listarProyectos() {
         return proyectoRepo.findAll();
     }
+
     public List<Proyecto> listarProyectosPorIdCliente(String idCliente) {
         return proyectoRepo.buscarProyectoPorIdCliente(idCliente);
     }
@@ -119,17 +120,16 @@ public class ProyectoService {
         }
 
     }
+
     public void calcularPresupuestoProyecto(String id, Date fecha, Double presupuesto) {
         Optional<Proyecto> respuesta = proyectoRepo.findById(id);
         if (respuesta.isPresent()) {
             Proyecto edit = respuesta.get();
-                edit.setPresupuesto(presupuesto);
-                edit.setFecha(fecha);
-                edit.setEstado(Estado.PRESUPUESTADO);
-                proyectoRepo.save(edit);
-            
+            edit.setPresupuesto(presupuesto);
+            edit.setFecha(fecha);
+            edit.setEstado(Estado.PRESUPUESTADO);
+            proyectoRepo.save(edit);
 
-            
         } else {
             throw new Error("No se encontro el proyecto");
 
@@ -141,65 +141,66 @@ public class ProyectoService {
         Optional<Proyecto> respuesta = proyectoRepo.findById(id);
         if (respuesta.isPresent()) {
             Proyecto edit = respuesta.get();
-             edit.setEstado(estado);
+            edit.setEstado(estado);
             proyectoRepo.save(edit);
-    
+
+        }
+
     }
 
-}
-/*
+    /*
     aprobar(String id)
     {
     Proyecto proyecto = melotraigoconelid
     proyecto.setEstado(Estado.Aprobar)
     }    
-    */
+     */
     public void aprobar(String id) {
-       Optional<Proyecto> respuesta = proyectoRepo.findById(id);
+        Optional<Proyecto> respuesta = proyectoRepo.findById(id);
         if (respuesta.isPresent()) {
             Proyecto edit = respuesta.get();
-             edit.setEstado(Estado.APROBADO);
+            edit.setEstado(Estado.APROBADO);
             proyectoRepo.save(edit);
-    
+
+        }
     }
-    }
+
     public void rechazar(String id) {
-       Optional<Proyecto> respuesta = proyectoRepo.findById(id);
+        Optional<Proyecto> respuesta = proyectoRepo.findById(id);
         if (respuesta.isPresent()) {
             Proyecto edit = respuesta.get();
-             edit.setEstado(Estado.RECHAZADO);
-            proyectoRepo.save(edit); 
+            edit.setEstado(Estado.RECHAZADO);
+            proyectoRepo.save(edit);
+        }
     }
-}
 
-    public void modificarCliente(String id,String name, String password, String telefono) {
-         Proyecto respuesta =  proyectoRepo.buscarUnProyectoPorIdCliente(id);
-            if(respuesta.getId() != null){
-             respuesta.getCliente().setName(name);
-         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-             respuesta.getCliente().setPassword(encoder.encode(password));
-             respuesta.getCliente().setTelefono(telefono);
-                     
-                     
-            proyectoRepo.save(respuesta); 
-            }
-      }
+    public void modificarCliente(String id, String name, String password, String telefono) {
+        Proyecto respuesta = proyectoRepo.buscarUnProyectoPorIdCliente(id);
+        if (respuesta.getId() != null) {
+            respuesta.getCliente().setName(name);
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            respuesta.getCliente().setPassword(encoder.encode(password));
+            respuesta.getCliente().setTelefono(telefono);
+
+            proyectoRepo.save(respuesta);
+        }
+    }
 
     public void listo(String id) {
         Optional<Proyecto> respuesta = proyectoRepo.findById(id);
         if (respuesta.isPresent()) {
             Proyecto edit = respuesta.get();
-             edit.setEstado(Estado.LISTO_PARA_RETIRAR);
-            proyectoRepo.save(edit); 
-    }
+            edit.setEstado(Estado.LISTO_PARA_RETIRAR);
+            proyectoRepo.save(edit);
+        }
     }
 
     public void retirado(String id) {
         Optional<Proyecto> respuesta = proyectoRepo.findById(id);
         if (respuesta.isPresent()) {
             Proyecto edit = respuesta.get();
-             edit.setEstado(Estado.ENTREGADO);
-            proyectoRepo.save(edit); 
+            edit.setEstado(Estado.ENTREGADO);
+            proyectoRepo.save(edit);
         }
     }
 }
