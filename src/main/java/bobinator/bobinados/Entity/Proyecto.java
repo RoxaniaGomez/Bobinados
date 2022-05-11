@@ -1,7 +1,6 @@
 package bobinator.bobinados.Entity;
 
 import bobinator.bobinados.Enum.Estado;
-import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;

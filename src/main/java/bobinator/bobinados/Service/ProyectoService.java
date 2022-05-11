@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -170,4 +171,15 @@ public class ProyectoService {
             proyectoRepo.save(edit); 
     }
 }
+
+    public void modificarCliente(String id, String password, String telefono) {
+         Proyecto respuesta =  proyectoRepo.buscarUnProyectoPorIdCliente(id);
+         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+             respuesta.getCliente().setPassword(encoder.encode(password));
+             respuesta.getCliente().setTelefono(telefono);
+                     
+                     
+            proyectoRepo.save(respuesta); 
+      }
+
 }
