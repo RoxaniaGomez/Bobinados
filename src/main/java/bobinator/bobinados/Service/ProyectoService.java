@@ -51,7 +51,7 @@ public class ProyectoService {
 
         }
         proyecto.setAlta(true);
-        proyecto.setEstado(Estado.EnRevision);
+        proyecto.setEstado(Estado.EN_REVISION);
         return proyectoRepo.save(proyecto);
     }
 
@@ -70,6 +70,17 @@ public class ProyectoService {
     public List<Proyecto> listarProyectos() {
         return proyectoRepo.findAll();
     }
+    public List<Proyecto> listarProyectosPorIdCliente(String idCliente) {
+        return proyectoRepo.buscarProyectoPorIdCliente(idCliente);
+    }
+    
+    /*
+    aprobar(String id)
+    {
+    Proyecto proyecto = melotraigoconelid
+    proyecto.setEstado(Estado.Aprobar)
+    }    
+    */
 
     public Proyecto buscarPorId(String id) {
         return proyectoRepo.getById(id);
@@ -115,16 +126,17 @@ public class ProyectoService {
         }
 
     }
-    public Calculos calcularPresupuestoProyecto(String id, Date fecha, Double presupuesto) {
+    public void calcularPresupuestoProyecto(String id, Date fecha, Double presupuesto) {
         Optional<Proyecto> respuesta = proyectoRepo.findById(id);
         if (respuesta.isPresent()) {
             Proyecto edit = respuesta.get();
                 edit.setPresupuesto(presupuesto);
                 edit.setFecha(fecha);
+                edit.setEstado(Estado.PRESUPUESTADO);
                 proyectoRepo.save(edit);
             
 
-            return edit.getCalculo();
+            
         } else {
             throw new Error("No se encontro el proyecto");
 
@@ -132,4 +144,14 @@ public class ProyectoService {
 
     }
 
+    public void modificarEstado(String id, Estado estado) {
+        Optional<Proyecto> respuesta = proyectoRepo.findById(id);
+        if (respuesta.isPresent()) {
+            Proyecto edit = respuesta.get();
+             edit.setEstado(estado);
+            proyectoRepo.save(edit);
+    
+    }
+
+}
 }

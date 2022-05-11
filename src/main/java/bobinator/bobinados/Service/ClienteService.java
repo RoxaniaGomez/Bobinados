@@ -33,5 +33,8 @@ cliente.setRol(Rol.USUARIO);
  
     }  
  
-  
+  public Cliente buscarPorId(String id) {
+        return clienteRepositorio.getById(id);
+    }
+
 }
