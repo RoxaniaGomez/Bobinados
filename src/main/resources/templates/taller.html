@@ -179,10 +179,7 @@
                                                                 </p>
                                                                 <p
                                                                     th:text="'Corriente: '+${proyecto.motorMonofasico.corrienteEnAmp}">
-                                                                </p>
-                                                                <p
-                                                                    th:text="'Tension: '+${proyecto.motorMonofasico.tension}">
-                                                                </p>
+                                                                </p>                                                           
                                                                 <p
                                                                     th:text="'Frecuencia: '+${proyecto.motorMonofasico.frecuenciaEnHZ}">
                                                                 </p>
@@ -482,9 +479,9 @@
                                                 th:field="*{motorTrifasico.potenciaEnHP}" step=".001" required>
                                             <input type="number" placeholder="Corriente en amp*"
                                                 th:field="*{motorTrifasico.corrienteEnAmp}" step=".001" required>
-                                            <input type="number" placeholder="Freciencia en hz"
-                                                th:field="*{motorTrifasico.frecuenciaEnHZ}" required>
-                                            <input type="number" placeholder="diametro del alambre"
+                                            <input type="number" placeholder="Frecuencia en hz"
+                                                th:field="*{motorTrifasico.frecuenciaEnHZ}" step=".001" required>
+                                            <input type="number" placeholder="Diametro del alambre"
                                                 th:field="*{motorTrifasico.diametroAlambre}" step=".001" required>
                                             <div>
                                                 <select th:field="*{motorTrifasico.conexion}">
@@ -494,7 +491,7 @@
                                                 </select>
 
                                             </div>
-                                            <input type="text" placeholder="notas" th:field="*{motorTrifasico.notas}">
+                                            <input type="text" placeholder="Notas" th:field="*{motorTrifasico.notas}">
                                             <button type="submit" class="btn btn-primary">Guardar datos</button>
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Cerrar</button>
@@ -523,8 +520,6 @@
             <p>numero de bobinas por grupo: ${calculo.numeroDeBobinaPorGrupo}</p>
             <p>ranuras por fase: ${calculo.ranuraPorPoloPorFase}</p>
             <p>amplitud de grupo: ${calculo.amplitudDeGrupo}</p>
-            <p>paso polar: ${calculo.pasoPolar}</p>
-            <p>flujo magnetico: ${calculo.flujoMagnetico}</p>
             <p>vueltas por bobinas: ${calculo.vueltasPorBobinas}</p>
             <p>seccion del alambre: ${calculo.seccionDelAlambre}</p>
             `

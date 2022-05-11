@@ -36,15 +36,7 @@ public class TallerController {
 
     @Autowired
     private ProyectoService proyectoService;
-    @Autowired
-    private ClienteService clienteService;
-    @Autowired
-    private MonofasicoService monofasicoService;
-    @Autowired
-    private TrifasicoServicio trifasicoService;
-    
-    @Autowired
-    private CalculoService calculoService;
+ 
     @Autowired
     private EmpleadoService empleadoService;
 

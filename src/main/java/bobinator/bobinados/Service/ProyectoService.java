@@ -123,8 +123,9 @@ public class ProyectoService {
 
     public void calcularPresupuestoProyecto(String id, Date fecha, Double presupuesto) {
         Optional<Proyecto> respuesta = proyectoRepo.findById(id);
+        Proyecto edit=null;
         if (respuesta.isPresent()) {
-            Proyecto edit = respuesta.get();
+            edit = respuesta.get();
             edit.setPresupuesto(presupuesto);
             edit.setFecha(fecha);
             edit.setEstado(Estado.PRESUPUESTADO);
