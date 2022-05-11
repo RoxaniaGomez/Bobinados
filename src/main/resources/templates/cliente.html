@@ -39,22 +39,33 @@
         <th scope="col">Taller</th>
         <th scope="col">Nombre empleado</th>
         <th scope="col">Presupuesto</th>
-        <th scope="col">Aprobar</th>
-        <th scope="col">Rechazar</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Acciones</th>
+        
       </tr>
     </thead>
     <tbody>
-      <tr th:href="@{/cliente}" th:each="proyecto: ${proyecto}">
-        <th scope="row">1</th>
-        <td>Jacob</td>
+
+      <tr th:href="@{/cliente}" th:each="proyecto: ${proyectos}">
+       <td th:text="${(proyecto.empleado != null && proyecto.empleado.nameTaller != null) ? proyecto.empleado.nameTaller : 'no tiene nombre'}"></td>
+        <td th:text="${(proyecto.empleado != null && proyecto.empleado.name != null) ? proyecto.empleado.name : 'no tiene  nombre'}"></td>
         <td th:text="${proyecto.presupuesto}"></td>
-        <td>
-          <select th:field="*{proyecto.Estado}">
-            <option th:each=" item : ${T(bobinator.bobinados.Enum.Estado).values()}" th:value="${item}"
-              th:text="${item}"></option>
-          </select>
+        <td th:text="${proyecto.estado.texto}"></td>
+        <td >
+            <span th:text="${proyecto.estado.texto != 'En revision'}"></span>
+            <span th:text="${proyecto.estado.texto != 'Presupuestado'}"></span>
+
+            <a th:href="@{/proyecto/aprobar(id=${proyecto.id})}">
+                <button th:disabled="${proyecto.estado.texto != 'En revision' && proyecto.estado.texto != 'Presupuestado' }" class="bg-succes">Aprobar</button>
+            </a>
+            <a th:href="@{/proyecto/rechazar(id=${proyecto.id})}">
+                <button th:disabled="${proyecto.estado.texto != 'En revision' && proyecto.estado.texto != 'Presupuestado' }" class="bg-danger">Rechazar</button>
+            </a>
         </td>
+        
+          
       </tr>
+
     </tbody>
   </table>
 

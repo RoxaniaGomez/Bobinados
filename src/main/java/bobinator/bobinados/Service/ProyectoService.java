@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package bobinator.bobinados.Service;
 
 import bobinator.bobinados.Entity.Calculos;
@@ -12,9 +16,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-
-
+/**
+ *
+ * @author groxa
+ */
+@Service
 public class ProyectoService {
 
     @Autowired
@@ -43,7 +51,7 @@ public class ProyectoService {
 
         }
         proyecto.setAlta(true);
-        proyecto.setEstado(Estado.EnRevision);
+        proyecto.setEstado(Estado.EN_REVISION);
         return proyectoRepo.save(proyecto);
     }
 
@@ -61,6 +69,9 @@ public class ProyectoService {
 
     public List<Proyecto> listarProyectos() {
         return proyectoRepo.findAll();
+    }
+    public List<Proyecto> listarProyectosPorIdCliente(String idCliente) {
+        return proyectoRepo.buscarProyectoPorIdCliente(idCliente);
     }
 
     public Proyecto buscarPorId(String id) {
@@ -125,4 +136,38 @@ public class ProyectoService {
 
     }
 
+    public void modificarEstado(String id, Estado estado) {
+        Optional<Proyecto> respuesta = proyectoRepo.findById(id);
+        if (respuesta.isPresent()) {
+            Proyecto edit = respuesta.get();
+             edit.setEstado(estado);
+            proyectoRepo.save(edit);
+    
+    }
+
+}
+/*
+    aprobar(String id)
+    {
+    Proyecto proyecto = melotraigoconelid
+    proyecto.setEstado(Estado.Aprobar)
+    }    
+    */
+    public void aprobar(String id) {
+       Optional<Proyecto> respuesta = proyectoRepo.findById(id);
+        if (respuesta.isPresent()) {
+            Proyecto edit = respuesta.get();
+             edit.setEstado(Estado.APROBADO);
+            proyectoRepo.save(edit);
+    
+    }
+    }
+    public void rechazar(String id) {
+       Optional<Proyecto> respuesta = proyectoRepo.findById(id);
+        if (respuesta.isPresent()) {
+            Proyecto edit = respuesta.get();
+             edit.setEstado(Estado.RECHAZADO);
+            proyectoRepo.save(edit); 
+    }
+}
 }

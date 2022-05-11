@@ -35,7 +35,7 @@ public class Proyecto {
     private Monofasico motorMonofasico;
     @OneToOne
     private Calculos calculo;
-   
+    
     private Double presupuesto;
     @Enumerated(EnumType.STRING)
     private Estado estado;

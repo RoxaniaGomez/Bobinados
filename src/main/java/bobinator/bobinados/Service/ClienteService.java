@@ -17,23 +17,23 @@ import org.springframework.stereotype.Service;
  * @author groxa
  */
 @Service
-public class ClienteService {
-
+public class ClienteService{
     @Autowired
     private ClienteRepository clienteRepositorio;
 
     public Cliente registrarUsuario(Cliente cliente) throws Exception {
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        cliente.setPassword(encoder.encode("1234"));
+cliente.setPassword(encoder.encode("1234"));
 
-        cliente.setRol(Rol.USUARIO);
-        cliente = clienteRepositorio.save(cliente);
-        return cliente;
+cliente.setRol(Rol.USUARIO);
 
-    }
-
-    public Cliente buscarPorId(String id) {
+        cliente=clienteRepositorio.save(cliente);    
+	return cliente;
+ 
+    }  
+ 
+  public Cliente buscarPorId(String id) {
         return clienteRepositorio.getById(id);
     }
 

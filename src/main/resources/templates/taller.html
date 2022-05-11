@@ -1,434 +1,426 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/taller.css">
-    <title>Taller</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/taller.css">
+        <title>Taller</title>
+    </head>
 
-<body class="min-vh-100">
-    <nav class="navbar navbar-light bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand " href="taller">
-                <button type="button" class="btn btn-dark">Bobinados</button>
-            </a>
-            <div class="btn-group" role="group" aria-label="Basic outlined example">
-                <button type="button" class="btn btn-outline-light">Calculos</button>
-                <form th:action="@{/logout}" method="POST">
-                    <button type="submit" class="btn btn-outline-light">Cerrar Sesión</button>
-                </form>
+    <body class="min-vh-100">
+        <nav class="navbar navbar-light bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand " href="taller">
+                    <button type="button" class="btn btn-dark">Bobinados</button>
+                </a>
+                <div class="btn-group" role="group" aria-label="Basic outlined example">
+                    <button type="button" class="btn btn-outline-light">Calculos</button>
+                    <form th:action="@{/logout}" method="POST">
+                        <button type="submit" class="btn btn-outline-light">Cerrar Sesión</button>
+                    </form>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-    <div class="container-fluid bg-black d-flex justify-content-center min-vh-100">
-        <div class="p-5 my-3 min-width-20">
-            <div class="card text-white bg-secondary p-3  h-100 width-100">
-                <div class="card-header text-center">Ingresar proyecto</div>
-                <div class="card-body">
-                    <div class="d-grid gap-2">
-                        <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#miModal"
-                            type="button">Crear nuevo
-                            proyecto </button>
+        <div class="container-fluid bg-black d-flex justify-content-center min-vh-100">
+            <div class="p-5 my-3 min-width-20">
+                <div class="card text-white bg-secondary p-3  h-100 width-100">
+                    <div class="card-header text-center">Ingresar proyecto</div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#miModal"
+                                    type="button">Crear nuevo
+                                proyecto </button>
 
-                        <table class="table caption-top ">
-                            <thead class="text-white">
-                                <tr>
-                                    <th>Dueño</th>
-                                    <th>Numero de motor</th>
-                                    <th>Alta-baja</th>
-                                    <th>Calcular</th>
-                                    <th>Ver</th>
-                                    <th>Presupuesto</th>
-                                    <th>Eliminar</th>
+                            <table class="table caption-top ">
+                                <thead class="text-white">
+                                    <tr>
+                                        <th>Dueño</th>
+                                        <th>Numero de motor</th>
+                                        <th>Alta-baja</th>
+                                        <th>Calcular</th>
+                                        <th>Ver</th>
+                                        <th>Presupuesto</th>
+                                        <th>Eliminar</th>
 
-                                </tr>
-                            </thead>
+                                    </tr>
+                                </thead>
 
-                            <tbody class="text-white">
-                                <tr th:href="@{/taller}" th:each="proyecto: ${lista}">
+                                <tbody class="text-white">
+                                    <tr th:href="@{/taller}" th:each="proyecto: ${lista}">
 
-                                    <td th:text="${proyecto.cliente.username}">
-                                    </td>
-                                    <!--dueño-->
+                                        <td th:text="${proyecto.cliente.username}">
+                                        </td> <!--dueño-->
 
-                                    <td th:if="${proyecto.motorMonofasico != null}"
-                                        th:text="${proyecto.motorMonofasico.numDeMotor}" class="text-center">
-                                    </td>
-                                    <!--numero de motor-->
-                                    <td th:if="${proyecto.motorTrifasico != null && proyecto.motorTrifasico.numDeMotor != null}"
-                                        th:text="${proyecto.motorTrifasico.numDeMotor}" class="text-center">
-                                    </td>
-                                    <!--numero de motor-->
+                                        <td th:if="${proyecto.motorMonofasico != null}"
+                                            th:text="${proyecto.motorMonofasico.numDeMotor}" class="text-center">
+                                        </td><!--numero de motor-->
+                                        <td th:if="${proyecto.motorTrifasico != null && proyecto.motorTrifasico.numDeMotor != null}"
+                                            th:text="${proyecto.motorTrifasico.numDeMotor}" class="text-center">
+                                        </td><!--numero de motor-->
 
-                                    <td>
-                                        <a th:href="@{/taller/baja(id = ${proyecto.id})}" th:if="${proyecto.alta}">
-                                            <button type="button" class="btn btn-danger w-5"> Baja</button></a>
-                                        <a th:href="@{/taller/alta(id = ${proyecto.id})}" th:if="${!proyecto.alta}">
-                                            <button type="button" class="btn btn-success">Alta</button></a>
-                                    </td>
+                                        <td>
+                                            <a th:href="@{/taller/baja(id = ${proyecto.id})}" th:if="${proyecto.alta}">
+                                                <button type="button" class="btn btn-danger w-5"> Baja</button></a>
+                                            <a th:href="@{/taller/alta(id = ${proyecto.id})}" th:if="${!proyecto.alta}">
+                                                <button type="button" class="btn btn-success">Alta</button></a>
+                                        </td>
 
-                                    <td>
-                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                            th:data-bs-target="${'#idd'+proyecto.id}"
-                                            th:if="${proyecto.motorMonofasico ==null}"
-                                            th:attr="onclick=|realizarCalculo('${proyecto.id}')|">Ver calculos
-                                        </button>
+                                        <td>
+                                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                                    th:data-bs-target="${'#idd'+proyecto.id}"
+                                                    th:if="${proyecto.motorMonofasico ==null}"
+                                                    th:attr="onclick=|realizarCalculo('${proyecto.id}')|">Ver calculos
+                                            </button>
 
-                                        <!-- Modal Calcular -->
-                                        <div class="modal fade" th:id="'idd'+${proyecto.id}"
-                                            th:if="${proyecto.motorMonofasico ==null}" tabindex="-1"
-                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content bg-dark">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title text-light" id="exampleModalLabel">Estado
-                                                            de calculos</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="p-5 my-3 min-width-20">
-                                                            <div
-                                                                class="card text-white bg-secondary p-3 mb-3 h-100 width-100">
-                                                                <div class="card-header text-center">Resultados</div>
-                                                                <div>
-                                                                    <!-- <img src="/img/bobinado.jpg" alt=""> -->
-                                                                </div>
-                                                                <hr>
-                                                                <div th:id="'bodyCalculo'+${proyecto.id}">
-
-
-                                                                </div>
-                                                            </div>
+                                            <!-- Modal Calcular -->
+                                            <div class="modal fade" th:id="'idd'+${proyecto.id}"
+                                                 th:if="${proyecto.motorMonofasico ==null}" tabindex="-1"
+                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content bg-dark">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title text-light" id="exampleModalLabel">Estado
+                                                                de calculos</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                    aria-label="Close"></button>
                                                         </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">Cerrar</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <!--Ver Calculo fin-->
-
-                                    <td>
-                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                            th:data-bs-target="${'#id'+proyecto.id}">Ver</button>
-                                        <!-- Modal Ver -->
-                                        <div class="modal fade" th:id="'id'+${proyecto.id}" tabindex="-1"
-                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content bg-dark">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title text-light" id="exampleModalLabel">Estado
-                                                            del motor</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-
-
-                                                        <div th:href="@{/taller/ver}"
-                                                            th:if="${proyecto.motorMonofasico !=null}">
-                                                            <p
-                                                                th:text="'fabricante: '+${proyecto.motorMonofasico.fabricante}">
-                                                            </p></strong>
-                                                            <p
-                                                                th:text="'Nacionalidad: '+${proyecto.motorMonofasico.Nacionalidad}">
-                                                            </p>
-                                                            <p
-                                                                th:text="'numero de motor: '+${proyecto.motorMonofasico.numDeMotor}">
-                                                            </p>
-                                                            <p th:text="${proyecto.motorMonofasico.modelo}"></p>
-                                                            <p th:text="${proyecto.motorMonofasico.regimenDeServicio}">
-                                                            </p>
-                                                            <p th:text="${proyecto.motorMonofasico.tipoDeAislacion}">
-                                                            </p>
-
-                                                            <p th:text="${proyecto.motorMonofasico.numeroDePolos}"></p>
-                                                            <p th:text="${proyecto.motorMonofasico.numeroDeRanuras}">
-                                                            </p>
-                                                            <p th:text="${proyecto.motorMonofasico.dInternoDEstator}">
-                                                            </p>
-                                                            <p th:text="${proyecto.motorMonofasico.dExternoDEstator}">
-                                                            </p>
-                                                            <p th:text="${proyecto.motorMonofasico.alturaDeCabeza}"></p>
-                                                            <p th:text="${proyecto.motorMonofasico.apilamientoDChapa}">
-                                                            </p>
-                                                            <p th:text="${proyecto.motorMonofasico.potenciaEnHP}"></p>
-                                                            <p th:text="${proyecto.motorMonofasico.corrienteEnAmp}"></p>
-                                                            <p th:text="${proyecto.motorMonofasico.tension}"></p>
-                                                            <p th:text="${proyecto.motorMonofasico.frecuenciaEnHZ}"></p>
-                                                            <p th:text="${proyecto.motorMonofasico.Notas}"></p>
-
-
-                                                        </div>
-                                                        <div th:href="@{/taller/ver}"
-                                                            th:if="${proyecto.motorTrifasico !=null}">
-                                                            <p th:text="${proyecto.motorTrifasico.fabricante}"></p>
-                                                            <p th:text="${proyecto.motorTrifasico.Nacionalidad}"></p>
-                                                            <p th:text="${proyecto.motorTrifasico.numDeMotor}"></p>
-                                                            <p th:text="${proyecto.motorTrifasico.modelo}"></p>
-                                                            <p th:text="${proyecto.motorTrifasico.regimenDeServicio}">
-                                                            </p>
-                                                            <p th:text="${proyecto.motorTrifasico.tipoDeAislacion}"></p>
-
-                                                            <p th:text="${proyecto.motorTrifasico.numeroDePolos}"></p>
-                                                            <p th:text="${proyecto.motorTrifasico.numeroDeRanuras}"></p>
-                                                            <p th:text="${proyecto.motorTrifasico.dInternoDEstator}">
-                                                            </p>
-                                                            <p th:text="${proyecto.motorTrifasico.dExternoDEstator}">
-                                                            </p>
-                                                            <p th:text="${proyecto.motorTrifasico.alturaDeCabeza}"></p>
-                                                            <p th:text="${proyecto.motorTrifasico.apilamientoDChapa}">
-                                                            </p>
-                                                            <p th:text="${proyecto.motorTrifasico.potenciaEnHP}"></p>
-                                                            <p th:text="${proyecto.motorTrifasico.corrienteEnAmp}"></p>
-                                                            <p th:text="${proyecto.motorTrifasico.tension}"></p>
-                                                            <p th:text="${proyecto.motorTrifasico.frecuenciaEnHZ}"></p>
-                                                            <p th:text="${proyecto.motorTrifasico.Notas}"></p>
-
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">Cerrar</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <!--fin de ver datos ingresados -->
-
-                                    <td>
-                                        <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal">
-                                            Presupuesto
-                                        </button>
-
-                                        <!-- Modal -->
-                                        <!-- TRABAJO AQUI!!!!!!!!!!!!!! -->
-                                        <div class="modal fade" id="exampleModal" tabindex="-1"
-                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content bg-dark">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Carga presupuesto
-                                                        </h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                    </div>
-                                                    <form th:action="@{/taller/presupuesto}" method="POST">
                                                         <div class="modal-body">
+                                                            <div class="p-5 my-3 min-width-20">
+                                                                <div
+                                                                    class="card text-white bg-secondary p-3 mb-3 h-100 width-100">
+                                                                    <div class="card-header text-center">Resultados</div>
+                                                                    <div>
+                                                                        <!-- <img src="/img/bobinado.jpg" alt=""> -->
+                                                                    </div>
+                                                                    <hr>
+                                                                    <div th:id="'bodyCalculo'+${proyecto.id}">
 
 
-                                                            <input hidden name="id" th:value="${proyecto.id}" />
-
-                                                            <div class="text-center">
-
-                                                                <p>Ingrese el presupuesto</p>
-                                                                <input type="number" name="presupuesto" Step="0.001"
-                                                                    class="bg-light" th:value="${proyecto.presupuesto}">
-                                                                <input type="date" name="fecha" class="bg-light"
-                                                                    th:value="${proyecto.fecha}">
-
+                                                                    </div>
+                                                                </div>
                                                             </div>
-
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">Cerrar</button>
-                                                            <button type="SUBMIT" class="btn btn-primary">Guardar
-                                                                cambios</button>
+                                                                    data-bs-dismiss="modal">Cerrar</button>
                                                         </div>
-                                                    </form>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </td>
+                                        </td><!--Ver Calculo fin-->
 
-                                    <td>
-                                        <a th:href="@{/taller/delete(id = ${proyecto.id})}">
-                                            <button type="button" class="btn btn-danger">Eliminar</button>
-                                        </a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                        <td>
+                                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                                    th:data-bs-target="${'#id'+proyecto.id}">Ver</button>
+                                            <!-- Modal Ver -->
+                                            <div class="modal fade" th:id="'id'+${proyecto.id}" tabindex="-1"
+                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content bg-dark">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title text-light" id="exampleModalLabel">Estado
+                                                                del motor</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                    aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+
+
+                                                            <div th:href="@{/taller/ver}"
+                                                                 th:if="${proyecto.motorMonofasico !=null}">
+                                                                <p
+                                                                    th:text="'fabricante: '+${proyecto.motorMonofasico.fabricante}">
+                                                                </p></strong>
+                                                                <p
+                                                                    th:text="'Nacionalidad: '+${proyecto.motorMonofasico.Nacionalidad}">
+                                                                </p>
+                                                                <p
+                                                                    th:text="'numero de motor: '+${proyecto.motorMonofasico.numDeMotor}">
+                                                                </p>
+                                                                <p th:text="${proyecto.motorMonofasico.modelo}"></p>
+                                                                <p th:text="${proyecto.motorMonofasico.regimenDeServicio}">
+                                                                </p>
+                                                                <p th:text="${proyecto.motorMonofasico.tipoDeAislacion}">
+                                                                </p>
+
+                                                                <p th:text="${proyecto.motorMonofasico.numeroDePolos}"></p>
+                                                                <p th:text="${proyecto.motorMonofasico.numeroDeRanuras}">
+                                                                </p>
+                                                                <p th:text="${proyecto.motorMonofasico.dInternoDEstator}">
+                                                                </p>
+                                                                <p th:text="${proyecto.motorMonofasico.dExternoDEstator}">
+                                                                </p>
+                                                                <p th:text="${proyecto.motorMonofasico.alturaDeCabeza}"></p>
+                                                                <p th:text="${proyecto.motorMonofasico.apilamientoDChapa}">
+                                                                </p>
+                                                                <p th:text="${proyecto.motorMonofasico.potenciaEnHP}"></p>
+                                                                <p th:text="${proyecto.motorMonofasico.corrienteEnAmp}"></p>
+                                                                <p th:text="${proyecto.motorMonofasico.tension}"></p>
+                                                                <p th:text="${proyecto.motorMonofasico.frecuenciaEnHZ}"></p>
+                                                                <p th:text="${proyecto.motorMonofasico.Notas}"></p>
+
+
+                                                            </div>
+                                                            <div th:href="@{/taller/ver}"
+                                                                 th:if="${proyecto.motorTrifasico !=null}">
+                                                                <p th:text="${proyecto.motorTrifasico.fabricante}"></p>
+                                                                <p th:text="${proyecto.motorTrifasico.Nacionalidad}"></p>
+                                                                <p th:text="${proyecto.motorTrifasico.numDeMotor}"></p>
+                                                                <p th:text="${proyecto.motorTrifasico.modelo}"></p>
+                                                                <p th:text="${proyecto.motorTrifasico.regimenDeServicio}">
+                                                                </p>
+                                                                <p th:text="${proyecto.motorTrifasico.tipoDeAislacion}"></p>
+
+                                                                <p th:text="${proyecto.motorTrifasico.numeroDePolos}"></p>
+                                                                <p th:text="${proyecto.motorTrifasico.numeroDeRanuras}"></p>
+                                                                <p th:text="${proyecto.motorTrifasico.dInternoDEstator}">
+                                                                </p>
+                                                                <p th:text="${proyecto.motorTrifasico.dExternoDEstator}">
+                                                                </p>
+                                                                <p th:text="${proyecto.motorTrifasico.alturaDeCabeza}"></p>
+                                                                <p th:text="${proyecto.motorTrifasico.apilamientoDChapa}">
+                                                                </p>
+                                                                <p th:text="${proyecto.motorTrifasico.potenciaEnHP}"></p>
+                                                                <p th:text="${proyecto.motorTrifasico.corrienteEnAmp}"></p>
+                                                                <p th:text="${proyecto.motorTrifasico.tension}"></p>
+                                                                <p th:text="${proyecto.motorTrifasico.frecuenciaEnHZ}"></p>
+                                                                <p th:text="${proyecto.motorTrifasico.Notas}"></p>
+
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">Cerrar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td><!--fin de ver datos ingresados -->
+
+                                        <td>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#exampleModal">
+                                                Presupuesto
+                                            </button>
+
+                                            <!-- Modal -->
+                                            <!-- TRABAJO AQUI!!!!!!!!!!!!!! -->
+                                            <div class="modal fade" id="exampleModal" tabindex="-1"
+                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content bg-dark">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Carga presupuesto</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                    aria-label="Close"></button>
+                                                        </div>
+                                                        <form th:action="@{/taller/presupuesto}" method="POST">
+                                                            <div class="modal-body">
+
+
+                                                                <input hidden name="id" th:value="${proyecto.id}"/>
+
+                                                                <div class="text-center">
+
+                                                                    <p>Ingrese el presupuesto</p>
+                                                                    <input type="number" name="presupuesto" Step="0.001" class="bg-light" th:value="${proyecto.presupuesto}">
+                                                                    <input type="date" name="fecha" class="bg-light" th:value="${proyecto.fecha}">
+
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">Cerrar</button>
+                                                                <button type="SUBMIT" class="btn btn-primary">Guardar cambios</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <a th:href="@{/taller/delete(id = ${proyecto.id})}">
+                                                <button type="button" class="btn btn-danger">Eliminar</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Modal-->
+        <!-- Modal-->
 
-    <div class="modal fade" id="miModal" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
-        <div class="modal-dialog modal-fullscreen">
-            <div class="modal-content">
-                <div class="modal-header bg-dark">
-                    <h5 class="modal-title text-light">Cargar datos</h5>
-                    <button type="button" class="btn-close bg-light" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-                <div class="modal-body bg-dark">
-                    <div class="p-5 my-5 min-width-20">
-                        <div class="card text-white bg-secondary p-3 h-100 width-100">
-                            <div class="card-header">Datos del Motor</div>
-                            <div class="contenedor__todo">
-                                <div class="caja__trasera">
-                                    <div class="caja__trasera-login">
-                                        <h3>Trifasico</h3>
+        <div class="modal fade" id="miModal" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark">
+                        <h5 class="modal-title text-light">Cargar datos</h5>
+                        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body bg-dark">
+                        <div class="p-5 my-5 min-width-20">
+                            <div class="card text-white bg-secondary p-3 h-100 width-100">
+                                <div class="card-header">Datos del Motor</div>
+                                <div class="contenedor__todo">
+                                    <div class="caja__trasera">
+                                        <div class="caja__trasera-login">
+                                            <h3>Trifasico</h3>
 
-                                        <button id="btn__iniciar-sesion">Si es motor Monofasico, click aqui</button>
+                                            <button id="btn__iniciar-sesion">Si es motor Monofasico, click aqui</button>
+                                        </div>
+                                        <div class="caja__trasera-register">
+                                            <h3>Monofasico</h3>
+
+                                            <button id="btn__registrarse">Si es motor Trifasico, click aqui</button>
+                                        </div>
                                     </div>
-                                    <div class="caja__trasera-register">
-                                        <h3>Monofasico</h3>
 
-                                        <button id="btn__registrarse">Si es motor Trifasico, click aqui</button>
-                                    </div>
-                                </div>
+                                    <div class="contenedor">
+                                        <div class="contenedor__login-register fixed-top">
+                                            <form th:action="@{/taller/crearProyecto}" th:object="${proyectoMonofasico}"
+                                                  class="formulario__login" method="POST">
+                                                <p th:if="${error != null}" style="color:red;" th:text="${error}"></p>
+                                                <p th:if="${success != null}" style="color:green;" th:text="${success}"></p>
 
-                                <div class="contenedor">
-                                    <div class="contenedor__login-register fixed-top">
-                                        <form th:action="@{/taller/crearProyecto}" th:object="${proyectoMonofasico}"
-                                            class="formulario__login" method="POST">
-                                            <p th:if="${error != null}" style="color:red;" th:text="${error}"></p>
-                                            <p th:if="${success != null}" style="color:green;" th:text="${success}"></p>
+                                                <h2 class="text-center p-2">Correo del cliente</h2>
+                                                <input type="text" placeholder="Ingrese el correo "
+                                                       th:field="*{cliente.username}" required>
+                                                <hr>
 
-                                            <h2 class="text-center p-2">Correo del cliente</h2>
-                                            <input type="text" placeholder="Ingrese el correo "
-                                                th:field="*{cliente.username}" required>
-                                            <hr>
+                                                <h3 class="text-center p-2">Cargar datos Motor Monofasico</h3>
+                                                <input type="text" placeholder="Fabricante"
+                                                       th:field="*{motorMonofasico.fabricante}">
+                                                <input type="text" placeholder="Nacionalidad"
+                                                       th:field="*{motorMonofasico.Nacionalidad}">
+                                                <input type="text" placeholder="Numero de motor"
+                                                       th:field="*{motorMonofasico.numDeMotor}">
+                                                <input type="text" placeholder="Modelo"
+                                                       th:field="*{motorMonofasico.modelo}">
+                                                <input type="text" placeholder="Regimen de Servicio"
+                                                       th:field="*{motorMonofasico.regimenDeServicio}">
+                                                <input type="text" placeholder="Tipo de Aislacion"
+                                                       th:field="*{motorMonofasico.tipoDeAislacion}">
+                                                <div>
+                                                    <select th:field="*{motorMonofasico.polo}">
+                                                        <option
+                                                            th:each=" item : ${T(bobinator.bobinados.Enum.polo).values()}"
+                                                            th:value="${item}" th:text="${item}"></option>
+                                                    </select>
+                                                </div>
+                                                <input type="number" placeholder="Numero De Polos* "
+                                                       th:field="*{motorMonofasico.numeroDePolos}" required>
+                                                <input type="number" placeholder="Numero de Ranuras* "
+                                                       th:field="*{motorMonofasico.numeroDeRanuras}" step=".001" required>
+                                                <input type="number" placeholder="Diametro interno del estator*"
+                                                       th:field="*{motorMonofasico.dInternoDEstator}" step=".001" required>
+                                                <input type="number" placeholder="Diametro externo del estator*"
+                                                       th:field="*{motorMonofasico.dExternoDEstator}" step=".001" required>
+                                                <input type="number" placeholder="Altura de cabeza*"
+                                                       th:field="*{motorMonofasico.alturaDeCabeza}" required>
+                                                <input type="number" placeholder="Apilamiento de chapa*"
+                                                       th:field="*{motorMonofasico.apilamientoDChapa}" step=".001" required>
+                                                <input type="number" placeholder="Potencia en HP*"
+                                                       th:field="*{motorMonofasico.potenciaEnHP}" required>
+                                                <input type="number" placeholder="Corriente en amp*"
+                                                       th:field="*{motorMonofasico.corrienteEnAmp}" required>
+                                                <input type="number" placeholder="Tension*" step=".001"
+                                                       th:field="*{motorMonofasico.tension}" required>
+                                                <input type="number" placeholder="Freciencia en hz" step=".001"
+                                                       th:field="*{motorMonofasico.frecuenciaEnHZ}" required>
+                                                <input type="number" placeholder="Diametro de alambre (opcional)"
+                                                       th:field="*{motorTrifasico.diametroAlambre}" step=".001">
+                                                <input type="number" placeholder="Capacitor"
+                                                       th:field="*{motorMonofasico.capacitor}" required>
+                                                <div>
 
-                                            <h3 class="text-center p-2">Cargar datos Motor Monofasico</h3>
-                                            <input type="text" placeholder="Fabricante"
-                                                th:field="*{motorMonofasico.fabricante}">
-                                            <input type="text" placeholder="Nacionalidad"
-                                                th:field="*{motorMonofasico.Nacionalidad}">
-                                            <input type="text" placeholder="Numero de motor"
-                                                th:field="*{motorMonofasico.numDeMotor}">
-                                            <input type="text" placeholder="Modelo"
-                                                th:field="*{motorMonofasico.modelo}">
-                                            <input type="text" placeholder="Regimen de Servicio"
-                                                th:field="*{motorMonofasico.regimenDeServicio}">
-                                            <input type="text" placeholder="Tipo de Aislacion"
-                                                th:field="*{motorMonofasico.tipoDeAislacion}">
-                                            <div>
-                                                <select th:field="*{motorMonofasico.polo}">
-                                                    <option
-                                                        th:each=" item : ${T(bobinator.bobinados.Enum.polo).values()}"
-                                                        th:value="${item}" th:text="${item}"></option>
-                                                </select>
-                                            </div>
-                                            <input type="number" placeholder="Numero De Polos* "
-                                                th:field="*{motorMonofasico.numeroDePolos}" required>
-                                            <input type="number" placeholder="Numero de Ranuras* "
-                                                th:field="*{motorMonofasico.numeroDeRanuras}" step=".001" required>
-                                            <input type="number" placeholder="Diametro interno del estator*"
-                                                th:field="*{motorMonofasico.dInternoDEstator}" step=".001" required>
-                                            <input type="number" placeholder="Diametro externo del estator*"
-                                                th:field="*{motorMonofasico.dExternoDEstator}" step=".001" required>
-                                            <input type="number" placeholder="Altura de cabeza*"
-                                                th:field="*{motorMonofasico.alturaDeCabeza}" required>
-                                            <input type="number" placeholder="Apilamiento de chapa*"
-                                                th:field="*{motorMonofasico.apilamientoDChapa}" step=".001" required>
-                                            <input type="number" placeholder="Potencia en HP*"
-                                                th:field="*{motorMonofasico.potenciaEnHP}" required>
-                                            <input type="number" placeholder="Corriente en amp*"
-                                                th:field="*{motorMonofasico.corrienteEnAmp}" required>
-                                            <input type="number" placeholder="Tension*" step=".001"
-                                                th:field="*{motorMonofasico.tension}" required>
-                                            <input type="number" placeholder="Freciencia en hz" step=".001"
-                                                th:field="*{motorMonofasico.frecuenciaEnHZ}" required>
-                                            <input type="number" placeholder="Diametro de alambre (opcional)"
-                                                th:field="*{motorTrifasico.diametroAlambre}" step=".001">
-                                            <input type="number" placeholder="Capacitor"
-                                                th:field="*{motorMonofasico.capacitor}" required>
-                                            <div>
+                                                    <br>
 
-                                                <br>
+                                                    <!--hacer el es polo-->
+                                                </div>
+                                                <input type="text" placeholder="notas" th:field="*{motorMonofasico.notas}">
+                                                <button type="submit" class="btn btn-primary">Guardar datos</button>
+                                                <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Cerrar</button>
+                                            </form>
 
-                                                <!--hacer el es polo-->
-                                            </div>
-                                            <input type="text" placeholder="notas" th:field="*{motorMonofasico.notas}">
-                                            <button type="submit" class="btn btn-primary">Guardar datos</button>
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Cerrar</button>
-                                        </form>
+                                            <form method="POST" th:action="@{/taller/crearProyecto}"
+                                                  th:object="${proyectoTrifasico}" class="formulario__register">
+                                                <p th:if="${error != null}" style="color:red;" th:text="${error}"></p>
+                                                <p th:if="${success != null}" style="color:green;" th:text="${success}"></p>
+                                                <h2 class="text-center p-2">Correo del cliente</h2>
+                                                <input type="text" placeholder="Ingrese el correo"
+                                                       th:field="*{cliente.username}" required>
 
-                                        <form method="POST" th:action="@{/taller/crearProyecto}"
-                                            th:object="${proyectoTrifasico}" class="formulario__register">
-                                            <p th:if="${error != null}" style="color:red;" th:text="${error}"></p>
-                                            <p th:if="${success != null}" style="color:green;" th:text="${success}"></p>
-                                            <h2 class="text-center p-2">Correo del cliente</h2>
-                                            <input type="text" placeholder="Ingrese el correo"
-                                                th:field="*{cliente.username}" required>
+                                                <hr>
 
-                                            <hr>
+                                                <h3 class="text-center p-3">Cargar datos Motor Trifasico</h3>
+                                                <input type="text" placeholder="Fabricante"
+                                                       th:field="*{motorTrifasico.fabricante}">
+                                                <input type="text" placeholder="Nacionalidad"
+                                                       th:field="*{motorTrifasico.Nacionalidad}">
+                                                <input type="text" placeholder="Numero de motor"
+                                                       th:field="*{motorTrifasico.numDeMotor}">
+                                                <input type="text" placeholder="Modelo" th:field="*{motorTrifasico.modelo}">
+                                                <input type="text" placeholder="Regimen de Servicio"
+                                                       th:field="*{motorTrifasico.regimenDeServicio}">
+                                                <div>
+                                                    <select th:field="*{motorTrifasico.polo}">
+                                                        <option
+                                                            th:each=" item : ${T(bobinator.bobinados.Enum.polo).values()}"
+                                                            th:value="${item}" th:text="${item}"></option>
+                                                    </select>
+                                                </div>
+                                                <input type="text" placeholder="Tipo de Aislacion"
+                                                       th:field="*{motorTrifasico.tipoDeAislacion}">
+                                                <input type="number" placeholder="Numero De Polos* (2p)"
+                                                       th:field="*{motorTrifasico.numeroDePolos}" required>
+                                                <input type="number" placeholder="Numero de Ranuras*"
+                                                       th:field="*{motorTrifasico.numeroDeRanuras}" required>
+                                                <input type="number" placeholder="Diametro interno del estator*"
+                                                       th:field="*{motorTrifasico.dInternoDEstator}" step=".001" required>
+                                                <input type="number" placeholder="Diametro externo del estator*"
+                                                       th:field="*{motorTrifasico.dExternoDEstator}" step=".001" required>
+                                                <input type="number" placeholder="Altura de cabeza*"
+                                                       th:field="*{motorTrifasico.alturaDeCabeza}" step=".001" required>
+                                                <input type="number" placeholder="Apilamiento de chapa*"
+                                                       th:field="*{motorTrifasico.apilamientoDChapa}" step=".001" required>
+                                                <input type="number" placeholder="Potencia en HP*"
+                                                       th:field="*{motorTrifasico.potenciaEnHP}" step=".001" required>
+                                                <input type="number" placeholder="Corriente en amp*"
+                                                       th:field="*{motorTrifasico.corrienteEnAmp}" step=".001" required>
+                                                <input type="number" placeholder="Freciencia en hz"
+                                                       th:field="*{motorTrifasico.frecuenciaEnHZ}" required>
+                                                <input type="number" placeholder="diametro del alambre"
+                                                       th:field="*{motorTrifasico.diametroAlambre}" step=".001" required>
+                                                <div>
+                                                    <select th:field="*{motorTrifasico.conexion}">
+                                                        <option
+                                                            th:each=" item : ${T(bobinator.bobinados.Enum.Conexion).values()}"
+                                                            th:value="${item}" th:text="${item}"></option>
+                                                    </select>
 
-                                            <h3 class="text-center p-3">Cargar datos Motor Trifasico</h3>
-                                            <input type="text" placeholder="Fabricante"
-                                                th:field="*{motorTrifasico.fabricante}">
-                                            <input type="text" placeholder="Nacionalidad"
-                                                th:field="*{motorTrifasico.Nacionalidad}">
-                                            <input type="text" placeholder="Numero de motor"
-                                                th:field="*{motorTrifasico.numDeMotor}">
-                                            <input type="text" placeholder="Modelo" th:field="*{motorTrifasico.modelo}">
-                                            <input type="text" placeholder="Regimen de Servicio"
-                                                th:field="*{motorTrifasico.regimenDeServicio}">
-                                            <div>
-                                                <select th:field="*{motorTrifasico.polo}">
-                                                    <option
-                                                        th:each=" item : ${T(bobinator.bobinados.Enum.polo).values()}"
-                                                        th:value="${item}" th:text="${item}"></option>
-                                                </select>
-                                            </div>
-                                            <input type="text" placeholder="Tipo de Aislacion"
-                                                th:field="*{motorTrifasico.tipoDeAislacion}">
-                                            <input type="number" placeholder="Numero De Polos* (2p)"
-                                                th:field="*{motorTrifasico.numeroDePolos}" required>
-                                            <input type="number" placeholder="Numero de Ranuras*"
-                                                th:field="*{motorTrifasico.numeroDeRanuras}" required>
-                                            <input type="number" placeholder="Diametro interno del estator*"
-                                                th:field="*{motorTrifasico.dInternoDEstator}" step=".001" required>
-                                            <input type="number" placeholder="Diametro externo del estator*"
-                                                th:field="*{motorTrifasico.dExternoDEstator}" step=".001" required>
-                                            <input type="number" placeholder="Altura de cabeza*"
-                                                th:field="*{motorTrifasico.alturaDeCabeza}" step=".001" required>
-                                            <input type="number" placeholder="Apilamiento de chapa*"
-                                                th:field="*{motorTrifasico.apilamientoDChapa}" step=".001" required>
-                                            <input type="number" placeholder="Potencia en HP*"
-                                                th:field="*{motorTrifasico.potenciaEnHP}" step=".001" required>
-                                            <input type="number" placeholder="Corriente en amp*"
-                                                th:field="*{motorTrifasico.corrienteEnAmp}" step=".001" required>
-                                            <input type="number" placeholder="Freciencia en hz"
-                                                th:field="*{motorTrifasico.frecuenciaEnHZ}" required>
-                                            <input type="number" placeholder="diametro del alambre"
-                                                th:field="*{motorTrifasico.diametroAlambre}" step=".001" required>
-                                            <div>
-                                                <select th:field="*{motorTrifasico.conexion}">
-                                                    <option
-                                                        th:each=" item : ${T(bobinator.bobinados.Enum.Conexion).values()}"
-                                                        th:value="${item}" th:text="${item}"></option>
-                                                </select>
-
-                                            </div>
-                                            <input type="text" placeholder="notas" th:field="*{motorTrifasico.notas}">
-                                            <button type="submit" class="btn btn-primary">Guardar datos</button>
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Cerrar</button>
-                                        </form>
+                                                </div>
+                                                <input type="text" placeholder="notas" th:field="*{motorTrifasico.notas}">
+                                                <button type="submit" class="btn btn-primary">Guardar datos</button>
+                                                <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Cerrar</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -437,15 +429,14 @@
                 </div>
             </div>
         </div>
-    </div>
-    <script>
-        const realizarCalculo = (id) => {
+        <script>
+            const realizarCalculo = (id) => {
             const modalBody = document.getElementById(`bodyCalculo${id}`)
 
             fetch(`http://localhost:8080/taller/calcular?id=${id}`).then(r => r.json())
-                .then(calculo => {
-                    console.log("calculo", calculo)
-                    modalBody.innerHTML = `
+            .then(calculo => {
+            console.log("calculo", calculo)
+            modalBody.innerHTML = `
             <p>${calculo.diametroDeAlambreEnMM}</p>
             <p >${calculo.PesoDeAlambreEnKG}</p>
             <p >${calculo.paso1}</p>
@@ -460,17 +451,21 @@
             <p >${calculo.vueltasPorBobinas}</p>
             <p >${calculo.seccionDelAlambre}</p>
             `
-                })
-        }
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+
+
+            })
+            }
+
+
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script src="/js/caja.js"></script>
-    <script src="/js/index.js"></script>
-    <script src="/js/script.js"></script>
-</body>
+        <script src="/js/caja.js"></script>
+        <script src="/js/index.js"></script>
+        <script src="/js/script.js"></script>
+    </body>
 
 </html>
