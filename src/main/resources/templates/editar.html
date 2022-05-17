@@ -22,34 +22,39 @@
                 </form>
             </div>
         </nav>
-
-
-
-        <p th:if="${error != null}" style="color:red;" th:text="${error}"></p>
-        <p th:if="${success != null}" style="color:green;" th:text="${success}"></p>
+        
         <div class="login">
+          <p th:if="${error != null}" style="color:red;" th:text="${error}"></p>
+          <p th:if="${success != null}" style="color:green;" th:text="${success}"></p>
             <h1>Editar perfil</h1>
             <form class="form-login" th:action="@{/editar/editarCliente}" method="POST">
-                <h5>Ingreso</h5>
                 <p th:if="${error !=null}" class="error" th:text="${error}">
                 </p>
-
                 <div class="user">
-                    <input type="text" name="telefono" class="controls" placeholder="telefono" th:value="${telefono}" />
+                    <input type="text" name="name" class="controls" placeholder="Nombre" th:value="${name}" />
+                </div>
+                <div class="user">
+                    <input type="text" name="telefono" class="controls" placeholder="Telefono" th:value="${telefono}" />
                 </div>
                 <div class="user">
                     <input type="password" name="password" class="controls" placeholder="Contraseña" th:value="${password}" />
                 </div>
 
-                <div class="user">
-                    <button type="submit" class="btn btn-secondary" value="Editar">
+                
+                <div class="text-center d-grid gap-2">
+                    <button type="submit" class="btn btn-primary " value="Editar">
                         Editar
                     </button>
                 </div>
-
-
             </form>
 
+            <div class="user text-center p-1">
+              <a href="/cliente">
+              <button type="submit" class="btn btn-primary " value="Editar">
+                  Volver
+              </button>
+            </a>
+          </div>
         </div>
 
 

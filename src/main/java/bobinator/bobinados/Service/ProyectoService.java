@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package bobinator.bobinados.Service;
 
 import bobinator.bobinados.Entity.Calculos;
@@ -13,17 +8,12 @@ import bobinator.bobinados.Entity.Trifasico;
 import bobinator.bobinados.Enum.Estado;
 import bobinator.bobinados.Repository.ProyectoRepository;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-/**
- *
- * @author groxa
- */
 @Service
 public class ProyectoService {
 
@@ -35,7 +25,6 @@ public class ProyectoService {
     private MonofasicoService monofasicoService;
     @Autowired
     private TrifasicoServicio trifasicoService;
-       
     @Autowired
     private ProyectoRepository proyectoRepo;
 
@@ -44,14 +33,12 @@ public class ProyectoService {
         Cliente cliente = clienteService.registrarUsuario(proyecto.getCliente());
         if (proyecto.getMotorMonofasico() != null) {
             Monofasico mono = monofasicoService.CargarMotor(proyecto.getMotorMonofasico());
-            proyecto.setMotorMonofasico(mono);
             proyecto.setMotorTrifasico(null);
+            proyecto.setMotorMonofasico(mono);
         } else {
-
             Trifasico tri = trifasicoService.CargarMotor(proyecto.getMotorTrifasico());
+            proyecto.setMotorMonofasico(null);
             proyecto.setMotorTrifasico(tri);
-             proyecto.setMotorMonofasico(null);
-
         }
         proyecto.setAlta(true);
         proyecto.setEstado(Estado.EN_REVISION);
@@ -73,6 +60,7 @@ public class ProyectoService {
     public List<Proyecto> listarProyectos() {
         return proyectoRepo.findAll();
     }
+
     public List<Proyecto> listarProyectosPorIdCliente(String idCliente) {
         return proyectoRepo.buscarProyectoPorIdCliente(idCliente);
     }
@@ -121,20 +109,18 @@ public class ProyectoService {
         }
 
     }
+
     public void calcularPresupuestoProyecto(String id, Date fecha, Double presupuesto) {
         Optional<Proyecto> respuesta = proyectoRepo.findById(id);
         if (respuesta.isPresent()) {
             Proyecto edit = respuesta.get();
-                edit.setPresupuesto(presupuesto);
-                edit.setFecha(fecha);
-                edit.setEstado(Estado.PRESUPUESTADO);
-                proyectoRepo.save(edit);
-            
-
-            
+            edit.setId(id);
+            edit.setPresupuesto(presupuesto);
+            edit.setFecha(fecha);
+            edit.setEstado(Estado.PRESUPUESTADO);
+            proyectoRepo.save(edit);
         } else {
             throw new Error("No se encontro el proyecto");
-
         }
 
     }
@@ -143,44 +129,66 @@ public class ProyectoService {
         Optional<Proyecto> respuesta = proyectoRepo.findById(id);
         if (respuesta.isPresent()) {
             Proyecto edit = respuesta.get();
-             edit.setEstado(estado);
+            edit.setEstado(estado);
             proyectoRepo.save(edit);
-    
+
+        }
+
     }
 
-}
-/*
+    /*
     aprobar(String id)
     {
     Proyecto proyecto = melotraigoconelid
     proyecto.setEstado(Estado.Aprobar)
     }    
-    */
+     */
     public void aprobar(String id) {
-       Optional<Proyecto> respuesta = proyectoRepo.findById(id);
+        Optional<Proyecto> respuesta = proyectoRepo.findById(id);
         if (respuesta.isPresent()) {
             Proyecto edit = respuesta.get();
-             edit.setEstado(Estado.APROBADO);
+            edit.setEstado(Estado.APROBADO);
             proyectoRepo.save(edit);
-    
+
+        }
     }
-    }
+
     public void rechazar(String id) {
-       Optional<Proyecto> respuesta = proyectoRepo.findById(id);
+        Optional<Proyecto> respuesta = proyectoRepo.findById(id);
         if (respuesta.isPresent()) {
             Proyecto edit = respuesta.get();
-             edit.setEstado(Estado.RECHAZADO);
-            proyectoRepo.save(edit); 
+            edit.setEstado(Estado.RECHAZADO);
+            proyectoRepo.save(edit);
+        }
     }
-}
 
-    public void modificarCliente(String id, String password, String telefono) {
-         Proyecto respuesta =  proyectoRepo.buscarUnProyectoPorIdCliente(id);
-         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-             respuesta.getCliente().setPassword(encoder.encode(password));
-             respuesta.getCliente().setTelefono(telefono);
-                     
-                     
-            proyectoRepo.save(respuesta); 
-      }
+    public void modificarCliente(String id, String name, String password, String telefono) {
+        Proyecto respuesta = proyectoRepo.buscarUnProyectoPorIdCliente(id);
+        if (respuesta.getId() != null) {
+            respuesta.getCliente().setName(name);
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            respuesta.getCliente().setPassword(encoder.encode(password));
+            respuesta.getCliente().setTelefono(telefono);
+
+            proyectoRepo.save(respuesta);
+        }
+    }
+
+    public void listo(String id) {
+        Optional<Proyecto> respuesta = proyectoRepo.findById(id);
+        if (respuesta.isPresent()) {
+            Proyecto edit = respuesta.get();
+            edit.setEstado(Estado.LISTO_PARA_RETIRAR);
+            proyectoRepo.save(edit);
+        }
+    }
+
+    public void retirado(String id) {
+        Optional<Proyecto> respuesta = proyectoRepo.findById(id);
+        if (respuesta.isPresent()) {
+            Proyecto edit = respuesta.get();
+            edit.setEstado(Estado.ENTREGADO);
+            proyectoRepo.save(edit);
+        }
+    }
 }

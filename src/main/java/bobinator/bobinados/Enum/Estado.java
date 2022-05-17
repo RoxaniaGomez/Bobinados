@@ -15,7 +15,8 @@ public enum Estado {
     APROBADO("Aprobado"),
     RECHAZADO("Rechazado"),
     LISTO_PARA_RETIRAR("Listo para retirar"),
-    ENTREGADO("Entrgado");
+    ENTREGADO("Entregado");
+    
     
     private Estado(String texto) {
         this.texto = texto;
