@@ -45,11 +45,12 @@ public class ProyectoService {
         if (proyecto.getMotorMonofasico() != null) {
             Monofasico mono = monofasicoService.CargarMotor(proyecto.getMotorMonofasico());
             proyecto.setMotorMonofasico(mono);
-
+            proyecto.setMotorTrifasico(null);
         } else {
 
             Trifasico tri = trifasicoService.CargarMotor(proyecto.getMotorTrifasico());
             proyecto.setMotorTrifasico(tri);
+             proyecto.setMotorMonofasico(null);
 
         }
         proyecto.setAlta(true);

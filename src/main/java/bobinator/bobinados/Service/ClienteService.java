@@ -23,7 +23,7 @@ public class ClienteService{
 
     public Cliente registrarUsuario(Cliente cliente) throws Exception {
 
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 cliente.setPassword(encoder.encode("1234"));
 
 cliente.setRol(Rol.USUARIO);

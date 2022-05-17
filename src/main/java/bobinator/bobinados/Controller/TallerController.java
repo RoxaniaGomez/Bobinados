@@ -12,6 +12,7 @@ import bobinator.bobinados.Service.EmpleadoService;
 import bobinator.bobinados.Service.MonofasicoService;
 import bobinator.bobinados.Service.ProyectoService;
 import bobinator.bobinados.Service.TrifasicoServicio;
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 
 
@@ -50,8 +51,10 @@ public class TallerController {
 
     @PreAuthorize("hasAnyRole('ROLE_TALLER')")
     @GetMapping("")
-    public String postLogueo(Model modelo) {
-
+    public String postLogueo(Model modelo,Principal principal) {
+            if(principal==null){
+              return "redirect:/taller";
+            }
         List<Proyecto> proyectos = proyectoService.listarProyectos();
         modelo.addAttribute("lista", proyectos);
         
