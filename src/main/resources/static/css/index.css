@@ -1,0 +1,20 @@
+body {
+  background-image: url(/img/fondo-index.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.caja-grande {
+    margin-top: 8%;
+  }
+
+.img-card {
+  height: 350px;
+  width: 550px;
+}
+
+.img-card2 {
+  height: 350px;
+  width: 540px;
+}
