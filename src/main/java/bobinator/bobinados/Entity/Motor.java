@@ -40,7 +40,7 @@ abstract public class Motor {
 
     private Double potenciaEnHP;
 
-    private Integer corrienteEnAmp;
+    private Double corrienteEnAmp;
     private polo polo;
     private Double tension;//380
     private Double diametroAlambre;
