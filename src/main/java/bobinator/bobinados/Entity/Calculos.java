@@ -5,8 +5,7 @@
  */
 package bobinator.bobinados.Entity;
 
-import java.io.Serializable;
-import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;

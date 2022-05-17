@@ -38,6 +38,7 @@ public class Proyecto {
     private Double presupuesto;
     @Enumerated(EnumType.STRING)
     private Estado estado;
+    
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(style = "yyyy-mm-dd")
     private Date fecha;

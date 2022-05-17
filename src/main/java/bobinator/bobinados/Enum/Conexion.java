@@ -10,5 +10,5 @@ package bobinator.bobinados.Enum;
  * @author groxa
  */
 public enum Conexion {
-    ESTRELLA,TRIANGULO;
+    ESTRELLA,TRIANGULO,CIRCULO;
 }
