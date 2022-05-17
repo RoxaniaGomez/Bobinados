@@ -12,8 +12,8 @@ import bobinator.bobinados.Service.EmpleadoService;
 import bobinator.bobinados.Service.MonofasicoService;
 import bobinator.bobinados.Service.ProyectoService;
 import bobinator.bobinados.Service.TrifasicoServicio;
+import java.security.Principal;
 import java.text.SimpleDateFormat;
-
 
 import java.util.List;
 
@@ -42,7 +42,7 @@ public class TallerController {
     private MonofasicoService monofasicoService;
     @Autowired
     private TrifasicoServicio trifasicoService;
-    
+
     @Autowired
     private CalculoService calculoService;
     @Autowired
@@ -50,25 +50,28 @@ public class TallerController {
 
     @PreAuthorize("hasAnyRole('ROLE_TALLER')")
     @GetMapping("")
-    public String postLogueo(Model modelo) {
+
+    public String postLogueo(Model modelo, Principal principal) {
+        if (principal == null) {
+            return "redirect:/taller";
+        }
 
         List<Proyecto> proyectos = proyectoService.listarProyectos();
         modelo.addAttribute("lista", proyectos);
-        
+
         Calculos calculo = new Calculos();
-        modelo.addAttribute("calculo",calculo);
+        modelo.addAttribute("calculo", calculo);
         Proyecto proyectoTrifasico = new Proyecto();
         proyectoTrifasico.setCliente(new Cliente());
-        
 
         proyectoTrifasico.setMotorTrifasico(new Trifasico());
         modelo.addAttribute("proyectoTrifasico", proyectoTrifasico);
 
         Proyecto proyectoMonofasico = new Proyecto();
         proyectoMonofasico.setCliente(new Cliente());
-        
+
         proyectoMonofasico.setMotorMonofasico(new Monofasico());
-        
+
         modelo.addAttribute("proyectoMonofasico", proyectoMonofasico);
 
         return "taller";
@@ -81,7 +84,7 @@ public class TallerController {
     }
 
     @PostMapping("/crearProyecto")
-    public String CrearProyecto(@ModelAttribute("proyecto") Proyecto proyecto, HttpSession httpSession  ) throws Exception {
+    public String CrearProyecto(@ModelAttribute("proyecto") Proyecto proyecto, HttpSession httpSession) throws Exception {
         Usuario usuario = (Usuario) httpSession.getAttribute("usuario");
         proyecto.setEmpleado(empleadoService.buscarPorId(usuario.getId()));
         proyecto = proyectoService.crearProyecto(proyecto);
@@ -109,31 +112,31 @@ public class TallerController {
             return "redirect:/taller";
         }
     }
-   
+
     @GetMapping("/calcular")
     public ResponseEntity<Calculos> calcular(@RequestParam("id") String id) {
         try {
-          Calculos calculo = proyectoService.calcularProyecto(id);
-            return new ResponseEntity<>(calculo,HttpStatus.OK);
+            Calculos calculo = proyectoService.calcularProyecto(id);
+            return new ResponseEntity<>(calculo, HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
-     @PostMapping("/presupuesto")
-    public String presupuesto(@RequestParam("id") String id,@RequestParam("fecha") String fecha,@RequestParam("presupuesto") Double presupuesto) {
+
+    @PostMapping("/presupuesto")
+    public String presupuesto(@RequestParam("id") String id, @RequestParam("fecha") String fecha, @RequestParam("presupuesto") Double presupuesto) {
         try {
             SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
-          proyectoService.calcularPresupuestoProyecto(id, format.parse(fecha), presupuesto);
-             return "redirect:/taller";
+            proyectoService.calcularPresupuestoProyecto(id, format.parse(fecha), presupuesto);
+            return "redirect:/taller";
         } catch (Exception e) {
             e.printStackTrace();
             return "redirect:/taller";
-            
+
         }
     }
-        
-        
+
     @GetMapping("/ver")
     public String ver(@RequestParam("id") String id) {
         try {
@@ -144,6 +147,7 @@ public class TallerController {
             return "redirect:/taller";
         }
     }
+
     @GetMapping("/delete")
     public String delete(@RequestParam("id") String id) {
         try {
@@ -154,4 +158,5 @@ public class TallerController {
             return "redirect:/taller";
         }
 
-}}
+    }
+}

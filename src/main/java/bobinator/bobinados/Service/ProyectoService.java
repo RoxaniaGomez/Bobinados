@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package bobinator.bobinados.Service;
 
 import bobinator.bobinados.Entity.Calculos;
@@ -19,10 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-/**
- *
- * @author groxa
- */
 @Service
 public class ProyectoService {
 
@@ -34,7 +25,6 @@ public class ProyectoService {
     private MonofasicoService monofasicoService;
     @Autowired
     private TrifasicoServicio trifasicoService;
-
     @Autowired
     private ProyectoRepository proyectoRepo;
 
@@ -43,13 +33,12 @@ public class ProyectoService {
         Cliente cliente = clienteService.registrarUsuario(proyecto.getCliente());
         if (proyecto.getMotorMonofasico() != null) {
             Monofasico mono = monofasicoService.CargarMotor(proyecto.getMotorMonofasico());
+            proyecto.setMotorTrifasico(null);
             proyecto.setMotorMonofasico(mono);
-
         } else {
-
             Trifasico tri = trifasicoService.CargarMotor(proyecto.getMotorTrifasico());
+            proyecto.setMotorMonofasico(null);
             proyecto.setMotorTrifasico(tri);
-
         }
         proyecto.setAlta(true);
         proyecto.setEstado(Estado.EN_REVISION);
@@ -125,14 +114,13 @@ public class ProyectoService {
         Optional<Proyecto> respuesta = proyectoRepo.findById(id);
         if (respuesta.isPresent()) {
             Proyecto edit = respuesta.get();
+            edit.setId(id);
             edit.setPresupuesto(presupuesto);
             edit.setFecha(fecha);
             edit.setEstado(Estado.PRESUPUESTADO);
             proyectoRepo.save(edit);
-
         } else {
             throw new Error("No se encontro el proyecto");
-
         }
 
     }
