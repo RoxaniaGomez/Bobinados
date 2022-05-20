@@ -13,37 +13,38 @@
 </head>
 
 <body class="min-vh-100">
-  <nav class="navbar navbar-light bg-dark ">
-    <div class="container-fluid">
-      <a class="navbar-brand " href="/cliente">
-        <button type="button" class="btn btn-dark">Bobinados</button>
-      </a>
-      <div class="btn-group" role="group" aria-label="Basic outlined example">
-        <a href="/editar">
-          <button type="button" class="btn btn-outline-light">Editar perfil</button> </a>
-        <form th:action="@{/logout}" method="POST">
-          <button type="submit" class="btn btn-outline-light">Cerrar Sesión</button>
-        </form>
+  <header class="p-3 bg-dark text-white">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <h5>Información de su motor</h5>
+        </ul>
+        <a href="/editar" class="btn btn-outline-secondary text-light" tabindex="-1" role="button"
+          aria-disabled="true">Editar Perfil</a>
+        <div class="p-1">
+            <button type="submit" class="btn btn-danger">Cerrar Sesión</button>
+        </div>
       </div>
     </div>
-  </nav>
+  </header>
 
   <table class="table table-success table-striped">
     <thead>
       <tr>
         <th scope="col">Taller</th>
-        <th scope="col">Nombre empleado</th>
+        <th scope="col">Empleado</th>
         <th scope="col">Presupuesto</th>
         <th scope="col">Estado</th>
         <th scope="col">Acciones</th>
       </tr>
     </thead>
-    <tbody>
 
+    <tbody>
       <tr th:href="@{/cliente}" th:each="proyecto: ${proyectos}">
         <td
           th:text="${(proyecto.empleado != null && proyecto.empleado.name != null) ? proyecto.empleado.name : 'no tiene  nombre'}">
         </td>
+
         <td
           th:text="${(proyecto.empleado != null && proyecto.empleado.nameTaller != null) ? proyecto.empleado.nameTaller : 'no tiene nombre'}">
         </td>
@@ -56,6 +57,7 @@
             <button th:disabled="${proyecto.estado.texto != 'En revision' && proyecto.estado.texto != 'Presupuestado' }"
               class="bg-succes">Aprobar</button>
           </a>
+          
           <a th:href="@{/proyecto/rechazar(id=${proyecto.id})}">
             <button th:disabled="${proyecto.estado.texto != 'En revision' && proyecto.estado.texto != 'Presupuestado' }"
               class="bg-danger">Rechazar</button>
