@@ -12,6 +12,11 @@ import lombok.Data;
 @Entity
 @Data
 public class Cliente extends Usuario{
+//
+//    @Id
+//    @GeneratedValue(generator = "uuid")
+//    @GenericGenerator(name = "uuid", strategy = "uuid2")
+//    private String id;
 
     private String telefono;
 
