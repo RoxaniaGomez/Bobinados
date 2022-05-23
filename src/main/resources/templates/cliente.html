@@ -19,11 +19,12 @@
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <h5>Información de su motor</h5>
         </ul>
-        <a href="/editar" class="btn btn-outline-secondary text-light" tabindex="-1" role="button"
-          aria-disabled="true">Editar Perfil</a>
-        <div class="p-1">
-            <button type="submit" class="btn btn-danger">Cerrar Sesión</button>
-        </div>
+
+        <form th:action="@{/logout}" method="POST">
+          <a href="/editar" class="btn btn-outline-secondary text-light" tabindex="-1" role="button"
+            aria-disabled="true">Editar Perfil</a>
+          <button type="submit" class="btn btn-danger">Cerrar Sesión</button>
+        </form>
       </div>
     </div>
   </header>
@@ -57,7 +58,7 @@
             <button th:disabled="${proyecto.estado.texto != 'En revision' && proyecto.estado.texto != 'Presupuestado' }"
               class="bg-succes">Aprobar</button>
           </a>
-          
+
           <a th:href="@{/proyecto/rechazar(id=${proyecto.id})}">
             <button th:disabled="${proyecto.estado.texto != 'En revision' && proyecto.estado.texto != 'Presupuestado' }"
               class="bg-danger">Rechazar</button>

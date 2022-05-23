@@ -11,7 +11,7 @@
 	<groupId>bobinator</groupId>
 	<artifactId>bobinados</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>bobinados-responsive</name>
+	<name>bobinados-heroku</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
