@@ -98,8 +98,6 @@
                                                                 </div>
                                                                 <hr>
                                                                 <div th:id="'bodyCalculo'+${proyecto.id}">
-
-
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -179,7 +177,7 @@
                                                                 </p>
                                                                 <p
                                                                     th:text="'Corriente: '+${proyecto.motorMonofasico.corrienteEnAmp}">
-                                                                </p>                                                           
+                                                                </p>
                                                                 <p
                                                                     th:text="'Frecuencia: '+${proyecto.motorMonofasico.frecuenciaEnHZ}">
                                                                 </p>
@@ -187,7 +185,7 @@
                                                                     th:text="'Notas: '+${proyecto.motorMonofasico.Notas}">
                                                                 </p>
                                                             </div>
-                                                            
+
                                                         </div>
                                                         <div th:href="@{/taller/ver} " class="row"
                                                             th:if="${proyecto.motorTrifasico !=null}">
@@ -219,7 +217,7 @@
                                                                 </p>
 
                                                             </div>
-                                                            
+
                                                             <div class="col">
                                                                 <p
                                                                     th:text="'Diametro int del estator: '+${proyecto.motorTrifasico.dInternoDEstator}">

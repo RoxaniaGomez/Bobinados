@@ -1,10 +1,13 @@
-
 spring:
  #Configuración MySQL
   datasource:
-    url: jdbc:mysql://localhost:3306/bobinado?allowPublicKeyRetrieval=true&useSSL=false&useTimezone=true&serverTimezone=GMT&characterEncoding=UTF-8
-    username: root
-    password: root
+    #url: jdbc:mysql://localhost:3306/bobinado?allowPublicKeyRetrieval=true&useSSL=false&useTimezone=true&serverTimezone=GMT&characterEncoding=UTF-8
+    #username: root
+    #password: root
+    #Configuracion heroku
+    url: jdbc:mysql://bam8zc4xtgmncjigss9g-mysql.services.clever-cloud.com:3306/bam8zc4xtgmncjigss9g?allowPublicKeyRetrieval=true&useSSL=false&useTimezone=true&serverTimezone=GMT&characterEncoding=UTF-8
+    username: ucwvlse84fdjc59o
+    password: XNa48D8vY6EYN7FrJ0Ci
     driver-class-name: com.mysql.cj.jdbc.Driver
 #Configuración Creación de tablas (Hibernate)
   jpa:
@@ -13,7 +16,12 @@ spring:
       ddl-auto: update
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        #dialect: org.hibernate.dialect.MySQL8InnoDBDialect
+        ##configugracion heroku
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    #database-platform: 
 #Que thymeleaf no guarde datos en cache
   thymeleaf:
     cache: false
+    
+    
